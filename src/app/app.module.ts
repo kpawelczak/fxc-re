@@ -1,16 +1,19 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { FormsModule} from '@angular/forms'
 import { AppComponent } from './app.component';
+import { FibCalc } from './fib-calc/fib-calc.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    FibCalc,
   ],
   imports: [
-    BrowserModule
+   BrowserModule,
+   FormsModule,
   ],
-  providers: [],
+    providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
