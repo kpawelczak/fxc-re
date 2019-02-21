@@ -6,14 +6,14 @@
     </ul>
     <ul>
       <label> Low </label>
-      <input [(ngModel)]='Low'type="number" name="Low" placeholder="Enter Low ">
+      <input [(ngModel)]='Low'type="number" placeholder="Enter Low ">
     </ul>
     <ul>
       <select [(ngModel)]='type'>
         <option value="Long">Long</option>
         <option value="Short">Short</option>
       </select>
-      
+      <button (click)='cal_fib()'>Execute!</button>
     </ul>
   </div>
 <div class="fib-levels">
@@ -23,4 +23,4 @@
     <ul><input type="checkbox"> 61.8 = {{result_618}}</ul>
 </div>
 
-<button (click)='cal_fib()'>Execute!</button>
+
