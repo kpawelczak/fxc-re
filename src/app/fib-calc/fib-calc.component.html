@@ -9,18 +9,18 @@
       <input [(ngModel)]='Low'type="number" name="Low" placeholder="Enter Low ">
     </ul>
     <ul>
-      <select>
-        <option>Long</option>
-        <option>Short</option>
+      <select [(ngModel)]='type'>
+        <option value="Long">Long</option>
+        <option value="Short">Short</option>
       </select>
       
     </ul>
   </div>
 <div class="fib-levels">
-    <ul><input type="checkbox"> 23.6 = {{long_result_236}}</ul>
-    <ul><input type="checkbox"> 38.2 = {{long_result_382}}</ul>
-    <ul><input type="checkbox"> 50 = {{long_result_50}}</ul>
-    <ul><input type="checkbox"> 61.8 = {{long_result_618}}</ul>
+    <ul><input type="checkbox"> 23.6 = {{result_236}}</ul>
+    <ul><input type="checkbox"> 38.2 = {{result_382}}</ul>
+    <ul><input type="checkbox"> 50 = {{result_50}}</ul>
+    <ul><input type="checkbox"> 61.8 = {{result_618}}</ul>
 </div>
 
-<button (click)='cal_long()'>Execute!</button>
+<button (click)='cal_fib()'>Execute!</button>
