@@ -18,7 +18,7 @@ export class FibCalcComponent {
     public Range: number
     public type: String 
     public result_236: number
-    public result_382: string
+    public result_382: number
     public result_50: string
     public result_618: string
 
