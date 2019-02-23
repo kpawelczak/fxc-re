@@ -1,16 +1,17 @@
-import { Component, EventEmitter } from '@angular/core';
+import { Component } from '@angular/core';
+import { InputValues } from '../input-values';
+
 
 @Component({
     selector: 'fib-input',
     templateUrl: './fib-input.component.html',
     styleUrls: ['./fib-input.component.css'],
-   
- inputs: ['High'],
 
 })
 export class FibInputComponent {
 
-    public High: number;
+    ivalue = InputValues
+
     public showElement = true;
     
 }

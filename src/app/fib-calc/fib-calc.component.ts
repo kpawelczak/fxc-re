@@ -1,22 +1,22 @@
 import { Component } from '@angular/core';
+import { InputValues } from '../input-values';
+
 
 
 @Component({
     selector: 'fib-calc',
     templateUrl: './fib-calc.component.html',
-
-inputs: ['Low']
 })
 
 export class FibCalcComponent {
 
-    public childData: string;
-
+    ivalue = InputValues;
+    
     public High: number
     public Low: number
-
+    
     public Range: number
-    public type: String
+    public type: String 
     public result_236: string
     public result_382: string
     public result_50: string
