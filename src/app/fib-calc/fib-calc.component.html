@@ -1,26 +1,26 @@
-
 <div class="input-form">
     <ul>
-      <label> High </label>
-      <input [(ngModel)]='High' type="number" placeholder="Enter High ">
+        <label> High </label>
+        <input [(ngModel)]='High' #high  type="number" placeholder="Enter High ">
     </ul>
     <ul>
-      <label> Low </label>
-      <input [(ngModel)]='Low' type="number" placeholder="Enter Low ">
+        <label> Low </label>
+        <input [(ngModel)]='Low' type="number" placeholder="Enter Low ">
     </ul>
     <ul>
-      <select [(ngModel)]='type'>
-        <option value="Long">Long</option>
-        <option value="Short">Short</option>
-      </select>
-      <button (click)='cal_fib()'>Execute!</button>
+        <select [(ngModel)]='type'>
+            <option value="Long">Long</option>
+            <option value="Short">Short</option>
+        </select>
+        <button (click)='cal_fib()'>Execute!</button>
     </ul>
-  </div>
+</div>
 <div class="fib-levels">
-    <ul><input type="checkbox"> 23.6 = {{result_236}}</ul>
-    <ul><input type="checkbox"> 38.2 = {{result_382}}</ul>
-    <ul><input type="checkbox"> 50 = {{result_50}}</ul>
-    <ul><input type="checkbox"> 61.8 = {{result_618}}</ul>
+    <ul> 23.6 = {{result_236}}</ul>
+    <ul> 38.2 = {{result_382}}</ul>
+    <ul> 50 = {{result_50}}</ul>
+    <ul> 61.8 = {{result_618}}</ul>
 </div>
 
-
+<p>Fib-Calc: This is High: {{High}}</p>
+<fib-input [High]="high.value"></fib-input>
