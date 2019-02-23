@@ -1,2 +1,11 @@
+<h2>Fib-Input HTML</h2>
 <p>Fib-Input: This is High: {{ivalue.High}}</p>
 <p>Fib-Input: This is Low: {{ivalue.Low}}</p>
+<ul>
+    <label> High </label>
+    <input [(ngModel)]='ivalue.High' type="number" placeholder="Enter High ">
+</ul>
+<ul>
+    <label> Low </label>
+    <input [(ngModel)]='ivalue.Low' type="number" placeholder="Enter Low ">
+</ul>

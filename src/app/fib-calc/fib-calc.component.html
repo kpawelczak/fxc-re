@@ -1,11 +1,11 @@
 <div class="input-form">
     <ul>
         <label> High </label>
-        <input [(ngModel)]='ivalue.High' [(ngModel)]='High' type="number" placeholder="Enter High ">
+        <input [(ngModel)]='ivalue.High' type="number" placeholder="Enter High ">
     </ul>
     <ul>
         <label> Low </label>
-        <input [(ngModel)]='ivalue.Low' [(ngModel)]='Low' type="number" placeholder="Enter Low ">
+        <input [(ngModel)]='ivalue.Low' type="number" placeholder="Enter Low ">
     </ul>
     <ul>
         <select [(ngModel)]='type'>
@@ -22,5 +22,7 @@
     <ul> 61.8 = {{result_618}}</ul>
 </div>
 
-<p>Fib-Calc: This is High: {{High}}</p>
-
+<p>Fib-Calc: This is High: {{ivalue.High}}</p>
+<br>
+<br>
+<br>
