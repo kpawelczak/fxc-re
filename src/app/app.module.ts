@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule} from '@angular/forms'
 
 import { AppComponent } from './app.component';
-import { FibCalcComponent } from './fib-calc/fib-calc.component';
+import { FibCalcComponent } from './fib-calc';
 import { FibInputComponent } from './fib-input/fib-input.component';
 
 @NgModule({

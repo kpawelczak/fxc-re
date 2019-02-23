@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { InputValues } from '../input-values';
+import { InputValues } from './input-values';
 
 @Component({
     selector: 'fib-calc',
-    templateUrl: './fib-calc.component.html',
+    template: '<button (click)="cal_fib()">Execute!</button>',
 })
 
 export class FibCalcComponent {
