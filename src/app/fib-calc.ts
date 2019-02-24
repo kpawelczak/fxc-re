@@ -3,16 +3,24 @@ import { InputValues } from './input-values';
 
 @Component({
     selector: 'fib-calc',
-    template: '<button (click)="cal_fib()">Execute!</button>',
+    template: '<button (click)="cal_fib()">Execute!</button>'
 })
 
 export class FibCalcComponent {
 
+    setDataFromCalc(data){
+        this.High= data;
+        console.log("DataFrom", this.High)
+    };
+
     ivalue = InputValues;
 
     public Range: number
+       
 
     cal_fib() {
+
+        console.log("calc", this.High)
 
         this.Range = this.ivalue.High - this.ivalue.Low
 

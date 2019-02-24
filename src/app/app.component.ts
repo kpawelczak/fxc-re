@@ -15,7 +15,12 @@ export class AppComponent {
     
 
     setDataFromInput(data){
-        this.ivalue.High= data;
+        this.High= data;
+        console.log("appcomponent", this.High)
     }
+    setDataFromCalc(data){
+        this.High= data;
+        console.log("DataFrom", this.High)
+    };
     
 }

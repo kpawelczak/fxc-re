@@ -12,13 +12,17 @@ import { InputValues } from '../input-values';
 })
 export class FibInputComponent {
 
+    public High: string;
     @Output() event: EventEmitter<string> = new EventEmitter();
 
     onChange(){
-this.event.emit(this.ivalue.High);
+this.event.emit(this.High);
+
 
 
     }
+    
+    
 
     ivalue = InputValues
    
