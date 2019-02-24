@@ -2,11 +2,11 @@
 
 <ul>
     <label> High </label>
-    <input [(ngModel)]='ivalue.High' type="number" placeholder="Enter High ">
+    <input [(ngModel)]='ivalue.High' (keyup)='onChange(ivalue.High)' type="number" placeholder="Enter High ">
 </ul>
 <ul>
     <label> Low </label>
-    <input [(ngModel)]='ivalue.Low' type="number" placeholder="Enter Low ">
+    <input [(ngModel)]='ivalue.Low' (keyup)='onChange(ivalue.Low)'type="number" placeholder="Enter Low ">
 </ul>
 
 <ul>
@@ -18,7 +18,7 @@
 </ul>
 
 <div>
-    <ul> 23.6 = {{ivalue.result_236}}</ul>
+    <ul *ngIf=showElement> 23.6 = {{ivalue.result_236}}</ul>
     <ul> 38.2 = {{ivalue.result_382}}</ul>
     <ul> 50 = {{ivalue.result_50}}</ul>
     <ul> 61.8 = {{ivalue.result_618}}</ul>

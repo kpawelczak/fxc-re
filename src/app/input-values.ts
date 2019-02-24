@@ -4,6 +4,6 @@ export class InputValues {
     result_236: string;
     result_382: string;
     result_50: string;
-    result_618: string;
+    result_618: string; 
     type: string;
 }

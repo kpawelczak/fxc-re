@@ -1,11 +1,21 @@
 import { Component } from '@angular/core';
+import { InputValues } from './input-values';
+
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.css']
 })
 
+
 export class AppComponent {
-  title = 'Fibo';
+
+    ivalue= InputValues
+    
+
+    setDataFromInput(data){
+        this.ivalue.High= data;
+    }
+    
 }

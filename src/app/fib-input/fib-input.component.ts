@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { InputValues } from '../input-values';
+
+
 
 
 @Component({
@@ -10,8 +12,16 @@ import { InputValues } from '../input-values';
 })
 export class FibInputComponent {
 
-    ivalue = InputValues
+    @Output() event: EventEmitter<string> = new EventEmitter();
 
+    onChange(){
+this.event.emit(this.ivalue.High);
+
+
+    }
+
+    ivalue = InputValues
+   
     public showElement = true;
-    
+
 }
