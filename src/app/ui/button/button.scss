@@ -1,0 +1,42 @@
+@import '../variables.scss';
+
+.gui-button {
+    
+	background: $white;
+    border: solid;
+    border-width: 1px;
+    border-color: $gray;
+
+    display: inline-block;
+    
+	color: $black;
+	cursor: pointer;
+
+	font: {
+		size: 12px;
+		weight: 400;
+	}
+
+	padding: $grid / 2;
+
+	transition: background 0.2s;
+
+	&:hover {
+		background: lighten($gray-light, 10);
+	}
+
+	&:active {}
+
+	&:disabled {
+
+		border: {
+			color: $gray-lightest;
+		}
+		color: $gray-light;
+		cursor: default;
+
+		&:hover {
+			background: $white;
+		}
+	}
+}

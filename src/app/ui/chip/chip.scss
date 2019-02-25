@@ -1,0 +1,17 @@
+@import '../variables.scss';
+
+.gui-chip {
+  border: solid;
+  border-width: 1px;
+  border-color: $gray;
+  display: inline-block;
+  padding: 0 15px;
+  height: 30px;
+  font-size: 12px;
+  line-height: 30px;
+  border-radius: 25px;
+  background-color: $white;  
+}
+.gui-chip:hover { 
+  background-color:  $gray-lightest;
+}

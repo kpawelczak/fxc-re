@@ -2,7 +2,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
     selector: 'fib-calc',
-    template: '<button (click)="cal_fib()">Execute!</button>'
+    template: '<gui-button (click)="cal_fib()">Execute!</gui-button>'
 })
 
 export class FibCalcComponent {
@@ -29,20 +29,20 @@ export class FibCalcComponent {
     
         if (this.type === 'Long') {
 
-            this.result_236 = ((this.Range * 0.764) + this.Low).toFixed(5)
-            this.result_382 = ((this.Range * 0.618) + this.Low).toFixed(5)
-            this.result_50 = ((this.Range * 0.50) + this.Low).toFixed(5)
-            this.result_618 = ((this.Range * 0.382) + this.Low).toFixed(5)
+            this.result_236 = "=" + " " + ((this.Range * 0.764) + this.Low).toFixed(5)
+            this.result_382 = "=" + " " + ((this.Range * 0.618) + this.Low).toFixed(5)
+            this.result_50 = "=" + " " + ((this.Range * 0.50) + this.Low).toFixed(5)
+            this.result_618 = "=" + " " + ((this.Range * 0.382) + this.Low).toFixed(5)
 
             
         }
 
         if (this.type === 'Short') {
 
-            this.result_236 = (this.High - (this.Range * 0.764)).toFixed(5)
-            this.result_382 = (this.High - (this.Range * 0.618)).toFixed(5)
-            this.result_50 = (this.High - (this.Range * 0.50)).toFixed(5)
-            this.result_618 = (this.High - (this.Range * 0.382)).toFixed(5)
+            this.result_236 = "=" + " " + (this.High - (this.Range * 0.764)).toFixed(5)
+            this.result_382 = "=" + " " + (this.High - (this.Range * 0.618)).toFixed(5)
+            this.result_50 = "=" + " " + (this.High - (this.Range * 0.50)).toFixed(5)
+            this.result_618 = "=" + " " + (this.High - (this.Range * 0.382)).toFixed(5)
 
         }
 

@@ -1,15 +1,34 @@
-<fib-input (setHigh)='setHighFromInput($event)' (setLow)='setLowFromInput($event)' (setType)='setTypeFromInput($event)'>
-</fib-input>
 <ul>
-
-    <fib-calc (set236)='set236FromCalc($event)' (set382)='set382FromCalc($event)' (set50)='set50FromCalc($event)'
-        (set618)='set618FromCalc($event)' [High]="High" [Low]="Low" [type]="type">
-    </fib-calc>
+    <gui-chip>Fibonacci</gui-chip>
+    <gui-badge>?</gui-badge>
 </ul>
 
-<div>
-    <ul> 23.6 = {{result_236}}</ul>
-    <ul> 38.2 = {{result_382}}</ul>
-    <ul> 50 = {{result_50}}</ul>
-    <ul> 61.8 = {{result_618}}</ul>
+<div class="FiboInput">
+
+    <fib-input (setHigh)='setHighFromInput($event)' (setLow)='setLowFromInput($event)'
+        (setType)='setTypeFromInput($event)'>
+    </fib-input>
+
+    <ul class="Execute">
+        <fib-calc (set236)='set236FromCalc($event)' (set382)='set382FromCalc($event)' (set50)='set50FromCalc($event)'
+            (set618)='set618FromCalc($event)' [High]="High" [Low]="Low" [type]="type">
+        </fib-calc>
+    </ul>
+</div>
+
+
+
+<div class="results">
+    <ul>
+        <gui-chip> 23.6 {{result_236}}</gui-chip>
+    </ul>
+    <ul>
+        <gui-chip> 38.2 {{result_382}}</gui-chip>
+    </ul>
+    <ul>
+        <gui-chip> 50 {{result_50}}</gui-chip>
+    </ul>
+    <ul>
+        <gui-chip> 61.8 {{result_618}}</gui-chip>
+    </ul>
 </div>
