@@ -1,6 +1,14 @@
 @import '../ui/variables.scss';
 
-input{
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button{
+  -webkit-appearance:none;
+}
+input[type=number] {
+    -moz-appearance:textfield;
+}
+
+input {
     position: relative;
     left: 10px;
 
@@ -15,4 +23,21 @@ input{
     line-height: 30px;
     border-radius: 25px;
     background-color: $white;  
+}
+
+select {
+
+    border: solid;
+    border-width: 1px;
+    border-color: $gray;
+    border-radius: 25px;
+
+    display: inline-block;
+
+    padding: 0 4px;
+    
+    font-size: 12px;
+        
+    background-color: $white; 
+
 }
