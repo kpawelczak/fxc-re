@@ -23,12 +23,10 @@ export class FibCalcComponent {
 
     public Range: number
 
-
     cal_fib() {
 
         this.Range = this.High - this.Low
-        
-
+    
         if (this.type === 'Long') {
 
             this.result_236 = ((this.Range * 0.764) + this.Low).toFixed(5)
@@ -38,6 +36,7 @@ export class FibCalcComponent {
 
             
         }
+
         if (this.type === 'Short') {
 
             this.result_236 = (this.High - (this.Range * 0.764)).toFixed(5)
@@ -46,6 +45,7 @@ export class FibCalcComponent {
             this.result_618 = (this.High - (this.Range * 0.382)).toFixed(5)
 
         }
+
         this.set236.emit(this.result_236)
         this.set382.emit(this.result_382)
         this.set50.emit(this.result_50)

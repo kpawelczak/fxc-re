@@ -7,10 +7,12 @@ import { FibCalcComponent } from './fib-calc';
 import { FibInputComponent } from './fib-input/fib-input.component';
 
 @NgModule({
-    imports: [
+
+    imports: [        
         BrowserModule,
         FormsModule,
     ],
+    
     declarations: [
         AppComponent,
         FibCalcComponent,
@@ -19,5 +21,7 @@ import { FibInputComponent } from './fib-input/fib-input.component';
 
     providers: [],
     bootstrap: [AppComponent]
+
 })
+
 export class AppModule { }
