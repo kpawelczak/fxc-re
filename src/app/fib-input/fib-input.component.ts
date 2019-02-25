@@ -3,7 +3,7 @@ import { Component, Output, EventEmitter } from '@angular/core';
 @Component({
     selector: 'fib-input',
     templateUrl: './fib-input.component.html',
-    styleUrls: ['./fib-input.component.css'],
+    styleUrls: ['./fib-input.component.scss'],
 })
 
 export class FibInputComponent {

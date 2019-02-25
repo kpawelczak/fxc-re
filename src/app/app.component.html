@@ -3,13 +3,13 @@
     <gui-badge>?</gui-badge>
 </ul>
 
-<div class="FiboInput">
+<div class="Input">
 
     <fib-input (setHigh)='setHighFromInput($event)' (setLow)='setLowFromInput($event)'
         (setType)='setTypeFromInput($event)'>
     </fib-input>
 
-    <ul class="Execute">
+    <ul>
         <fib-calc (set236)='set236FromCalc($event)' (set382)='set382FromCalc($event)' (set50)='set50FromCalc($event)'
             (set618)='set618FromCalc($event)' [High]="High" [Low]="Low" [type]="type">
         </fib-calc>
