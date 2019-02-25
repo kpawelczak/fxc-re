@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { InputValues } from './input-values';
-
 
 @Component({
     selector: 'app-root',
@@ -8,19 +6,43 @@ import { InputValues } from './input-values';
     styleUrls: ['./app.component.css']
 })
 
-
 export class AppComponent {
+   
+    public High
+    public Low
+    public type
 
-    ivalue= InputValues
-    
+    public result_236
+    public result_382
+    public result_50
+    public result_618
 
-    setDataFromInput(data){
-        this.High= data;
-        console.log("appcomponent", this.High)
+    setHighFromInput(DataHigh) {
+        this.High = DataHigh;        
     }
-    setDataFromCalc(data){
-        this.High= data;
-        console.log("DataFrom", this.High)
-    };
-    
+
+    setLowFromInput(DataLow) {
+        this.Low = DataLow;        
+    }
+
+    setTypeFromInput(DataType) {
+        this.type = DataType;        
+    }
+
+    set236FromCalc(Data2) {
+        this.result_236 = Data2
+    }
+
+    set382FromCalc(Data3) {
+        this.result_382 = Data3
+    }
+
+    set50FromCalc(Data5) {
+        this.result_50 = Data5
+    }
+
+    set618FromCalc(Data6) {
+        this.result_618 = Data6
+    }
+
 }

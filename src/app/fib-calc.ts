@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-import { InputValues } from './input-values';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
     selector: 'fib-calc',
@@ -8,37 +7,49 @@ import { InputValues } from './input-values';
 
 export class FibCalcComponent {
 
-    setDataFromCalc(data){
-        this.High= data;
-        console.log("DataFrom", this.High)
-    };
+    @Input() public High
+    @Input() public Low
+    @Input() public type
 
-    ivalue = InputValues;
+    @Output() set236: EventEmitter<string> = new EventEmitter();
+    @Output() set382: EventEmitter<string> = new EventEmitter();
+    @Output() set50: EventEmitter<string> = new EventEmitter();
+    @Output() set618: EventEmitter<string> = new EventEmitter();
+
+    public result_236: string;    
+    public result_382: string;
+    public result_50: string;
+    public result_618: string;
 
     public Range: number
-       
+
 
     cal_fib() {
 
-        console.log("calc", this.High)
+        this.Range = this.High - this.Low
+        
 
-        this.Range = this.ivalue.High - this.ivalue.Low
+        if (this.type === 'Long') {
 
-        if (this.ivalue.type === 'Long') {
+            this.result_236 = ((this.Range * 0.764) + this.Low).toFixed(5)
+            this.result_382 = ((this.Range * 0.618) + this.Low).toFixed(5)
+            this.result_50 = ((this.Range * 0.50) + this.Low).toFixed(5)
+            this.result_618 = ((this.Range * 0.382) + this.Low).toFixed(5)
 
-            this.ivalue.result_236 = ((this.Range * 0.764) + this.ivalue.Low).toFixed(5)
-            this.ivalue.result_382 = ((this.Range * 0.618) + this.ivalue.Low).toFixed(5)
-            this.ivalue.result_50 = ((this.Range * 0.50) + this.ivalue.Low).toFixed(5)
-            this.ivalue.result_618 = ((this.Range * 0.382) + this.ivalue.Low).toFixed(5)
+            
         }
-        if (this.ivalue.type === 'Short') {
+        if (this.type === 'Short') {
 
-            this.ivalue.result_236 = (this.ivalue.High - (this.Range * 0.764)).toFixed(5)
-            this.ivalue.result_382 = (this.ivalue.High - (this.Range * 0.618)).toFixed(5)
-            this.ivalue.result_50 = (this.ivalue.High - (this.Range * 0.50)).toFixed(5)
-            this.ivalue.result_618 = (this.ivalue.High - (this.Range * 0.382)).toFixed(5)
+            this.result_236 = (this.High - (this.Range * 0.764)).toFixed(5)
+            this.result_382 = (this.High - (this.Range * 0.618)).toFixed(5)
+            this.result_50 = (this.High - (this.Range * 0.50)).toFixed(5)
+            this.result_618 = (this.High - (this.Range * 0.382)).toFixed(5)
 
         }
+        this.set236.emit(this.result_236)
+        this.set382.emit(this.result_382)
+        this.set50.emit(this.result_50)
+        this.set618.emit(this.result_618)
     };
 
 }
