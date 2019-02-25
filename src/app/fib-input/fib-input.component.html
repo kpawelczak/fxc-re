@@ -2,24 +2,16 @@
 
 <ul>
     <label> High </label>
-    <input [(ngModel)]='ivalue.High' type="number" placeholder="Enter High ">
+    <input [(ngModel)]='High' type="number" placeholder="Enter High" (keyup)='onChangeHigh(High)'>
 </ul>
 <ul>
     <label> Low </label>
-    <input [(ngModel)]='ivalue.Low' type="number" placeholder="Enter Low ">
+    <input [(ngModel)]='Low' type="number" placeholder="Enter Low" (keyup)='onChangeLow(Low)'>
 </ul>
 
 <ul>
-    <select [(ngModel)]='ivalue.type'>
+    <select [(ngModel)]='type' (click)='onChangeType(type)'>
         <option value="Long">Long</option>
         <option value="Short">Short</option>
     </select>
-    <fib-calc></fib-calc>
 </ul>
-
-<div>
-    <ul> 23.6 = {{ivalue.result_236}}</ul>
-    <ul> 38.2 = {{ivalue.result_382}}</ul>
-    <ul> 50 = {{ivalue.result_50}}</ul>
-    <ul> 61.8 = {{ivalue.result_618}}</ul>
-</div>
