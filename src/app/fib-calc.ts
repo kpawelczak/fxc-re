@@ -1,8 +1,9 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { emit } from 'cluster';
 
 @Component({
     selector: 'fib-calc',
-    template: '<gui-button (click)="cal_fib()" >Execute!</gui-button>'
+    template: '<gui-button (click)="cal_fib()" >Execute!</gui-button><gui-button (click)="set()">show</gui-button>'
 })
 
 export class FibCalcComponent {
@@ -11,17 +12,27 @@ export class FibCalcComponent {
     @Input() public Low
     @Input() public type
 
+    @Output() setCalc: EventEmitter<boolean> = new EventEmitter();
+
     @Output() set236: EventEmitter<string> = new EventEmitter();
     @Output() set382: EventEmitter<string> = new EventEmitter();
     @Output() set50: EventEmitter<string> = new EventEmitter();
     @Output() set618: EventEmitter<string> = new EventEmitter();
-
+    
     public result_236: string;
     public result_382: string;
     public result_50: string;
     public result_618: string;
 
+    public show: boolean
+
     public Range: number;
+
+    set(){
+        this.show=!this.show
+        this.setCalc.emit(this.show)
+        console.log("calc",this.show)
+    }
 
     cal_fib() {
 
@@ -49,7 +60,7 @@ export class FibCalcComponent {
         this.set382.emit(this.result_382)
         this.set50.emit(this.result_50)
         this.set618.emit(this.result_618)
-
+                
     };
 
 }

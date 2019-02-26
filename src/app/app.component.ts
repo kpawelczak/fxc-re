@@ -17,6 +17,13 @@ export class AppComponent {
     public result_50
     public result_618
 
+    public show:boolean = true;
+   
+    setShowFromCalc(){
+        this.show = !this.show;
+        console.log("app",this.show)
+    }
+
     setHighFromInput(DataHigh) {
         this.High = DataHigh;        
     }

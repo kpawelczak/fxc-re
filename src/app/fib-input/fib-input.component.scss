@@ -1,8 +1,12 @@
 @import '../ui/variables.scss';
 
+*:focus {
+    outline: none;
+}
+
 input::-webkit-inner-spin-button,
 input::-webkit-outer-spin-button{
-  -webkit-appearance:none;
+    -webkit-appearance:none;
 }
 input[type=number] {
     -moz-appearance:textfield;
@@ -34,7 +38,7 @@ select {
 
     display: inline-block;
 
-    padding: 0 4px;
+    padding: 0 5px;
     
     font-size: 12px;
         
