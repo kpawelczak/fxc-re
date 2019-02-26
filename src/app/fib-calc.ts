@@ -1,5 +1,4 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { emit } from 'cluster';
 
 @Component({
     selector: 'fib-calc',

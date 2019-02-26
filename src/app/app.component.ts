@@ -7,34 +7,34 @@ import { Component } from '@angular/core';
 })
 
 export class AppComponent {
-   
+
+    public show: boolean = true;
+
+    setShowFromCalc() {
+        this.show = !this.show;
+        console.log("app", this.show)
+    }
+
     public High
     public Low
     public type
+
+    setHighFromInput(DataHigh) {
+        this.High = DataHigh;
+    }
+
+    setLowFromInput(DataLow) {
+        this.Low = DataLow;
+    }
+
+    setTypeFromInput(DataType) {
+        this.type = DataType;
+    }
 
     public result_236
     public result_382
     public result_50
     public result_618
-
-    public show:boolean = true;
-   
-    setShowFromCalc(){
-        this.show = !this.show;
-        console.log("app",this.show)
-    }
-
-    setHighFromInput(DataHigh) {
-        this.High = DataHigh;        
-    }
-
-    setLowFromInput(DataLow) {
-        this.Low = DataLow;        
-    }
-
-    setTypeFromInput(DataType) {
-        this.type = DataType;        
-    }
 
     set236FromCalc(Data2) {
         this.result_236 = Data2
