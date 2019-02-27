@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 
+
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
@@ -7,12 +8,11 @@ import { Component } from '@angular/core';
 })
 
 export class AppComponent {
-
+   
     public show: boolean = true;
 
     setShowFromCalc() {
         this.show = !this.show;
-        console.log("app", this.show)
     }
 
     public High

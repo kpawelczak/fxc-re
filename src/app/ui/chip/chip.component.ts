@@ -7,7 +7,7 @@ import { Component, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/
     encapsulation: ViewEncapsulation.None,
     styleUrls: ['./chip.scss'],
     host: {
-		'[class.gui-chip]': 'true'
-	}
+        '[class.gui-chip]': 'true'
+    }
 })
-export class ChipComponent { }
+export class ChipComponent {}

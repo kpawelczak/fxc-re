@@ -2,7 +2,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
     selector: 'fib-calc',
-    template: '<gui-button (click)="cal_fib()" >Execute!</gui-button><gui-button (click)="set()">show</gui-button>'
+    template: '<gui-button (click)="cal_fib()" >Execute!</gui-button><gui-button (click)="setShow()">show</gui-button>'
 })
 
 export class FibCalcComponent {
@@ -11,7 +11,7 @@ export class FibCalcComponent {
     @Input() public Low
     @Input() public type
 
-    @Output() setCalc: EventEmitter<boolean> = new EventEmitter();
+    @Output() setShowCalc: EventEmitter<boolean> = new EventEmitter();
 
     @Output() set236: EventEmitter<string> = new EventEmitter();
     @Output() set382: EventEmitter<string> = new EventEmitter();
@@ -27,10 +27,9 @@ export class FibCalcComponent {
 
     public Range: number;
 
-    set(){
+    setShow(){
         this.show=!this.show
-        this.setCalc.emit(this.show)
-        console.log("calc",this.show)
+        this.setShowCalc.emit(this.show)        
     }
 
     cal_fib() {

@@ -11,7 +11,8 @@
   line-height: 30px;
   border-radius: 25px;
   background-color: $white;  
-}
-.gui-chip:hover { 
+
+&:hover { 
   background-color:  $gray-lightest;
+}
 }
