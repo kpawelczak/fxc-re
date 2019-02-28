@@ -2,7 +2,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
     selector: 'fib-calc',
-    template: '<gui-button (click)="cal_fib()" >Execute!</gui-button><gui-button (click)="setShow()">show</gui-button>'
+    template: '<button gui-button (click)="cal_fib()">Execute!</button><button gui-button (click)="setShow()">show</button>'
 })
 
 export class FibCalcComponent {

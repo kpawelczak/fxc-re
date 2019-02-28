@@ -1,14 +1,15 @@
 @import '../variables.scss';
 
 .gui-button {
-    
-	background: $white;
-    border: solid;
-    border-width: 1px;
-    border-color: $gray;
 
-    display: inline-block;
-    
+    outline: none;
+
+	background: $white;
+
+	border: {
+		color: $gray-light;
+		radius: $grid / 2;
+	}
 	color: $black;
 	cursor: pointer;
 
