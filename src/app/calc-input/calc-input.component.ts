@@ -21,7 +21,7 @@ export class CalcInputComponent {
         if (this.takeprofit < this.price) {
             this.result = "sell" + " " + (this.price - this.takeprofit)
         }
-        if (this.takeprofit = this.price) {
+        if (this.takeprofit === this.price) {
             this.result = " Invalid position "
         }
     }
