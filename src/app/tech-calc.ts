@@ -1,11 +1,11 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
-    selector: 'fib-calc',
+    selector: 'tech-calc',
     template: '<button gui-button (click)="cal_fib()" (click)="setShowFibo()" (click)="cal_pivot()" (click)="setShowPivot()">Execute!</button>'
 })
 
-export class FibCalcComponent {
+export class TechCalcComponent {
 
     @Input() public High
     @Input() public Low

@@ -1,46 +1,29 @@
-import { Component, Output, EventEmitter, Input } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
     selector: 'calc-input',
     templateUrl: './calc-input.component.html',
-    styleUrls: ['./calc-input.component.scss'],
+    styleUrls: ['./calc-input.component.scss']
 })
-
 export class CalcInputComponent {
 
-    @Input() public fiboChecked
-    @Input() public pivotChecked
+    public price: number
+    public takeprofit: number
+    public stoploss: number
+    public result
 
-    public High: string
-    public Low: string
-    public type: string
-    public Open: string
-    public Close: string
+    pos_calc() {
 
-    @Output() setHigh: EventEmitter<string> = new EventEmitter();
-    @Output() setLow: EventEmitter<string> = new EventEmitter();
-    @Output() setType: EventEmitter<string> = new EventEmitter();
-    @Output() setOpen: EventEmitter<string> = new EventEmitter();
-    @Output() setClose: EventEmitter<string> = new EventEmitter();
+        if (this.takeprofit > this.price) {
+            this.result = "buy" + " " + (this.takeprofit - this.price)
 
-    onChangeHigh() {
-        this.setHigh.emit(this.High);
-    }
-
-    onChangeLow() {
-        this.setLow.emit(this.Low);
-    }
-
-    onChangeType() {
-        this.setType.emit(this.type);
-    }
-
-    onChangeOpen() {
-        this.setOpen.emit(this.Open);
-    }
-
-    onChangeClose() {
-        this.setClose.emit(this.Close);
+        }
+        if (this.takeprofit < this.price) {
+            this.result = "sell" + " " + (this.price - this.takeprofit)
+        }
+        if (this.takeprofit = this.price) {
+            this.result = " Invalid position "
+        }
     }
 
 }
