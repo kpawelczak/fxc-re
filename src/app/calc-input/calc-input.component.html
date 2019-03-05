@@ -6,17 +6,17 @@
     <gui-chip>Low</gui-chip>
     <input [(ngModel)]='Low' placeholder="Enter Low" type="number" (keyup)='onChangeLow(Low)'>
 </ul>
-<ul>
-    <gui-chip>Open</gui-chip>
+<ul *ngIf="pivotChecked">
+    <gui-chip >Open</gui-chip>
     <input [(ngModel)]='Open' placeholder="Enter Open" type="number" (keyup)='onChangeOpen(Open)'>
 </ul>
-<ul>
-    <gui-chip>Close</gui-chip>
+<ul *ngIf="pivotChecked"> 
+    <gui-chip >Close</gui-chip>
     <input [(ngModel)]='Close' placeholder="Enter Close" type="number" (keyup)='onChangeClose(Close)'>
 </ul>
 
 <ul>
-    <select [(ngModel)]='type' (click)='onChangeType(type)'>
+    <select [(ngModel)]='type' (click)='onChangeType(type)' *ngIf="fiboChecked">
         <option value="Long">Long</option>
         <option value="Short">Short</option>
     </select>

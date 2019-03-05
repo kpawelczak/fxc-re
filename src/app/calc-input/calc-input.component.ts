@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, Input } from '@angular/core';
 
 @Component({
     selector: 'calc-input',
@@ -7,6 +7,9 @@ import { Component, Output, EventEmitter } from '@angular/core';
 })
 
 export class CalcInputComponent {
+
+    @Input() public fiboChecked
+    @Input() public pivotChecked
 
     public High: string
     public Low: string

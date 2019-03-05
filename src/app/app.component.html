@@ -10,7 +10,7 @@
 
     <calc-input (setHigh)='setHighFromInput($event)' (setLow)='setLowFromInput($event)'
         (setType)='setTypeFromInput($event)' (setOpen)='setOpenFromInput($event)'
-        (setClose)='setCloseFromInput($event)'>
+        (setClose)='setCloseFromInput($event)' [fiboChecked]="fiboChecked" [pivotChecked]="pivotChecked">
     </calc-input>
 
     <ul>
