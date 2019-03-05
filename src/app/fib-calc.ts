@@ -2,7 +2,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
     selector: 'fib-calc',
-    template: '<button gui-button (click)="cal_fib()">Execute!</button><button gui-button (click)="setShow()">show</button>'
+    template: '<button gui-button (click)="cal_fib()" (click)="setShowFibo()" (click)="cal_pivot()" (click)="setShowPivot()">Execute!</button>'
 })
 
 export class FibCalcComponent {
@@ -11,25 +11,25 @@ export class FibCalcComponent {
     @Input() public Low
     @Input() public type
 
-    @Output() setShowCalc: EventEmitter<boolean> = new EventEmitter();
+
+    @Output() setShowFiboCalc: EventEmitter<boolean> = new EventEmitter();
 
     @Output() set236: EventEmitter<string> = new EventEmitter();
     @Output() set382: EventEmitter<string> = new EventEmitter();
     @Output() set50: EventEmitter<string> = new EventEmitter();
     @Output() set618: EventEmitter<string> = new EventEmitter();
-    
+
     public result_236: string;
     public result_382: string;
     public result_50: string;
     public result_618: string;
 
-    public show: boolean
+    public showfibo: boolean;
 
     public Range: number;
 
-    setShow(){
-        this.show=!this.show
-        this.setShowCalc.emit(this.show)        
+    setShowFibo() {
+        this.setShowFiboCalc.emit(this.showfibo)
     }
 
     cal_fib() {
@@ -58,7 +58,59 @@ export class FibCalcComponent {
         this.set382.emit(this.result_382)
         this.set50.emit(this.result_50)
         this.set618.emit(this.result_618)
-                
+
+    };
+
+    @Input() public Open
+    @Input() public Close
+
+    @Output() setShowPivotCalc: EventEmitter<boolean> = new EventEmitter();
+
+    @Output() setR3: EventEmitter<string> = new EventEmitter();
+    @Output() setR2: EventEmitter<string> = new EventEmitter();
+    @Output() setR1: EventEmitter<string> = new EventEmitter();
+    @Output() setPP: EventEmitter<string> = new EventEmitter();
+    @Output() setS1: EventEmitter<string> = new EventEmitter();
+    @Output() setS2: EventEmitter<string> = new EventEmitter();
+    @Output() setS3: EventEmitter<string> = new EventEmitter();
+
+    public Pivot: number;
+
+    public showpivot: boolean;
+
+    public result_R3: string;
+    public result_R2: string;
+    public result_R1: string;
+    public result_PP: string;
+    public result_S1: string;
+    public result_S2: string;
+    public result_S3: string;
+
+    setShowPivot() {
+        this.setShowPivotCalc.emit(this.showpivot)
+    }
+
+    cal_pivot() {
+
+        this.Range = this.High - this.Low
+        this.Pivot = (this.High + this.Low + this.Close) / 3
+
+        this.result_R3 = (this.Pivot + this.Range * 3).toFixed(5)
+        this.result_R2 = (this.Pivot + this.Range * 2).toFixed(5)
+        this.result_R1 = (this.Pivot * 2 - this.Low).toFixed(5)
+        this.result_PP = (this.Pivot).toFixed(5)
+        this.result_S1 = (this.Pivot * 2 - this.High).toFixed(5)
+        this.result_S2 = (this.Pivot - this.Range * 2).toFixed(5)
+        this.result_S3 = (this.Pivot - this.Range * 3).toFixed(5)
+
+        this.setR3.emit(this.result_R3)
+        this.setR2.emit(this.result_R2)
+        this.setR1.emit(this.result_R1)
+        this.setPP.emit(this.result_PP)
+        this.setS1.emit(this.result_S1)
+        this.setS2.emit(this.result_S2)
+        this.setS3.emit(this.result_S3)
+
     };
 
 }

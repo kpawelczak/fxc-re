@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/core';
+import { Component, ChangeDetectionStrategy, ViewEncapsulation, Input } from '@angular/core';
 
 @Component({
     selector: 'gui-chip',
@@ -7,7 +7,17 @@ import { Component, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/
     encapsulation: ViewEncapsulation.None,
     styleUrls: ['./chip.scss'],
     host: {
-        '[class.gui-chip]': 'true'
+        '[class.gui-chip]': 'true',
+        '[class.gui-primary]': 'primary',
+        '[class.gui-secondary]': 'secondary'
     }
 })
-export class ChipComponent {}
+
+export class ChipComponent {
+
+    @Input() 
+    public primary: boolean;
+    @Input() 
+    public secondary: boolean;
+
+}

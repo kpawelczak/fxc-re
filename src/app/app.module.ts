@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms'
 
 import { AppComponent } from './app.component';
 import { FibCalcComponent } from './fib-calc';
-import { FibInputComponent } from './fib-input/fib-input.component';
+import { CalcInputComponent } from './calc-input/calc-input.component';
 
 import { FabricButtonModule } from './ui/button/fabric-button.module';
 import { FabricChipModule} from './ui/chip/fabric-chip.module';
@@ -23,7 +23,7 @@ import { FabricBadgeModule} from './ui/badge/fabric-badge.module';
     declarations: [
         AppComponent,
         FibCalcComponent,
-        FibInputComponent,
+        CalcInputComponent,
     ],
     exports: [
         FabricButtonModule,

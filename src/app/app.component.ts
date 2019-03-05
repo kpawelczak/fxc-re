@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 
-
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
@@ -8,16 +7,23 @@ import { Component } from '@angular/core';
 })
 
 export class AppComponent {
-   
-    public show: boolean = true;
 
-    setShowFromCalc() {
-        this.show = !this.show;
+    public showfibo: boolean = false;
+
+    setShowFiboFromCalc() {
+        this.showfibo = true;
+    }
+
+    public showpivot: boolean = false;
+
+    setShowPivotFromCalc() {
+        this.showpivot = true;
     }
 
     public High
     public Low
     public type
+
 
     setHighFromInput(DataHigh) {
         this.High = DataHigh;
@@ -29,6 +35,17 @@ export class AppComponent {
 
     setTypeFromInput(DataType) {
         this.type = DataType;
+    }
+
+    public Open
+    public Close
+
+    setOpenFromInput(DataOpen) {
+        this.Open = DataOpen;
+    }
+
+    setCloseFromInput(DataClose) {
+        this.Close = DataClose;
     }
 
     public result_236
@@ -50,6 +67,36 @@ export class AppComponent {
 
     set618FromCalc(Data6) {
         this.result_618 = Data6
+    }
+
+    public result_R3
+    public result_R2
+    public result_R1
+    public result_PP
+    public result_S1
+    public result_S2
+    public result_S3
+
+    setR3FromCalc(DataR3) {
+        this.result_R3 = DataR3
+    }
+    setR2FromCalc(DataR2) {
+        this.result_R2 = DataR2
+    }
+    setR1FromCalc(DataR1) {
+        this.result_R1 = DataR1
+    }
+    setPPFromCalc(DataPP) {
+        this.result_PP = DataPP
+    }
+    setS1FromCalc(DataS1) {
+        this.result_S1 = DataS1
+    }
+    setS2FromCalc(DataS2) {
+        this.result_S2 = DataS2
+    }
+    setS3FromCalc(DataS3) {
+        this.result_S3 = DataS3
     }
 
 }

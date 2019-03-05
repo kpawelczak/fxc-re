@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/core';
+import { Component, ChangeDetectionStrategy, ViewEncapsulation, Input } from '@angular/core';
 
 @Component({
     selector: 'gui-badge',
@@ -7,7 +7,17 @@ import { Component, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/
     encapsulation: ViewEncapsulation.None,
     styleUrls: ['./badge.scss'],
     host: {
-		'[class.gui-badge]': 'true'
-	}
+        '[class.gui-badge]': 'true',
+        '[class.gui-primary]': 'primary',
+        '[class.gui-secondary]': 'secondary'
+    }
 })
-export class BadgeComponent { }
+
+export class FabricBadgeComponent {
+
+    @Input() 
+    public primary: boolean;
+    @Input() 
+    public secondary: boolean;
+
+}

@@ -1,18 +1,29 @@
 @import '../variables.scss';
+@import '../mixin.scss';
 
 .gui-chip {
-  border: solid;
-  border-width: 1px;
-  border-color: $gray;
-  display: inline-block;
-  padding: 0 15px;
-  height: 30px;
-  font-size: 12px;
-  line-height: 30px;
-  border-radius: 25px;
-  background-color: $white;  
 
-&:hover { 
-  background-color:  $gray-lightest;
-}
+    background: $white;
+    
+    display: inline-block;
+
+    border: solid{        
+        color: $gray;
+        width: 1px;
+        radius: $grid / 0.5;
+    }
+  
+    font: {
+        size: 12px;
+        weight: 400;
+    }  
+    
+    padding: $grid / 1;
+  
+    &:hover { 
+         background:  $gray-lightest;
+    }
+
+@include primary();
+@include secondary();
 }

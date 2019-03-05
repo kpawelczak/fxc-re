@@ -1,10 +1,21 @@
-.results{
-    position: relative;
+.fibresults{
+    position: fixed;
     left: 300px;
-    top: -170px;
+    top: 108px;
+}
+.pivotresults{
+    position: fixed;
+    left: 500px;
+    top: 122px;
+    
 }
 
 .Input{
     position: relative;
     top: 10px;
+}
+.form-checkbox{
+    position: relative;
+    top: 3px;    
+    margin: 0;
 }
