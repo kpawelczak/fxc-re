@@ -1,1 +1,15 @@
-@import '../tech-input/tech-input.component.scss'
+@import '../tech-input/tech-input.component.scss';
+
+.positions{
+    margin: 0 0 10px 0;
+    
+}
+  .positions span {
+      
+      border: solid{
+          width: 1px;
+          color: $gray;          
+      }      
+      padding: 5px;
+      
+  }

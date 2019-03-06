@@ -3,27 +3,35 @@
 </ul>
 <ul>
     <gui-chip>Price</gui-chip>
-    <input [(ngModel)]="price" placeholder="enter Price">
+    <!-- possible problems later with fixed number -->
+    <input [(ngModel)]="price" placeholder="enter Price" type="number">
 </ul>
 <ul>
     <gui-chip>Take Profit</gui-chip>
-    <input [(ngModel)]="takeprofit" placeholder="enter Take Profit">
+    <input [(ngModel)]="takeprofit" placeholder="enter Take Profit" type="number">
 </ul>
 <ul>
     <gui-chip>Stop Loss</gui-chip>
-    <input [(ngModel)]="stoploss" placeholder="enter Stop Loss">
+    <input [(ngModel)]="stoploss" placeholder="enter Stop Loss" type="number">
 </ul>
 <ul>
-    <button gui-button (click)="pos_calc()">Add</button>
-</ul>
-<ul>
-    <span>{{result}}</span>
-</ul>
-<!-- <ul>
     <gui-chip>Size</gui-chip>
-    <input placeholder="enter Size">
-    <select>
-        <option value="Buy">Buy</option>
-        <option value="Sell">Sell</option>
-    </select>
-</ul> -->
+    <input [(ngModel)]="size" placeholder="enter Size" type="number">
+</ul>
+<ul>
+    <button gui-button (click)="pos_calc()" (click)="add(size, price, type, loss, profit)">Add</button>
+</ul>
+
+<div class="positions">
+    <ul *ngFor="let pos of positions">
+
+        <!-- <span class="id">{{pos.id}}</span> -->
+        <span class="size">{{pos.size}}</span>
+        <span class="price">{{pos.price}}</span>
+        <span class="type">{{pos.type}}</span>
+        <!-- <span class="pipsloss">{{pos.pipsloss}}</span> -->
+        <span class="loss">{{pos.loss}}</span>
+        <!-- <span class="pipswin">{{pos.pipswin}}</span> -->
+        <span class="profit">{{pos.profit}}</span>
+    </ul>
+</div>

@@ -2,30 +2,38 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms'
 
+import { HttpClientModule } from '@angular/common/http';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService } from './in-memory-data.service';
+
 import { AppComponent } from './app.component';
 import { TechCalcComponent } from './tech-calc';
 import { TechInputComponent } from './tech-input/tech-input.component';
 import { CalcInputComponent } from './calc-input/calc-input.component';
 
 import { FabricButtonModule } from './ui/button/fabric-button.module';
-import { FabricChipModule} from './ui/chip/fabric-chip.module';
-import { FabricBadgeModule} from './ui/badge/fabric-badge.module';
+import { FabricChipModule } from './ui/chip/fabric-chip.module';
+import { FabricBadgeModule } from './ui/badge/fabric-badge.module';
 
 @NgModule({
 
     imports: [
         BrowserModule,
         FormsModule,
+        HttpClientModule,
         FabricButtonModule,
         FabricBadgeModule,
-        FabricChipModule
+        FabricChipModule,
+        HttpClientInMemoryWebApiModule.forRoot(
+            InMemoryDataService, { dataEncapsulation: false }
+        )
     ],
 
     declarations: [
         AppComponent,
         TechCalcComponent,
         TechInputComponent,
-        CalcInputComponent,       
+        CalcInputComponent,
     ],
     exports: [
         FabricButtonModule,
