@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { FabricBadgeComponent } from './badge.componet';
+import { FabricBadgeComponent } from 'util/fabric/ui/badge/badge.componet';
 
 @NgModule({
-    declarations: [
-        FabricBadgeComponent
-    ],
     imports: [
         CommonModule
+    ],
+    declarations: [
+        FabricBadgeComponent
     ],
     exports: [
         FabricBadgeComponent

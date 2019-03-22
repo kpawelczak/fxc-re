@@ -1,0 +1,67 @@
+@import 'util/fabric/ui/variables.scss';
+@import 'util/fabric/ui/mixins.scss';
+
+.gui-spinner {
+    display: inline-block;
+    margin: 4px;
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+    -ms-animation: gui-rotate-div 1.5s infinite;
+}
+
+.gui-spinner circle {
+    stroke: $gray;
+    fill: transparent;
+
+    -webkit-animation: gui-spinner-shape 1.5s infinite;
+    -webkit-animation-timing-function: cubic-bezier(.35,0,.25,1);
+
+    -moz-animation: gui-spinner-shape 1.5s infinite;
+    -moz-animation-timing-function: cubic-bezier(.35,0,.25,1);
+
+    -o-animation: gui-spinner-shape 1.5s infinite;
+    -o-animation-timing-function: cubic-bezier(.35,0,.25,1);
+
+    animation: gui-spinner-shape 1.5s infinite;
+    animation-timing-function: cubic-bezier(.35,0,.25,1);
+}
+
+.gui-primary .gui-spinner circle {
+    stroke: $blue;
+}
+
+.gui-secondary .gui-spinner circle {
+    stroke: $green;
+}
+
+@-webkit-keyframes gui-spinner-shape {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+@-moz-keyframes gui-spinner-shape {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+@-o-keyframes gui-spinner-shape {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes gui-spinner-shape {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+
+@-ms-keyframes gui-rotate-div {
+    to { transform: rotate(270deg)}
+}

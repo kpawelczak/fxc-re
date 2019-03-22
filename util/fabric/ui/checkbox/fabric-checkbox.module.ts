@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { FabricButtonComponent } from './button.component';
+import { FabricCheckboxComponent } from 'util/fabric/ui/checkbox/checkbox.component';
 
 @NgModule({
     imports: [
         CommonModule
     ],
     declarations: [
-        FabricButtonComponent
+        FabricCheckboxComponent
     ],
     exports: [
-        FabricButtonComponent
+        FabricCheckboxComponent
     ]
 })
-export class FabricButtonModule { }
+export class FabricCheckboxModule { }

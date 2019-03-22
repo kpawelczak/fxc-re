@@ -11,9 +11,7 @@ import { TechCalcComponent } from './tech-calc';
 import { TechInputComponent } from './tech-input/tech-input.component';
 import { CalcInputComponent } from './calc-input/calc-input.component';
 
-import { FabricButtonModule } from './ui/button/fabric-button.module';
-import { FabricChipModule } from './ui/chip/fabric-chip.module';
-import { FabricBadgeModule } from './ui/badge/fabric-badge.module';
+import { FabricModule } from 'util/fabric/ui/fabric.module';
 
 @NgModule({
 
@@ -21,9 +19,7 @@ import { FabricBadgeModule } from './ui/badge/fabric-badge.module';
         BrowserModule,
         FormsModule,
         HttpClientModule,
-        FabricButtonModule,
-        FabricBadgeModule,
-        FabricChipModule,
+        FabricModule,
         HttpClientInMemoryWebApiModule.forRoot(
             InMemoryDataService, { dataEncapsulation: false }
         )
@@ -34,11 +30,6 @@ import { FabricBadgeModule } from './ui/badge/fabric-badge.module';
         TechCalcComponent,
         TechInputComponent,
         CalcInputComponent,
-    ],
-    exports: [
-        FabricButtonModule,
-        FabricBadgeModule,
-        FabricChipModule
     ],
 
     providers: [],

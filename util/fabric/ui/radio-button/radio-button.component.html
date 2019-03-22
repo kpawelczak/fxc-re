@@ -1,0 +1,9 @@
+<label class="gui-radio-label">
+    <input
+        [name]=name
+        [checked]=checked
+        type="radio"
+        (click)="check()">
+    <span class="gui-radio-checkmark"></span>
+    <ng-content></ng-content>
+</label>

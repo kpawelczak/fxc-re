@@ -1,0 +1,26 @@
+@import 'util/fabric/ui/variables.scss';
+@import 'util/fabric/ui/mixins.scss';
+
+.gui-badge {
+    background: $white;
+    border: solid;
+    border-width: 1px;
+    border-color: $gray;
+    border-radius: $grid / 1;
+    display: inline-block;
+    font-weight: 400;
+    font-size: 10px;
+    font-family: $font;
+    position: relative;
+    left: 2px;
+    top:-10px;
+    margin-right: 3px;
+    padding: 0 3px;
+
+    &:hover {
+      background:  $gray-lightest;
+    }
+
+    @include primary();
+    @include secondary();
+}

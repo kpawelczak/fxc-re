@@ -1,0 +1,32 @@
+@import 'util/fabric/ui/variables.scss';
+@import 'util/fabric/ui/mixins.scss';
+
+.gui-progress-bar {
+    border: solid;
+    border-width: 0.5px;
+    border-color: $gray;
+    display: block;
+    font-family: $font;
+    height: 18px;
+    margin-bottom: 10px;
+    text-align: center;
+    @include disableTextSelect();
+}
+
+.gui-progress {
+    background: $gray;
+    border-bottom: inherit;
+    height: inherit;
+    width: 0%;
+
+    &.gui-primary .gui-progress {
+        background: $blue-light;
+    }
+    &.gui-secondary .gui-progress {
+        background: $green-light;
+    }
+}
+
+.gui-progress-text {
+    position: relative;
+}

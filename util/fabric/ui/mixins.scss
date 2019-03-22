@@ -1,0 +1,28 @@
+@import 'variables.scss';
+
+@mixin primary() {    
+    &.gui-primary {
+        background: $blue-light;
+        
+        &:hover { 
+        background:  $blue-lightest;
+        }  
+    }
+}
+@mixin secondary() {
+    &.gui-secondary {
+        background: $green-light;
+    
+    &:hover { 
+        background:  $green-lightest;
+        }
+    }
+}
+@mixin disableTextSelect() {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}

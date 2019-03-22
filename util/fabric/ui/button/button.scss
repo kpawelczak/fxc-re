@@ -1,5 +1,5 @@
-@import '../variables.scss';
-@import '../mixins.scss';
+@import 'util/fabric/ui/variables.scss';
+@import 'util/fabric/ui/mixins.scss';
 
 .gui-button {
     -webkit-writing-mode: horizontal-tb !important;
@@ -16,7 +16,9 @@
     color: $black;
     cursor: pointer;
     display: inline-block;
-    font: 400 13.3333px Arial;
+    font-weight: 400;
+    font-family: $font;
+    font-size: 13.3333px;    
     outline: none;
 	padding: $grid / 2;
     transition: background 0.2s;
@@ -52,5 +54,5 @@
 
 @include primary();
 @include secondary();
-
+@include disableTextSelect();
 }

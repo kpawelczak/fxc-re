@@ -1,23 +1,24 @@
 import { Component, ChangeDetectionStrategy, ViewEncapsulation, Input } from '@angular/core';
 
 @Component({
-    selector: 'gui-badge',
-    templateUrl: './badge.component.html',
+    selector: 'gui-chip',
+    templateUrl: 'chip.component.html',
+    styleUrls: ['./chip.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None,
-    styleUrls: ['./badge.scss'],
     host: {
-        '[class.gui-badge]': 'true',
+        '[class.gui-chip]': 'true',
         '[class.gui-primary]': 'primary',
         '[class.gui-secondary]': 'secondary'
     }
 })
 
-export class FabricBadgeComponent {
+export class FabricChipComponent {
 
-    @Input() 
-    public primary: boolean;
-    @Input() 
-    public secondary: boolean;
+    @Input()
+    primary: boolean;
+
+    @Input()
+    secondary: boolean;
 
 }

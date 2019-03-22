@@ -3,9 +3,9 @@ import { Component, ChangeDetectionStrategy, ViewEncapsulation, Input } from '@a
 @Component({
     selector: 'button[gui-button],gui-button',
     templateUrl: `button.component.html`,
+    styleUrls: ['./button.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None,
-    styleUrls: ['./button.scss'],
     host: {
         '[class.gui-button]': 'true',
         '[class.gui-primary]': 'primary',
@@ -15,9 +15,10 @@ import { Component, ChangeDetectionStrategy, ViewEncapsulation, Input } from '@a
 
 export class FabricButtonComponent {
 
-    @Input() 
-    public primary: boolean;
-    @Input() 
-    public secondary: boolean;
+    @Input()
+    primary: boolean;
+    
+    @Input()
+    secondary: boolean;
 
 }

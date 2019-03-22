@@ -1,0 +1,61 @@
+@import 'util/fabric/ui/variables.scss';
+@import 'util/fabric/ui/mixins.scss';
+
+.gui-radio-label {
+    cursor: pointer;
+
+    &:hover .gui-radio-checkmark {
+        background: $gray-light;
+    }
+}
+
+.gui-radio-button input {
+    opacity: 0;
+    height: 0;
+    width: 0;
+}
+
+.gui-radio-button {
+    font-weight: 400;
+    font-family: $font;
+    font-size: 13.3333px;
+    margin: 3px 3px 6px 3px;
+    position: relative;
+    padding-left: 30px;
+    @include disableTextSelect();
+    
+    .gui-radio-checkmark {
+        border: solid;
+        border-width: 0.5px;
+        border-color: $gray;
+        border-radius: 50%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 16px;
+        width: 16px;
+    }
+}
+
+input:checked ~ .gui-radio-checkmark {
+    background: $gray;
+}
+ 
+.gui-radio-checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+input:checked ~ .gui-radio-checkmark:after {
+    display: block;
+}
+
+.gui-radio-checkmark:after {
+    background: $white;
+    border-radius: 50%;
+    left: 4.5px;
+    top: 4.5px;
+    width: 7px;
+    height: 7px;
+}
