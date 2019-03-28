@@ -26,3 +26,18 @@
     -ms-user-select: none;
     user-select: none;
 }
+
+@mixin position() {
+    border: solid;
+    border-width: 1px;
+    border-color: $gray;
+    display: inline-block;
+    font-family: $font;
+    font-weight: 100;
+    font-size: 14px;
+    height: 20px;
+    width: 60px;
+    padding: 3px;
+    text-align: center;
+    vertical-align: middle;
+}

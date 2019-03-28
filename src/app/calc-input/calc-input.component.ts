@@ -1,69 +1,71 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Pos } from './pos'
+import { Pos } from './pos';
 import { PosService } from '../pos.service';
 
 @Component({
-    selector: 'calc-input',
-    templateUrl: './calc-input.component.html',
-    styleUrls: ['./calc-input.component.scss']
+  selector: 'calc-input',
+  templateUrl: './calc-input.component.html',
+  styleUrls: ['./calc-input.component.scss']
 })
 export class CalcInputComponent implements OnInit {
 
-    positions: Pos[];
-    constructor(private posService: PosService) { }
+  positions: Pos[];
 
-    ngOnInit() {
-        this.getPositions();
+  public price: number;
+  public takeprofit: number;
+  public stoploss: number;
+  public profit: string;
+  public type: string;
+  public loss: number;
+
+  constructor(private posService: PosService) {
+  }
+
+  ngOnInit() {
+    this.getPositions();
+  }
+
+  getPositions(): void {
+    this.posService.getPositions()
+        .subscribe(positions => this.positions = positions);
+  }
+
+  add(
+    size: number,
+    price: number,
+    type: string,
+    // pipsloss: string,
+    loss: number,
+    // pipswin: string,
+    profit: number
+  ): void {
+
+    if (!price) {
+      return;
+    }
+    if (!size) {
+      return;
     }
 
-    getPositions(): void {
-        this.posService.getPositions()
-            .subscribe(positions => this.positions = positions);
+    this.posService.addPos({ price, loss, type, profit, size } as Pos)
+        .subscribe(pos => {
+          this.positions.push(pos);
+        });
+  }
+
+  pos_calc() {
+
+    if (this.takeprofit > this.price) {
+      this.type = 'buy';
+      this.profit = ((this.takeprofit - this.price) * 10000).toFixed(0);
+      this.loss = (this.price - this.stoploss) * 100;
     }
 
-    add(
-        size: number,
-        price: number,
-        type: string,
-        // pipsloss: string,
-        loss: number,
-        // pipswin: string,
-        profit: number
-    ): void {
-
-        if (!price) { return; }
-        if (!size) { return; }
-
-
-        this.posService.addPos({ price, loss, type, profit, size } as Pos)
-            .subscribe(pos => {
-                this.positions.push(pos);
-            });
-
+    if (this.takeprofit < this.price) {
+      this.type = 'sell';
+      this.profit = ((this.price - this.takeprofit) * 10000).toFixed(0);
+      this.loss = (this.stoploss - this.price) * 100;
     }
-
-    public price: number
-    public takeprofit: number
-    public stoploss: number
-    public profit: number
-    public type: string    
-    public loss: number
-
-
-    pos_calc() {
-
-        if (this.takeprofit > this.price) {
-            this.type = "buy"
-            this.profit = this.takeprofit - this.price
-            this.loss = this.price - this.stoploss
-        }
-
-        if (this.takeprofit < this.price) {
-            this.type = "sell"
-            this.profit = this.price - this.takeprofit
-            this.loss = this.stoploss - this.price
-        }
-    }
-
+  }
 }

@@ -1,15 +1,33 @@
 @import '../tech-input/tech-input.component.scss';
+@import 'util/fabric/ui/mixins.scss';
+@import 'util/fabric/ui/variables.scss';
 
-.positions{
-    margin: 0 0 10px 0;
-    
+.positions {
+  margin: 0 0 0 0;
 }
-  .positions span {
-      
-      border: solid{
-          width: 1px;
-          color: $gray;          
-      }      
-      padding: 5px;
-      
-  }
+
+.positions span {
+  @include position();
+}
+
+.postionLabels span {
+  background: $white;
+}
+
+.newPositions {
+  position: relative;
+  top: -28px;
+  z-index: -1;
+}
+
+.positions .id {
+  width: 15px;
+}
+
+.positions .size {
+  width: 30px;
+}
+
+.positions .type {
+  width: 30px;
+}

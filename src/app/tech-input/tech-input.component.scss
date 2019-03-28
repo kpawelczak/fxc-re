@@ -1,44 +1,44 @@
 @import 'util/fabric/ui/variables.scss';
 
 *:focus {
-    outline: none;
+  outline: none;
 }
 
 input::-webkit-inner-spin-button,
-input::-webkit-outer-spin-button{
-    -webkit-appearance:none;
+input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
 }
+
 input[type=number] {
-    -moz-appearance:textfield;
+  -moz-appearance: textfield;
 }
 
 input {
-    position: relative;
-    left: 10px;
-
-    border: solid;
-    border-width: 1px;
-    border-color: $gray;
-    display: inline-block;
-    padding: 0 15px;
-    height: 30px;
-    font-size: 12px;
-    line-height: 30px;
-    border-radius: 25px;
-    background-color: $white;  
+  background: $white;
+  border: {
+    color: $gray;
+    style: solid;
+    width: 1px;
+    radius: 25px;
+  }
+  display: inline-block;
+  font-size: 12px;
+  height: 30px;
+  left: 10px;
+  line-height: 30px;
+  padding: 0 15px;
+  position: relative;
 }
 
 select {
-    border: solid;
-    border-width: 1px;
-    border-color: $gray;
-    border-radius: 25px;
-
-    display: inline-block;
-
-    padding: 0 5px;
-    
-    font-size: 12px;
-        
-    background-color: $white; 
+  background: $white;
+  border: {
+    color: $gray;
+    style: solid;
+    width: 1px;
+    radius: 25px;
+  }
+  font-size: 12px;
+  display: inline-block;
+  padding: 0 5px;
 }

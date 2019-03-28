@@ -1,102 +1,105 @@
 import { Component } from '@angular/core';
 
 @Component({
-    selector: 'app-root',
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.scss']
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss']
 })
-
 export class AppComponent {
 
-    public showfibo: boolean = false;
+  public showfibo: boolean = false;
+  public showpivot: boolean = false;
 
-    setShowFiboFromCalc() {
-        this.showfibo = true;
-    }
+  public High;
+  public Low;
+  public type;
 
-    public showpivot: boolean = false;
+  public Open;
+  public Close;
 
-    setShowPivotFromCalc() {
-        this.showpivot = true;
-    }
+  public result_236;
+  public result_382;
+  public result_50;
+  public result_618;
 
-    public High
-    public Low
-    public type
+  public result_R3;
+  public result_R2;
+  public result_R1;
+  public result_PP;
+  public result_S1;
+  public result_S2;
+  public result_S3;
 
+  setShowFiboFromCalc() {
+    this.showfibo = true;
+  }
 
-    setHighFromInput(DataHigh) {
-        this.High = DataHigh;
-    }
+  setShowPivotFromCalc() {
+    this.showpivot = true;
+  }
 
-    setLowFromInput(DataLow) {
-        this.Low = DataLow;
-    }
+  setHighFromInput(DataHigh) {
+    this.High = DataHigh;
+  }
 
-    setTypeFromInput(DataType) {
-        this.type = DataType;
-    }
+  setLowFromInput(DataLow) {
+    this.Low = DataLow;
+  }
 
-    public Open
-    public Close
+  setTypeFromInput(DataType) {
+    this.type = DataType;
+  }
 
-    setOpenFromInput(DataOpen) {
-        this.Open = DataOpen;
-    }
+  setOpenFromInput(DataOpen) {
+    this.Open = DataOpen;
+  }
 
-    setCloseFromInput(DataClose) {
-        this.Close = DataClose;
-    }
+  setCloseFromInput(DataClose) {
+    this.Close = DataClose;
+  }
 
-    public result_236
-    public result_382
-    public result_50
-    public result_618
+  set236FromCalc(Data2) {
+    this.result_236 = Data2;
+  }
 
-    set236FromCalc(Data2) {
-        this.result_236 = Data2
-    }
+  set382FromCalc(Data3) {
+    this.result_382 = Data3;
+  }
 
-    set382FromCalc(Data3) {
-        this.result_382 = Data3
-    }
+  set50FromCalc(Data5) {
+    this.result_50 = Data5;
+  }
 
-    set50FromCalc(Data5) {
-        this.result_50 = Data5
-    }
+  set618FromCalc(Data6) {
+    this.result_618 = Data6;
+  }
 
-    set618FromCalc(Data6) {
-        this.result_618 = Data6
-    }
+  setR3FromCalc(DataR3) {
+    this.result_R3 = DataR3;
+  }
 
-    public result_R3
-    public result_R2
-    public result_R1
-    public result_PP
-    public result_S1
-    public result_S2
-    public result_S3
+  setR2FromCalc(DataR2) {
+    this.result_R2 = DataR2;
+  }
 
-    setR3FromCalc(DataR3) {
-        this.result_R3 = DataR3
-    }
-    setR2FromCalc(DataR2) {
-        this.result_R2 = DataR2
-    }
-    setR1FromCalc(DataR1) {
-        this.result_R1 = DataR1
-    }
-    setPPFromCalc(DataPP) {
-        this.result_PP = DataPP
-    }
-    setS1FromCalc(DataS1) {
-        this.result_S1 = DataS1
-    }
-    setS2FromCalc(DataS2) {
-        this.result_S2 = DataS2
-    }
-    setS3FromCalc(DataS3) {
-        this.result_S3 = DataS3
-    }
+  setR1FromCalc(DataR1) {
+    this.result_R1 = DataR1;
+  }
+
+  setPPFromCalc(DataPP) {
+    this.result_PP = DataPP;
+  }
+
+  setS1FromCalc(DataS1) {
+    this.result_S1 = DataS1;
+  }
+
+  setS2FromCalc(DataS2) {
+    this.result_S2 = DataS2;
+  }
+
+  setS3FromCalc(DataS3) {
+    this.result_S3 = DataS3;
+  }
 
 }
