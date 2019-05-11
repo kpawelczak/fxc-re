@@ -13,23 +13,6 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
-input {
-  background: $white;
-  border: {
-    color: $gray;
-    style: solid;
-    width: 1px;
-    radius: 25px;
-  }
-  display: inline-block;
-  font-size: 12px;
-  height: 30px;
-  left: 10px;
-  line-height: 30px;
-  padding: 0 15px;
-  position: relative;
-}
-
 select {
   background: $white;
   border: {

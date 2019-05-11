@@ -3,15 +3,68 @@
  */
 $white: #fefdfc;
 $black: #333;
-$gray: #999;
-$gray-light: #ccc;
-$gray-lightest: #dfdfdf;
-$blue: #4286f4;
-$blue-light: #6bcbff;
-$blue-lightest: #a8e0ff;
-$green: #42f49e;
-$green-light: #88fcc4;
-$green-lightest: #befcde;
+$black-light: lighten($black, 15);
 
+//Gray
+$gray: #999;
+$gray-light: lighten($gray, 20);
+$gray-lightest: lighten($gray, 30);
+$gainsboro: #DCDCDC;
+
+// Blue
+$blue: #2185d0;
+$blue-dark: darken($blue, 5);
+$blue-darker: darken($blue, 15);
+$blue-light: lighten($blue, 10);
+$blue-lightest: lighten($blue, 20);
+
+// Green
+$green: #3cb371;
+$green-dark: darken($green, 5);
+$green-darker: darken($green, 15);
+$green-light: lighten($green, 10);
+$green-lightest: lighten($green, 20);
+
+//Basic
+$basic: $gray;
+$basic-light: $gray-light;
+$basic-lightest: $gray-lightest;
+$basic-background: $basic-lightest;
+$basic-hover: $basic-light;
+$basic-active: $basic;
+
+// Primary
+$primary: $blue;
+$primary-light: $blue-light;
+$primary-lightest: $blue-lightest;
+$primary-hover: $blue-dark;
+$primary-active: $blue-darker;
+$primary-border-color: $primary-light;
+$primary-disabled: $primary-lightest;
+
+// Secondary
+$secondary: $green;
+$secondary-light: $green-light;
+$secondary-lightest: $green-lightest;
+$secondary-hover: $green-dark;
+$secondary-active: $green-darker;
+$secondary-border-color: $secondary-light;
+$secondary-disabled: $secondary-lightest;
+
+/**
+ * Styles
+ */
 $grid: 8px;
-$font: Arial;
+
+$focus: $blue-lightest;
+
+$font-family: Arial;
+$font-size: 14px;
+$font: $font-size $font-family;
+
+$badge-font-size: 12px;
+
+$border-radius: $grid / 2;
+$border-color: $basic-light;
+
+$disabled: $basic-light;

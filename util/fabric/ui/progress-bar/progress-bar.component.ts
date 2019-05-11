@@ -1,42 +1,67 @@
-import { Component, ChangeDetectionStrategy, ViewEncapsulation, Input } from '@angular/core';
+import { Component, ChangeDetectionStrategy, ViewEncapsulation, Input, ElementRef, Renderer2, SimpleChanges } from '@angular/core';
 
 @Component({
-    selector: 'gui-progress-bar',
-    templateUrl: 'progress-bar.component.html',
-    styleUrls: ['./progress-bar.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    encapsulation: ViewEncapsulation.None,
-    host: {
-        '[class.gui-progress]': 'true',
-        '[class.gui-primary]': 'primary',
-        '[class.gui-secondary]': 'secondary',
-    }
+	selector: 'gui-progress-bar',
+	templateUrl: 'progress-bar.component.html',
+	styleUrls: ['./progress-bar.scss'],
+	changeDetection: ChangeDetectionStrategy.OnPush,
+	encapsulation: ViewEncapsulation.None,
+	host: {
+		'[class.gui-progress]': 'true'
+	}
 })
-
 export class FabricProgressBarComponent {
 
-    @Input()
-    progress: number;
+	@Input()
+	progress: number;
 
-    @Input()
-    primary: boolean;
+	@Input()
+	color: string;
 
-    @Input()
-    secondary: boolean;
+	@Input()
+	height: number;
 
-    @Input()
-    color: string;
+	@Input()
+	width: number;
 
-    @Input()
-    height: number;
+	@Input()
+	textTop: string;
 
-    @Input()
-    width: number;
+	@Input()
+	textAlign: string;
 
-    @Input()
-    textTop: string;
+	@Input()
+	primary: boolean;
 
-    @Input()
-    textAlign: string;
+	@Input()
+	secondary: boolean;
 
+	constructor(private elementRef: ElementRef,
+				private renderer: Renderer2) {
+	}
+
+	ngOnChanges(changes: SimpleChanges) {
+		if (changes.primary) {
+			if (this.primary) {
+				this.addClass('gui-primary');
+			} else {
+				this.removeClass('gui-primary');
+			}
+		}
+		if (changes.secondary) {
+			if (this.secondary) {
+				this.addClass('gui-secondary');
+			} else {
+				this.removeClass('gui-secondary');
+			}
+		}
+	}
+
+	private addClass(className: string): void {
+		this.renderer.addClass(this.elementRef.nativeElement, className);
+	}
+
+	private removeClass(className: string): void {
+		this.renderer.removeClass(this.elementRef.nativeElement, className);
+	}
 }

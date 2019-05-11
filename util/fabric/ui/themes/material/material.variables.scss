@@ -1,0 +1,84 @@
+$material-selector: '.gui-material';
+
+/**
+ * Colors
+ */
+
+$white: #FFFFFF;
+
+// Gray
+$gray: #999;
+$gray-light: lighten($gray, 20);
+$gray-lightest: lighten($gray, 30);
+//$gainsboro: #DCDCDC;
+
+// Blue : Indigo 50
+$blue: #3949AB;
+$blue-light: lighten($blue, 10);
+$blue-lightest: lighten($blue, 20);
+$blue-dark: #1A237E;
+$indigo-100: #C5CAE9;
+
+// Purple : Deep purple 50
+$purple: #6200ee;
+$purple-dark: darken($purple, 5);
+$purple-darker: darken($purple, 15);
+$purple-light: lighten($purple, 10);
+$purple-lightest: lighten($purple, 20);
+
+// Green : Cyan 50
+$green: #0097A7;
+$green-dark: darken($green, 5);
+$green-darker: #006064;
+$green-light: lighten($green, 10);
+$green-lightest: #B2EBF2;
+
+//Basic
+$basic: $blue;
+$basic-light: $blue-light;
+$basic-lightest: $blue-lightest;
+$basic-dark: $blue-dark;
+$basic-background: $basic;
+$basic-hover: $basic-light;
+$basic-active: $basic-dark;
+$basic-outline-hover: #E8EAF6;
+$basic-outline-active: $indigo-100;
+
+// Primary
+$primary: $purple;
+$primary-light: $purple-light;
+$primary-lightest: #D1C4E9;
+$primary-hover: $purple-dark;
+$primary-active: $purple-darker;
+$primary-border-color: $primary;
+$primary-disabled: $primary-lightest;
+$primary-outline-hover: #EDE7F6;
+$primary-outline-active: $primary-lightest;
+
+// Secondary
+$secondary: $green;
+$secondary-light: $green-light;
+$secondary-lightest: $green-lightest;
+$secondary-hover: $green-dark;
+$secondary-active: $green-darker;
+$secondary-border-color: $secondary;
+$secondary-disabled: $secondary-lightest;
+$secondary-outline-hover: #E0F7FA;
+$secondary-outline-active: $secondary-lightest;
+
+/**
+ * Styles
+ */
+$grid: 8px;
+
+$font-family: Roboto, "Helvetica Neue", sans-serif;
+$font-size: 14px;
+$font-weight: 500;
+$font: $font-size $font-family;
+
+$badge-font-size: 12px;
+
+$border-radius: $grid / 2;
+$border-color: $basic-light;
+
+$disabled: #C5CAE9;

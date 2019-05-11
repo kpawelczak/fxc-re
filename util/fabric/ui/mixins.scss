@@ -1,43 +1,179 @@
-@import 'variables.scss';
+@import 'util/fabric/ui/variables.scss';
 
-@mixin primary() {    
-    &.gui-primary {
-        background: $blue-light;
-        
-        &:hover { 
-        background:  $blue-lightest;
-        }  
+@mixin primary() {
+  &.gui-primary {
+    background: $primary;
+    color: $white;
+
+    &.gui-outline {
+      color: $primary;
     }
+
+    &.gui-button {
+      &:hover {
+        background: $primary-hover;
+      }
+
+      &:active {
+        background: $primary-active;
+        color: $white;
+      }
+
+      &:disabled {
+        background: $primary-disabled;
+        color: $primary-light;
+      }
+    }
+
+    &.gui-badge {
+      background: $primary-light;
+    }
+  }
 }
+
 @mixin secondary() {
-    &.gui-secondary {
-        background: $green-light;
-    
-    &:hover { 
-        background:  $green-lightest;
-        }
+  &.gui-secondary {
+    background: $secondary;
+    color: $white;
+
+    &.gui-outline {
+      color: $secondary;
     }
-}
-@mixin disableTextSelect() {
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+
+    &.gui-button {
+      &:hover {
+        background: $secondary-hover;
+      }
+
+      &:active {
+        background: $secondary-active;
+        color: $white;
+      }
+
+      &:disabled {
+        background: $secondary-disabled;
+        color: $secondary-light;
+      }
+    }
+
+    &.gui-badge {
+      background: $secondary-light;
+    }
+  }
 }
 
-@mixin position() {
-    border: solid;
-    border-width: 1px;
-    border-color: $gray;
-    display: inline-block;
-    font-family: $font;
-    font-weight: 100;
-    font-size: 14px;
-    height: 20px;
-    width: 60px;
-    padding: 3px;
-    text-align: center;
-    vertical-align: middle;
+@mixin link() {
+  &.gui-link {
+    background: transparent;
+    border: 0;
+    color: $blue;
+
+    &:hover {
+      background: none;
+      color: $blue-dark;
+      text-decoration: underline;
+    }
+
+    &:focus {
+      text-decoration: underline;
+    }
+  }
+}
+
+@mixin outline() {
+  &.gui-outline {
+    color: $basic;
+    background: transparent;
+    border: {
+      color: $border-color;
+      style: solid;
+      width: 1px;
+    }
+
+    &.gui-button {
+      &:hover {
+        color: $white;
+        background: $basic-light;
+      }
+
+      &:disabled {
+        border-color: $disabled;
+        color: $disabled;
+      }
+    }
+
+    &.gui-badge {
+      background: $white;
+    }
+
+    &.gui-primary {
+      border-color: $primary-border-color;
+
+      &.gui-button {
+        &:hover {
+          background: $primary;
+          border-color: $primary;
+        }
+
+        &:disabled {
+          background: transparent;
+          border-color: $primary-disabled;
+          color: $primary-disabled;
+        }
+      }
+
+      &.gui-badge {
+        background: $white;
+        border-color: $primary-border-color;
+        color: $primary-light;
+      }
+    }
+
+    &.gui-secondary {
+      border-color: $secondary-border-color;
+
+      &.gui-button {
+        &:hover {
+          background: $secondary;
+          border-color: $secondary;
+        }
+
+        &:disabled {
+          background: transparent;
+          border-color: $secondary-disabled;
+          color: $secondary-disabled;
+        }
+      }
+
+      &.gui-badge {
+        background: $white;
+        border-color: $secondary-border-color;
+        color: $secondary-border-color;
+      }
+    }
+  }
+}
+
+@mixin focus() {
+  &.gui-outline {
+    &:focus {
+      box-shadow: 0 0 0 2px $border-color;
+    }
+
+    &.gui-primary {
+      &:focus {
+        box-shadow: 0 0 0 2px $primary-border-color;
+      }
+    }
+
+    &.gui-secondary {
+      &:focus {
+        box-shadow: 0 0 0 2px $secondary-border-color;
+      }
+    }
+  }
+}
+
+@mixin disableTextSelect() {
+  user-select: none;
 }

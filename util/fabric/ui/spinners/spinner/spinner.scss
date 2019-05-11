@@ -1,0 +1,20 @@
+@import 'util/fabric/ui/variables.scss';
+@import 'util/fabric/ui/spinners/mixins-spinner.scss';
+
+@include gui-animations();
+
+.gui-spinner {
+  @include gui-spinner();
+
+  circle {
+    @include gui-circle();
+  }
+
+  .gui-primary &.gui-spinner circle {
+    stroke: $primary;
+  }
+
+  .gui-secondary &.gui-spinner circle {
+    stroke: $secondary;
+  }
+}

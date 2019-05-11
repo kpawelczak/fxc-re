@@ -1,0 +1,21 @@
+@import 'util/fabric/ui/themes/material/material.variables.scss';
+
+#{$material-selector} {
+  .gui-spinner {
+    circle {
+      stroke: $basic;
+    }
+  }
+
+  .gui-primary .gui-spinner {
+    circle {
+      stroke: $primary;
+    }
+  }
+
+  .gui-secondary .gui-spinner {
+    circle {
+      stroke: $secondary;
+    }
+  }
+}

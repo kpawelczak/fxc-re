@@ -1,0 +1,14 @@
+<div class="gui-card-body">
+	<div [ngClass]="{'gui-card-title': isTitleEnabled()}">
+		{{title}}
+	</div>
+
+	<img [ngClass]="{'gui-card-img': isImgEnabled()}"
+		 src="{{image}}"/>
+
+	<div [ngClass]="{'gui-card-description': isDescriptionEnabled()}">
+		{{description}}
+	</div>
+
+	<ng-content></ng-content>
+</div>

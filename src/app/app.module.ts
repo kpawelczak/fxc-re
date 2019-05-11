@@ -15,25 +15,25 @@ import { FabricModule } from 'util/fabric/ui/fabric.module';
 
 @NgModule({
 
-  imports: [
-    BrowserModule,
-    FormsModule,
-    HttpClientModule,
-    FabricModule,
-    HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, { dataEncapsulation: false }
-    )
-  ],
+	imports: [
+		BrowserModule,
+		FormsModule,
+		HttpClientModule,
+		FabricModule,
+		HttpClientInMemoryWebApiModule.forRoot(
+			InMemoryDataService, { dataEncapsulation: false }
+		)
+	],
 
-  declarations: [
-    AppComponent,
-    TechCalcComponent,
-    TechInputComponent,
-    CalcInputComponent
-  ],
+	declarations: [
+		AppComponent,
+		TechCalcComponent,
+		TechInputComponent,
+		CalcInputComponent
+	],
 
-  providers: [],
-  bootstrap: [AppComponent]
+	providers: [],
+	bootstrap: [AppComponent]
 
 })
 

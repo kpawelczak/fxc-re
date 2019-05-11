@@ -1,0 +1,79 @@
+@import 'util/fabric/ui/variables.scss';
+@import 'util/fabric/ui/mixins.scss';
+
+$border-width: 1px;
+$checkmark-size: $grid * 2;
+$checkmark-width: $grid / 2;
+$padding-left: $grid * 4;
+$line-height: $checkmark-size + $border-width * 2;
+
+.gui-checkbox {
+  display: inline-block;
+  font: $font;
+  line-height: $line-height;
+  padding-left: $padding-left;
+  position: relative;
+  @include disableTextSelect();
+
+  label {
+    cursor: pointer;
+
+    &:hover .gui-checkmark {
+      border-color: $gray;
+    }
+  }
+
+  input {
+    position: absolute;
+    opacity: 0;
+    height: 0;
+    width: 0;
+  }
+
+  .gui-checkmark {
+    border: {
+      color: $border-color;
+      radius: $border-radius;
+      style: solid;
+      width: $border-width;
+    }
+    position: absolute;
+    left: 0;
+    height: $checkmark-size;
+    width: $checkmark-size;
+  }
+
+  input:checked + .gui-checkmark {
+    border-color: $gray;
+  }
+
+  input:focus + .gui-checkmark {
+    border-color: $blue-lightest;
+  }
+
+  &.gui-disabled.gui-checkbox {
+    color: $disabled;
+    pointer-events: none;
+  }
+
+  .gui-checkmark:after {
+    content: " ";
+    position: absolute;
+    display: none;
+  }
+
+  input:checked + .gui-checkmark:after {
+    display: block;
+  }
+
+  .gui-checkmark:after {
+    border: {
+      color: $black;
+      style: solid;
+      width: 0 $checkmark-width $checkmark-width 0;
+    }
+    width: $checkmark-width;
+    height: $grid;
+    transform: translateX(50%) translateY(5%) rotate(45deg) scale(0.9);
+  }
+}

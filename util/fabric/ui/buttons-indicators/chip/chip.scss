@@ -1,0 +1,24 @@
+@import 'util/fabric/ui/variables.scss';
+@import 'util/fabric/ui/mixins.scss';
+
+$margin: $grid / 4;
+$padding-vertical: $grid * 1.2;
+$padding-horizontal: $grid * 1.5;
+
+.gui-chip {
+  background: $basic-background;
+  border-radius: $border-radius;
+  color: $black-light;
+  display: inline-block;
+  font: {
+    family: $font-family;
+    size: $font-size;
+    weight: bold;
+  }
+  margin: 0 $margin;
+  padding: $padding-vertical $padding-horizontal;
+
+  @include primary();
+  @include secondary();
+  @include outline();
+}

@@ -1,0 +1,11 @@
+@import 'util/fabric/ui/themes/light/light.variables.scss';
+
+#{$light-selector} {
+
+  .gui-button {
+    background: $button-background;
+    border: {
+      color: $border-color
+    }
+  }
+}

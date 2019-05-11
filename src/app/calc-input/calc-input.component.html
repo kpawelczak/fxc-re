@@ -1,44 +1,44 @@
 <!-- Positons Form -->
 <ul>
-  <gui-chip [primary]="true">Positons</gui-chip>
+	<gui-chip [primary]="true">Positons</gui-chip>
 </ul>
 <ul>
-  <gui-chip>Price</gui-chip>
-  <input [(ngModel)]="price" placeholder="enter Price" type="number">
+	<gui-chip>Price</gui-chip>
+	<input gui-input [(ngModel)]="price" placeholder="enter Price" type="number">
 </ul>
 <ul>
-  <gui-chip>Take Profit</gui-chip>
-  <input [(ngModel)]="takeprofit" placeholder="enter Take Profit" type="number">
+	<gui-chip>Take Profit</gui-chip>
+	<input gui-input [(ngModel)]="takeprofit" placeholder="enter Take Profit" type="number">
 </ul>
 <ul>
-  <gui-chip>Stop Loss</gui-chip>
-  <input [(ngModel)]="stoploss" placeholder="enter Stop Loss" type="number">
+	<gui-chip>Stop Loss</gui-chip>
+	<input gui-input [(ngModel)]="stoploss" placeholder="enter Stop Loss" type="number">
 </ul>
 <ul>
-  <gui-chip>Size</gui-chip>
-  <input [(ngModel)]="size" placeholder="enter Size" type="number">
+	<gui-chip>Size</gui-chip>
+	<input gui-input [(ngModel)]="size" placeholder="enter Size" type="number">
 </ul>
 <ul>
-  <button gui-button (click)="pos_calc(); add(size, price, type, loss, profit)">Add</button>
+	<button gui-button (click)="pos_calc(); add(size, price, type, loss, profit)">Add</button>
 </ul>
 <!-- Positons Table -->
 <ul class="positions">
-  <section class="postionLabels">
-    <span class="id">Id</span>
-    <span class="type">Type</span>
-    <span class="size">Size</span>
-    <span class="price">Price</span>
-    <span class="loss">Loss</span>
-    <span class="profit">Profit</span>
-  </section>
-  <section class="newPositions" *ngFor="let pos of positions">
-    <span class="id">{{pos.id}}</span>
-    <span class="type">{{pos.type}}</span>
-    <span class="size">{{pos.size}}</span>
-    <span class="price">{{pos.price}}</span>
-    <!-- <span class="pipsloss">{{pos.pipsloss}}</span> -->
-    <span class="loss">{{pos.loss}}</span>
-    <!-- <span class="pipswin">{{pos.pipswin}}</span> -->
-    <span class="profit">{{pos.profit}}</span>
-  </section>
+	<section class="postionLabels">
+		<span class="id">Id</span>
+		<span class="type">Type</span>
+		<span class="size">Size</span>
+		<span class="price">Price</span>
+		<span class="loss">Loss</span>
+		<span class="profit">Profit</span>
+	</section>
+	<section class="newPositions" *ngFor="let pos of positions">
+		<span class="id">{{pos.id}}</span>
+		<span class="type">{{pos.type}}</span>
+		<span class="size">{{pos.size}}</span>
+		<span class="price">{{pos.price}}</span>
+		<!-- <span class="pipsloss">{{pos.pipsloss}}</span> -->
+		<span class="loss">{{pos.loss}}</span>
+		<!-- <span class="pipswin">{{pos.pipswin}}</span> -->
+		<span class="profit">{{pos.profit}}</span>
+	</section>
 </ul>

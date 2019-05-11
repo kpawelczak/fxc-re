@@ -1,0 +1,39 @@
+@import 'util/fabric/ui/variables.scss';
+@import 'util/fabric/ui/mixins.scss';
+
+$margin-bottom: $grid;
+$padding: $grid*2.5;
+$body-width: 200px;
+
+.gui-card {
+
+  .gui-card-img {
+    margin: 0 0 $margin-bottom 0;
+    width: $body-width;
+    height: auto;
+  }
+
+  .gui-card-body {
+    background: $white;
+    border: {
+      color: $border-color;
+      style: solid;
+      width: 1px;
+      radius: $border-radius;
+    }
+    width: $body-width;
+    margin: 0;
+    padding: $padding;
+    font: $font;
+
+    .gui-card-title {
+      font-size: 20px;
+      font-weight: bold;
+      margin: 0 0 $margin-bottom 0;
+    }
+
+    .gui-card-description {
+      margin: 0 0 $margin-bottom 0
+    }
+  }
+}

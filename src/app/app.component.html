@@ -1,71 +1,71 @@
 <ul>
-  <gui-chip [primary]="true"><input type="checkbox" class="form-checkbox" [(ngModel)]="technicalsChecked">Technicals
-  </gui-chip>
-  <gui-badge>?</gui-badge>
+	<gui-chip [primary]="true"><input type="checkbox" class="form-checkbox" [(ngModel)]="technicalsChecked">Technicals
+	</gui-chip>
+	<gui-badge>?</gui-badge>
 </ul>
 <div *ngIf="technicalsChecked">
-  <ul>
-    <gui-chip><input type="checkbox" class="form-checkbox" [(ngModel)]="fiboChecked">Fibonacci</gui-chip>
-    <gui-chip><input type="checkbox" class="form-checkbox" [(ngModel)]="pivotChecked">Pivot Points</gui-chip>
-  </ul>
-  <div class="Input">
+	<ul>
+		<gui-chip><input type="checkbox" class="form-checkbox" [(ngModel)]="fiboChecked">Fibonacci</gui-chip>
+		<gui-chip><input type="checkbox" class="form-checkbox" [(ngModel)]="pivotChecked">Pivot Points</gui-chip>
+	</ul>
+	<div class="Input">
 
-    <tech-input (setHigh)='setHighFromInput($event)' (setLow)='setLowFromInput($event)'
-                (setType)='setTypeFromInput($event)' (setOpen)='setOpenFromInput($event)'
-                (setClose)='setCloseFromInput($event)' [fiboChecked]="fiboChecked" [pivotChecked]="pivotChecked">
-    </tech-input>
+		<tech-input (setHigh)='setHighFromInput($event)' (setLow)='setLowFromInput($event)'
+					(setType)='setTypeFromInput($event)' (setOpen)='setOpenFromInput($event)'
+					(setClose)='setCloseFromInput($event)' [fiboChecked]="fiboChecked" [pivotChecked]="pivotChecked">
+		</tech-input>
 
-    <ul>
-      <tech-calc (set236)='set236FromCalc($event)' (set382)='set382FromCalc($event)'
-                 (set50)='set50FromCalc($event)' (set618)='set618FromCalc($event)' (setR3)='setR3FromCalc($event)'
-                 (setR2)='setR2FromCalc($event)' (setR1)='setR1FromCalc($event)' (setPP)='setPPFromCalc($event)'
-                 (setS1)='setS1FromCalc($event)' (setS2)='setS2FromCalc($event)' (setS3)='setS3FromCalc($event)'
-                 [High]="High" [Low]="Low" [type]="type" [Open]="Open" [Close]="Close"
-                 (setShowFiboCalc)='setShowFiboFromCalc($event)' (setShowPivotCalc)='setShowPivotFromCalc($event)'>
-      </tech-calc>
-    </ul>
-  </div>
+		<ul>
+			<tech-calc (set236)='set236FromCalc($event)' (set382)='set382FromCalc($event)'
+					   (set50)='set50FromCalc($event)' (set618)='set618FromCalc($event)' (setR3)='setR3FromCalc($event)'
+					   (setR2)='setR2FromCalc($event)' (setR1)='setR1FromCalc($event)' (setPP)='setPPFromCalc($event)'
+					   (setS1)='setS1FromCalc($event)' (setS2)='setS2FromCalc($event)' (setS3)='setS3FromCalc($event)'
+					   [High]="High" [Low]="Low" [type]="type" [Open]="Open" [Close]="Close"
+					   (setShowFiboCalc)='setShowFiboFromCalc($event)' (setShowPivotCalc)='setShowPivotFromCalc($event)'>
+			</tech-calc>
+		</ul>
+	</div>
 
-  <div class="fibresults" *ngIf="fiboChecked">
-    <ul>
-      <gui-chip *ngIf="showfibo"> 23.6 {{result_236}}</gui-chip>
-    </ul>
-    <ul>
-      <gui-chip *ngIf="showfibo"> 38.2 {{result_382}}</gui-chip>
-    </ul>
-    <ul>
-      <gui-chip *ngIf="showfibo"> 50 {{result_50}}</gui-chip>
-    </ul>
-    <ul>
-      <gui-chip *ngIf="showfibo"> 61.8 {{result_618}}</gui-chip>
-    </ul>
-  </div>
+	<div class="fibresults" *ngIf="fiboChecked">
+		<ul>
+			<gui-chip *ngIf="showfibo"> 23.6 {{result_236}}</gui-chip>
+		</ul>
+		<ul>
+			<gui-chip *ngIf="showfibo"> 38.2 {{result_382}}</gui-chip>
+		</ul>
+		<ul>
+			<gui-chip *ngIf="showfibo"> 50 {{result_50}}</gui-chip>
+		</ul>
+		<ul>
+			<gui-chip *ngIf="showfibo"> 61.8 {{result_618}}</gui-chip>
+		</ul>
+	</div>
 
-  <div class="pivotresults" *ngIf="pivotChecked">
-    <gui-chip *ngIf="showpivot">R3 = {{result_R3}}</gui-chip>
-    <br>
+	<div class="pivotresults" *ngIf="pivotChecked">
+		<gui-chip *ngIf="showpivot">R3 = {{result_R3}}</gui-chip>
+		<br>
 
-    <gui-chip *ngIf="showpivot">R2 = {{result_R2}}</gui-chip>
-    <br>
+		<gui-chip *ngIf="showpivot">R2 = {{result_R2}}</gui-chip>
+		<br>
 
-    <gui-chip *ngIf="showpivot">R1 = {{result_R1}}</gui-chip>
-    <br>
+		<gui-chip *ngIf="showpivot">R1 = {{result_R1}}</gui-chip>
+		<br>
 
-    <gui-chip *ngIf="showpivot" [secondary]="true">Pivot = {{result_PP}}</gui-chip>
-    <br>
+		<gui-chip *ngIf="showpivot" [secondary]="true">Pivot = {{result_PP}}</gui-chip>
+		<br>
 
-    <gui-chip *ngIf="showpivot">S1 = {{result_S1}}</gui-chip>
-    <br>
+		<gui-chip *ngIf="showpivot">S1 = {{result_S1}}</gui-chip>
+		<br>
 
-    <gui-chip *ngIf="showpivot">S2 = {{result_S2}}</gui-chip>
-    <br>
+		<gui-chip *ngIf="showpivot">S2 = {{result_S2}}</gui-chip>
+		<br>
 
-    <gui-chip *ngIf="showpivot">S3 = {{result_S3}}</gui-chip>
-    <br>
-  </div>
-  <br>
+		<gui-chip *ngIf="showpivot">S3 = {{result_S3}}</gui-chip>
+		<br>
+	</div>
+	<br>
 </div>
 
 <div>
-  <calc-input></calc-input>
+	<calc-input></calc-input>
 </div>

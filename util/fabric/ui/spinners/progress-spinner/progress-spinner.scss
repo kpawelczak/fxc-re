@@ -1,0 +1,42 @@
+@import 'util/fabric/ui/variables.scss';
+@import 'util/fabric/ui/spinners/mixins-spinner.scss';
+
+.gui-progress-spinner {
+  @include gui-spinner();
+
+  circle {
+    @include gui-circle();
+  }
+
+  .gui-animations-disabled &.gui-progress-spinner {
+
+    circle {
+      animation: none;
+    }
+
+    &.gui-progress-spinner {
+      animation: none;
+    }
+  }
+
+  .gui-second-circle-disabled &.gui-progress-spinner {
+
+    circle:nth-child(2) {
+      opacity: 0;
+    }
+  }
+
+  .gui-primary &.gui-progress-spinner {
+
+    circle {
+      stroke: $primary;
+    }
+  }
+
+  .gui-secondary &.gui-progress-spinner {
+
+    circle {
+      stroke: $secondary;
+    }
+  }
+}
