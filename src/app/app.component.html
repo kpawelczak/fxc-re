@@ -7,16 +7,21 @@
 	<gui-badge>?</gui-badge>
 </ul>
 
-<div (ngClass)="{technicalsHidden: showTechnicals}" *ngIf="showTechnicals">
+<div *ngIf="showTechnicals"
+	 (ngClass)="{technicalsHidden: showTechnicals}">
 	<ul>
 		<gui-chip>
-			<gui-checkbox (changed)="fiboChecked($event)">
+			<gui-checkbox
+					(changed)="fiboChecked($event)"
+					style="font-weight: bold">
 				Fibonacci
 			</gui-checkbox>
 		</gui-chip>
 
 		<gui-chip>
-			<gui-checkbox (changed)="pivotChecked($event)">
+			<gui-checkbox
+					(changed)="pivotChecked($event)"
+					style="font-weight: bold">
 				Pivot Points
 			</gui-checkbox>
 		</gui-chip>
@@ -24,31 +29,33 @@
 
 	<div class="Input">
 
-		<technicals (setHigh)='setHighFromInput($event)'
-					(setLow)='setLowFromInput($event)'
-					(setType)='setTypeFromInput($event)'
-					(setOpen)='setOpenFromInput($event)'
-					(setClose)='setCloseFromInput($event)'
-					[fiboChecked]="showFibo"
-					[pivotChecked]="showPivot">
+		<technicals
+				[fiboChecked]="showFibo"
+				[pivotChecked]="showPivot"
+				(setHigh)='setHighFromInput($event)'
+				(setLow)='setLowFromInput($event)'
+				(setType)='setTypeFromInput($event)'
+				(setOpen)='setOpenFromInput($event)'
+				(setClose)='setCloseFromInput($event)'>
 		</technicals>
 
 		<ul>
-			<tech-calc (set236)='set236FromCalc($event)'
-					   (set382)='set382FromCalc($event)'
-					   (set50)='set50FromCalc($event)'
-					   (set618)='set618FromCalc($event)'
-					   (setR3)='setR3FromCalc($event)'
-					   (setR2)='setR2FromCalc($event)'
-					   (setR1)='setR1FromCalc($event)'
-					   (setPP)='setPPFromCalc($event)'
-					   (setS1)='setS1FromCalc($event)'
-					   (setS2)='setS2FromCalc($event)'
-					   (setS3)='setS3FromCalc($event)'
-					   [High]="High" [Low]="Low"
-					   [type]="type"
-					   [Open]="Open" [Close]="Close"
-					   (resultsCalc)="showResultsCalc($event)">
+			<tech-calc
+					[High]="High" [Low]="Low"
+					[type]="type"
+					[Open]="Open" [Close]="Close"
+					(resultsCalc)="showResultsCalc($event)"
+					(set236)='set236FromCalc($event)'
+					(set382)='set382FromCalc($event)'
+					(set50)='set50FromCalc($event)'
+					(set618)='set618FromCalc($event)'
+					(setR3)='setR3FromCalc($event)'
+					(setR2)='setR2FromCalc($event)'
+					(setR1)='setR1FromCalc($event)'
+					(setPP)='setPPFromCalc($event)'
+					(setS1)='setS1FromCalc($event)'
+					(setS2)='setS2FromCalc($event)'
+					(setS3)='setS3FromCalc($event)'>
 			</tech-calc>
 		</ul>
 	</div>
