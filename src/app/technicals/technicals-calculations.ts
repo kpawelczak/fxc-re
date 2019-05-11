@@ -1,11 +1,16 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
 	selector: 'tech-calc',
-	template: '<button gui-button (click)="cal_fib(); setShowFibo(); cal_pivot(); setShowPivot()">Execute!</button>'
+	template: `
+		<button gui-button
+				(click)="cal_fib(); cal_pivot()">
+			Execute!
+		</button>
+	`
 })
 
-export class TechCalcComponent {
+export class TechnicalsCalculationsComponent {
 
 	@Input()
 	public High;
@@ -21,9 +26,6 @@ export class TechCalcComponent {
 
 	@Input()
 	public Close;
-
-	@Output()
-	setShowPivotCalc: EventEmitter<boolean> = new EventEmitter();
 
 	@Output()
 	setR3: EventEmitter<string> = new EventEmitter();
@@ -47,9 +49,6 @@ export class TechCalcComponent {
 	setS3: EventEmitter<string> = new EventEmitter();
 
 	@Output()
-	setShowFiboCalc: EventEmitter<boolean> = new EventEmitter();
-
-	@Output()
 	set236: EventEmitter<string> = new EventEmitter();
 
 	@Output()
@@ -61,8 +60,11 @@ export class TechCalcComponent {
 	@Output()
 	set618: EventEmitter<string> = new EventEmitter();
 
+	@Output()
+	resultsCalc: EventEmitter<boolean> = new EventEmitter();
+
+	public showResults: boolean;
 	public Pivot: number;
-	public showpivot: boolean;
 	public result_R3: string;
 	public result_R2: string;
 	public result_R1: string;
@@ -74,14 +76,12 @@ export class TechCalcComponent {
 	public result_382: string;
 	public result_50: string;
 	public result_618: string;
-	public showfibo: boolean;
 	public Range: number;
 
-	setShowFibo() {
-		this.setShowFiboCalc.emit(this.showfibo);
-	}
-
 	cal_fib() {
+
+		this.showResults = true;
+		this.resultsCalc.emit(this.showResults);
 
 		this.Range = this.High - this.Low;
 
@@ -110,10 +110,6 @@ export class TechCalcComponent {
 
 	}
 
-	setShowPivot() {
-		this.setShowPivotCalc.emit(this.showpivot);
-	}
-
 	cal_pivot() {
 
 		this.Range = this.High - this.Low;
@@ -134,6 +130,5 @@ export class TechCalcComponent {
 		this.setS1.emit(this.result_S1);
 		this.setS2.emit(this.result_S2);
 		this.setS3.emit(this.result_S3);
-
 	}
 }

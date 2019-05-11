@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import { Pos } from './calc-input/pos';
+import { PositionDataTable } from './position-data-table';
 
 const httpOptions = {
 	headers: new HttpHeaders({ 'Content-Type': 'application/json' }) //nie mam pojecia co to jest -> do sprawdzenia
@@ -12,7 +12,7 @@ const httpOptions = {
 @Injectable({
 	providedIn: 'root'
 })
-export class PosService {
+export class PositionDataService {
 
 	private positionsUrl = 'api/positions';  // URL to web api (const: positions in in-memory-data.ts)
 
@@ -20,13 +20,13 @@ export class PosService {
 	}
 
 
-	getPositions(): Observable<Pos[]> {
-		return this.http.get<Pos[]>(this.positionsUrl);
+	getPositions(): Observable<PositionDataTable[]> {
+		return this.http.get<PositionDataTable[]>(this.positionsUrl);
 	}
 
 	/** POST: add a new position to the server */
-	addPos(pos: Pos): Observable<Pos> {
-		return this.http.post<Pos>(this.positionsUrl, pos, httpOptions);
+	addPos(pos: PositionDataTable): Observable<PositionDataTable> {
+		return this.http.post<PositionDataTable>(this.positionsUrl, pos, httpOptions);
 	}
 
 }

@@ -1,10 +1,10 @@
-export class Pos {
+export class PositionDataTable {
 	id: number;
 	size: number;
 	price: number;
 	type: string;
-	pipsloss: number;
+	// pipsloss: number;
 	loss: number;
-	pipswin: number;
+	// pipswin: number;
 	profit: number;
 }

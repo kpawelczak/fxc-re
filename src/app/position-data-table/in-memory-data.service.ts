@@ -20,8 +20,4 @@ export class InMemoryDataService implements InMemoryDbService {
 		];
 		return { positions };
 	}
-
-	genId() {
-		(pos => pos.id + 1);
-	}
 }

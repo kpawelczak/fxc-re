@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Pos } from './pos';
-import { PosService } from '../pos.service';
+import { PositionDataTable } from '../position-data-table/position-data-table';
+import { PositionDataService } from '../position-data-table/position-data.service';
 
 @Component({
-	selector: 'calc-input',
-	templateUrl: './calc-input.component.html',
-	styleUrls: ['./calc-input.component.scss']
+	selector: 'positions-table',
+	templateUrl: './positions-table.component.html',
+	styleUrls: ['./positions-table.component.scss']
 })
-export class CalcInputComponent implements OnInit {
+export class PositionsTableComponent implements OnInit {
 
-	positions: Pos[];
+	positions: PositionDataTable[];
 
 	public price: number;
 	public takeprofit: number;
@@ -19,7 +19,7 @@ export class CalcInputComponent implements OnInit {
 	public type: string;
 	public loss: number;
 
-	constructor(private posService: PosService) {
+	constructor(private positionDataService: PositionDataService) {
 	}
 
 	ngOnInit() {
@@ -27,7 +27,7 @@ export class CalcInputComponent implements OnInit {
 	}
 
 	getPositions(): void {
-		this.posService.getPositions()
+		this.positionDataService.getPositions()
 			.subscribe(positions => this.positions = positions);
 	}
 
@@ -48,7 +48,7 @@ export class CalcInputComponent implements OnInit {
 			return;
 		}
 
-		this.posService.addPos({ price, loss, type, profit, size } as Pos)
+		this.positionDataService.addPos({ price, loss, type, profit, size } as PositionDataTable)
 			.subscribe(pos => {
 				this.positions.push(pos);
 			});

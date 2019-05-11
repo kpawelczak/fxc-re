@@ -1,0 +1,43 @@
+<ul>
+	<gui-chip>High</gui-chip>
+	<input gui-input
+		   [(ngModel)]='High'
+		   (keyup)='onChangeHigh()'
+		   placeholder="Enter High"
+		   type="number">
+</ul>
+<ul>
+	<gui-chip>Low</gui-chip>
+	<input gui-input
+		   [(ngModel)]='Low'
+		   (keyup)='onChangeLow()'
+		   placeholder="Enter Low"
+		   type="number">
+</ul>
+<ul *ngIf="pivotChecked"
+	(ngClass)="{pivotHidden: pivotChecked}">
+	<gui-chip>Open</gui-chip>
+	<input gui-input
+		   [(ngModel)]='Open'
+		   (keyup)='onChangeOpen()'
+		   placeholder="Enter Open"
+		   type="number">
+</ul>
+<ul *ngIf="pivotChecked"
+	(ngClass)="{pivotHidden: pivotChecked}">
+	<gui-chip>Close</gui-chip>
+	<input gui-input
+		   [(ngModel)]='Close'
+		   (keyup)='onChangeClose()'
+		   placeholder="Enter Close"
+		   type="number">
+</ul>
+<ul>
+	<gui-select
+			*ngIf="fiboChecked"
+			(ngClass)="{fiboHidden: fiboChecked}"
+			(optionChanged)="selectedOptionFromInput($event)"
+			(click)='onChangeType()'
+			[options]="['Long','Short']">
+	</gui-select>
+</ul>

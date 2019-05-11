@@ -7,13 +7,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
-	public showfibo: boolean = false;
-	public showpivot: boolean = false;
+	public showFibo: boolean = false;
+	public showPivot: boolean = false;
+	public showTechnicals: boolean = false;
+	public showResults:boolean = false;
 
 	public High;
 	public Low;
 	public type;
-
 	public Open;
 	public Close;
 
@@ -30,12 +31,20 @@ export class AppComponent {
 	public result_S2;
 	public result_S3;
 
-	setShowFiboFromCalc() {
-		this.showfibo = true;
+	fiboChecked(data) {
+		this.showFibo = data;
 	}
 
-	setShowPivotFromCalc() {
-		this.showpivot = true;
+	pivotChecked(data) {
+		this.showPivot = data;
+	}
+
+	technicalsChecked(data) {
+		this.showTechnicals = data;
+	}
+
+	showResultsCalc(data) {
+		this.showResults = data;
 	}
 
 	setHighFromInput(DataHigh) {

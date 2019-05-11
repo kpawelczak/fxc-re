@@ -4,23 +4,39 @@
 </ul>
 <ul>
 	<gui-chip>Price</gui-chip>
-	<input gui-input [(ngModel)]="price" placeholder="enter Price" type="number">
+	<input gui-input
+		   [(ngModel)]="price"
+		   placeholder="enter Price"
+		   type="number">
 </ul>
 <ul>
 	<gui-chip>Take Profit</gui-chip>
-	<input gui-input [(ngModel)]="takeprofit" placeholder="enter Take Profit" type="number">
+	<input gui-input
+		   [(ngModel)]="takeprofit"
+		   placeholder="enter Take Profit"
+		   type="number">
 </ul>
 <ul>
 	<gui-chip>Stop Loss</gui-chip>
-	<input gui-input [(ngModel)]="stoploss" placeholder="enter Stop Loss" type="number">
+	<input gui-input
+		   [(ngModel)]="stoploss"
+		   placeholder="enter Stop Loss"
+		   type="number">
 </ul>
 <ul>
 	<gui-chip>Size</gui-chip>
-	<input gui-input [(ngModel)]="size" placeholder="enter Size" type="number">
+	<input gui-input
+		   [(ngModel)]="size"
+		   placeholder="enter Size"
+		   type="number">
 </ul>
 <ul>
-	<button gui-button (click)="pos_calc(); add(size, price, type, loss, profit)">Add</button>
+	<button gui-button
+			(click)="pos_calc();
+			add(size, price, type, loss, profit)">Add
+	</button>
 </ul>
+
 <!-- Positons Table -->
 <ul class="positions">
 	<section class="postionLabels">

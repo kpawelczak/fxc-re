@@ -1,11 +1,11 @@
-import { Component, Output, EventEmitter, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
-	selector: 'tech-input',
-	templateUrl: './tech-input.component.html',
-	styleUrls: ['./tech-input.component.scss']
+	selector: 'technicals',
+	templateUrl: './technicals.component.html',
+	styleUrls: ['./technicals.component.scss']
 })
-export class TechInputComponent {
+export class TechnicalsComponent {
 
 	@Input()
 	public fiboChecked;
@@ -44,6 +44,10 @@ export class TechInputComponent {
 
 	onChangeType() {
 		this.setType.emit(this.type);
+	}
+
+	selectedOptionFromInput(DataType) {
+		this.type = DataType;
 	}
 
 	onChangeOpen() {
