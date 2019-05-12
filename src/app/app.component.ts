@@ -10,7 +10,10 @@ export class AppComponent {
 	public showFibo: boolean = false;
 	public showPivot: boolean = false;
 	public showTechnicals: boolean = false;
-	public showResults:boolean = false;
+	public showResults: boolean = false;
+
+	private technicalsCheckedFibo: boolean;
+	private technicalsCheckedPivot: boolean;
 
 	public High;
 	public Low;
@@ -47,6 +50,20 @@ export class AppComponent {
 		this.showResults = data;
 	}
 
+	techBtnChecked() {
+
+		if (!this.showTechnicals) {
+			if (this.showFibo) {
+				this.technicalsCheckedFibo = true;
+			} else this.technicalsCheckedFibo = false;
+			if (this.showPivot) {
+				this.technicalsCheckedPivot = true;
+			} else this.technicalsCheckedPivot = false;
+		}
+	}
+
+	// Inputs
+
 	setHighFromInput(DataHigh) {
 		this.High = DataHigh;
 	}
@@ -66,6 +83,8 @@ export class AppComponent {
 	setCloseFromInput(DataClose) {
 		this.Close = DataClose;
 	}
+
+	// Calculations Data
 
 	set236FromCalc(Data2) {
 		this.result_236 = Data2;

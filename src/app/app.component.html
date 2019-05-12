@@ -1,6 +1,7 @@
 <ul>
 	<gui-button-toggle
 			(changed)="technicalsChecked($event)"
+			(click)="techBtnChecked()"
 			[primary]="true">
 		Technicals
 	</gui-button-toggle>
@@ -13,6 +14,7 @@
 		<gui-chip>
 			<gui-checkbox
 					(changed)="fiboChecked($event)"
+					[checked]="technicalsCheckedFibo"
 					style="font-weight: bold">
 				Fibonacci
 			</gui-checkbox>
@@ -21,6 +23,7 @@
 		<gui-chip>
 			<gui-checkbox
 					(changed)="pivotChecked($event)"
+					[checked]="technicalsCheckedPivot"
 					style="font-weight: bold">
 				Pivot Points
 			</gui-checkbox>
