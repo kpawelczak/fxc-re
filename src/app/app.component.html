@@ -9,7 +9,7 @@
 </ul>
 
 <div *ngIf="showTechnicals"
-	 (ngClass)="{technicalsHidden: showTechnicals}">
+	 [ngClass]="{technicalsHidden: showTechnicals}">
 	<ul>
 		<gui-chip>
 			<gui-checkbox
@@ -45,66 +45,57 @@
 		<ul>
 			<tech-calc
 					[High]="High" [Low]="Low"
-					[type]="type"
 					[Open]="Open" [Close]="Close"
-					(resultsCalc)="showResultsCalc($event)"
-					(set236)='set236FromCalc($event)'
-					(set382)='set382FromCalc($event)'
-					(set50)='set50FromCalc($event)'
-					(set618)='set618FromCalc($event)'
-					(setR3)='setR3FromCalc($event)'
-					(setR2)='setR2FromCalc($event)'
-					(setR1)='setR1FromCalc($event)'
-					(setPP)='setPPFromCalc($event)'
-					(setS1)='setS1FromCalc($event)'
-					(setS2)='setS2FromCalc($event)'
-					(setS3)='setS3FromCalc($event)'>
+					[type]="type"
+					(calculatorShowResults)="showResultsCalc($event)"
+					(calculatorFiboResults)="appCalculatorFiboResults($event)"
+					(calculatorPivotResults)="appCalculatorPivotResults($event)">
 			</tech-calc>
 		</ul>
 	</div>
 
 	<section *ngIf="showResults"
-			 (ngClass)="{resultsHidden: showResults}">
+			 [ngClass]="{resultsHidden: showResults}">
 
 		<div *ngIf="showFibo"
-			 (ngClass)="{fiboHidden: showFibo}"
+			 [ngClass]="{fiboHidden: showFibo}"
 			 class="fibresults">
 			<ul>
-				<gui-chip> 23.6 {{result_236}}</gui-chip>
+				<gui-chip> 23.6 = {{fiboResults[0]}}</gui-chip>
 			</ul>
 			<ul>
-				<gui-chip> 38.2 {{result_382}}</gui-chip>
+				<gui-chip> 38.2 = {{fiboResults[1]}}</gui-chip>
 			</ul>
 			<ul>
-				<gui-chip> 50 {{result_50}}</gui-chip>
+				<gui-chip> 50 = {{fiboResults[2]}}</gui-chip>
 			</ul>
 			<ul>
-				<gui-chip> 61.8 {{result_618}}</gui-chip>
+				<gui-chip> 61.8 = {{fiboResults[3]}}</gui-chip>
 			</ul>
 		</div>
 
 		<div *ngIf="showPivot"
-			 (ngClass)="{pivotsHidden: showPivot}"
+			 [ngClass]="{pivotsHidden: showPivot}"
 			 class="pivotresults">
-			<gui-chip>R3 = {{result_R3}}</gui-chip>
+			<gui-chip>R3 = {{pivotResults[0]}}</gui-chip>
 			<br>
 
-			<gui-chip>R2 = {{result_R2}}</gui-chip>
+			<gui-chip>R2 = {{pivotResults[1]}}</gui-chip>
 			<br>
 
-			<gui-chip>R1 = {{result_R1}}</gui-chip>
+			<gui-chip>R1 = {{pivotResults[2]}}</gui-chip>
 			<br>
 
-			<gui-chip [secondary]="true">Pivot = {{result_PP}}</gui-chip>
+			<gui-chip [secondary]="true">Pivot = {{pivotResults[3]}}</gui-chip>
 			<br>
 
-			<gui-chip>S1 = {{result_S1}}</gui-chip>
+			<gui-chip>S1 = {{pivotResults[4]}}</gui-chip>
 			<br>
 
-			<gui-chip>S2 = {{result_S2}}</gui-chip>
+			<gui-chip>S2 = {{pivotResults[5]}}</gui-chip>
 			<br>
 
-			<gui-chip>S3 = {{result_S3}}</gui-chip>
+			<gui-chip>S3 = {{pivotResults[6]}}</gui-chip>
 			<br>
 		</div>
 	</section>

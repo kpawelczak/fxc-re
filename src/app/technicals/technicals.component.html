@@ -15,7 +15,7 @@
 		   type="number">
 </ul>
 <ul *ngIf="pivotChecked"
-	(ngClass)="{pivotHidden: pivotChecked}">
+	[ngClass]="{pivotHidden: pivotChecked}">
 	<gui-chip>Open</gui-chip>
 	<input gui-input
 		   [(ngModel)]='Open'
@@ -24,7 +24,7 @@
 		   type="number">
 </ul>
 <ul *ngIf="pivotChecked"
-	(ngClass)="{pivotHidden: pivotChecked}">
+	[ngClass]="{pivotHidden: pivotChecked}">
 	<gui-chip>Close</gui-chip>
 	<input gui-input
 		   [(ngModel)]='Close'
@@ -35,7 +35,7 @@
 <ul>
 	<gui-select
 			*ngIf="fiboChecked"
-			(ngClass)="{fiboHidden: fiboChecked}"
+			[ngClass]="{fiboHidden: fiboChecked}"
 			(optionChanged)="selectedOptionFromInput($event)"
 			(click)='onChangeType()'
 			[options]="['Long','Short']">
