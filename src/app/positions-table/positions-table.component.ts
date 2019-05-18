@@ -33,11 +33,16 @@ export class PositionsTableComponent implements OnInit {
 			.subscribe(positions => this.positions = positions);
 	}
 
-	addPositionToTable(size: number, price: number, type: string, loss: number, profit: number): void {
+	addPositionToTable(size: number, price: number, type: string, stopLoss: number, loss: number, profit: number): void {
 
-		if (!price || !size || !price) {
+		if (!price || !size || !price || !stopLoss) {
 			return;
 		}
+
+		if (price < 0 || size < 0 || price < 0 || stopLoss < 0) {
+			return;
+		}
+
 		this.positionDataService.addPosition({ price, loss, type, profit, size } as Position);
 	}
 
