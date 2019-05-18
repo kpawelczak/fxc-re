@@ -1,27 +1,5 @@
 @import 'util/fabric/ui/variables.scss';
+@import '../mixins';
 
-*:focus {
-  outline: none;
-}
-
-input::-webkit-inner-spin-button,
-input::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-}
-
-input[type=number] {
-  -moz-appearance: textfield;
-}
-
-select {
-  background: $white;
-  border: {
-    color: $gray;
-    style: solid;
-    width: 1px;
-    radius: 25px;
-  }
-  font-size: 12px;
-  display: inline-block;
-  padding: 0 5px;
-}
+@include li();
+@include inputRemoveArrows();

@@ -1,60 +1,68 @@
-<!-- Positons Form -->
-<ul>
-	<gui-chip [primary]="true">Positons</gui-chip>
-</ul>
-<ul>
-	<gui-chip>Price</gui-chip>
-	<input gui-input
-		   [(ngModel)]="price"
-		   placeholder="Enter Price"
-		   type="number">
-</ul>
-<ul>
-	<gui-chip>Take Profit</gui-chip>
-	<input gui-input
-		   [(ngModel)]="takeprofit"
-		   placeholder="Enter Take Profit"
-		   type="number">
-</ul>
-<ul>
-	<gui-chip>Stop Loss</gui-chip>
-	<input gui-input
-		   [(ngModel)]="stoploss"
-		   placeholder="Enter Stop Loss"
-		   type="number">
-</ul>
-<ul>
-	<gui-chip>Size</gui-chip>
-	<input gui-input
-		   [(ngModel)]="size"
-		   placeholder="Enter Size"
-		   type="number">
-</ul>
-<ul>
-	<button gui-button
-			(click)="pos_calc();
-			add(size, price, type, loss, profit)">Add
-	</button>
-</ul>
+<section>
+	<ul>
+		<gui-chip [primary]="true">Positons</gui-chip>
+		<li>
+			<gui-chip>Price</gui-chip>
+			<label>
+				<input gui-input
+					   [(ngModel)]="price"
+					   placeholder="Enter Price"
+					   type="number">
+			</label>
+		</li>
+		<li>
+			<gui-chip>Take Profit</gui-chip>
+			<label>
+				<input gui-input
+					   [(ngModel)]="takeProfit"
+					   placeholder="Enter Take Profit"
+					   type="number">
+			</label>
+		</li>
+		<li>
+			<gui-chip>Stop Loss</gui-chip>
+			<label>
+				<input gui-input
+					   [(ngModel)]="stopLoss"
+					   placeholder="Enter Stop Loss"
+					   type="number">
+			</label>
+		</li>
+		<li>
+			<gui-chip>Size</gui-chip>
+			<label>
+				<input gui-input
+					   [(ngModel)]="size"
+					   placeholder="Enter Size"
+					   type="number">
+			</label>
+		</li>
+		<li>
+			<button gui-button
+					(click)="pos_calc(); addPositionToTable(size, price, type, loss, profit)">
+				Add
+			</button>
+		</li>
+	</ul>
+</section>
 
-<!-- Positons Table -->
-<ul class="positions">
-	<section class="postionLabels">
-		<span class="id">Id</span>
-		<span class="type">Type</span>
-		<span class="size">Size</span>
-		<span class="price">Price</span>
-		<span class="loss">Loss</span>
-		<span class="profit">Profit</span>
-	</section>
-	<section class="newPositions" *ngFor="let pos of positions">
-		<span class="id">{{pos.id}}</span>
-		<span class="type">{{pos.type}}</span>
-		<span class="size">{{pos.size}}</span>
-		<span class="price">{{pos.price}}</span>
-		<!-- <span class="pipsloss">{{pos.pipsloss}}</span> -->
-		<span class="loss">{{pos.loss}}</span>
-		<!-- <span class="pipswin">{{pos.pipswin}}</span> -->
-		<span class="profit">{{pos.profit}}</span>
-	</section>
-</ul>
+<section class="positions-table">
+	<table>
+		<tr>
+			<th class="id">Id</th>
+			<th class="type">Type</th>
+			<th class="size">Size</th>
+			<th class="price">Price</th>
+			<th class="loss">Loss</th>
+			<th class="profit">Profit</th>
+		</tr>
+		<tr *ngFor="let pos of positions">
+			<td class="id">{{pos.id}}</td>
+			<td class="type">{{pos.type}}</td>
+			<td class="size">{{pos.size}}</td>
+			<td class="price">{{pos.price}}</td>
+			<td class="loss">{{pos.loss}}</td>
+			<td class="profit">{{pos.profit}}</td>
+		</tr>
+	</table>
+</section>

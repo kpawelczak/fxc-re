@@ -48,8 +48,6 @@ export class AppComponent {
 		}
 	}
 
-	// Inputs
-
 	setHighFromInput(DataHigh) {
 		this.High = DataHigh;
 	}
@@ -69,8 +67,6 @@ export class AppComponent {
 	setCloseFromInput(DataClose) {
 		this.Close = DataClose;
 	}
-
-	// Calculations Data
 
 	appCalculatorFiboResults(data) {
 		this.fiboResults = data;

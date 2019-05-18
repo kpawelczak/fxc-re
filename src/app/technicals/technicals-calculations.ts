@@ -3,10 +3,12 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 @Component({
 	selector: 'tech-calc',
 	template: `
-		<button gui-button
-				(click)="calculateTechnicals()">
-			Execute!
-		</button>
+		<ul>
+			<button gui-button
+					(click)="calculateTechnicals()">
+				Execute!
+			</button>
+		</ul>
 	`
 })
 

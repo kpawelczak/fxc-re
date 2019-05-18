@@ -1,23 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 
-import { PositionDataTable } from '../position-data-table/position-data-table';
-import { PositionDataService } from '../position-data-table/position-data.service';
+import { Position } from './position-data/position';
+import { PositionDataService } from './position-data/position-data.service';
 
 @Component({
 	selector: 'positions-table',
 	templateUrl: './positions-table.component.html',
-	styleUrls: ['./positions-table.component.scss']
+	styleUrls: ['./positions-table.component.scss'],
+	providers: [PositionDataService]
 })
 export class PositionsTableComponent implements OnInit {
 
-	positions: PositionDataTable[];
+	positions: Position[];
 
 	public price: number;
-	public takeprofit: number;
-	public stoploss: number;
-	public profit: string;
+	public takeProfit: number;
+	public stopLoss: number;
+	public profit: number;
 	public type: string;
 	public loss: number;
+	public size: number;
 
 	constructor(private positionDataService: PositionDataService) {
 	}
@@ -31,41 +33,32 @@ export class PositionsTableComponent implements OnInit {
 			.subscribe(positions => this.positions = positions);
 	}
 
-	add(
-		size: number,
-		price: number,
-		type: string,
-		// pipsloss: string,
-		loss: number,
-		// pipswin: string,
-		profit: number
-	): void {
+	addPositionToTable(size: number, price: number, type: string, loss: number, profit: number): void {
 
-		if (!price) {
+		if (!price || !size || !price) {
 			return;
 		}
-		if (!size) {
-			return;
-		}
-
-		this.positionDataService.addPos({ price, loss, type, profit, size } as PositionDataTable)
-			.subscribe(pos => {
-				this.positions.push(pos);
-			});
+		this.positionDataService.addPosition({ price, loss, type, profit, size } as Position);
 	}
 
 	pos_calc() {
 
-		if (this.takeprofit > this.price) {
+		if (this.takeProfit > this.price) {
 			this.type = 'buy';
-			this.profit = ((this.takeprofit - this.price) * 10000).toFixed(0);
-			this.loss = (this.price - this.stoploss) * 100;
+			this.profit = ((this.takeProfit - this.price) * 10000);
+			this.loss = Math.floor((this.price - this.stopLoss) * 100);
 		}
 
-		if (this.takeprofit < this.price) {
+		if (this.takeProfit < this.price) {
 			this.type = 'sell';
-			this.profit = ((this.price - this.takeprofit) * 10000).toFixed(0);
-			this.loss = (this.stoploss - this.price) * 100;
+			this.profit = Math.floor((this.price - this.takeProfit) * 10000);
+			this.loss = Math.floor((this.stopLoss - this.price) * 100);
+		}
+
+		if (this.takeProfit === this.price) {
+			this.type = '-';
+			this.profit = 0;
+			this.loss = 0;
 		}
 	}
 }

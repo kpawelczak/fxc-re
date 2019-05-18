@@ -1,32 +1,78 @@
-@import './mixins/mixins.scss';
 @import 'util/fabric/ui/variables.scss';
+@import '../mixins';
 
-.positions {
-  margin: 0 0 0 0;
-}
+@include li();
+@include inputRemoveArrows();
 
-.positions span {
-  @include position();
-}
+.positions-table {
+  padding-left: 40px;
+  font-family: $font-family;
+  font-size: $font-size;
 
-.postionLabels span {
-  background: $white;
-}
+  table {
+    border-collapse: separate;
+    border-spacing: 0;
 
-.newPositions {
-  position: relative;
-  top: -28px;
-  z-index: -1;
-}
+    tr:first-child th:first-child {
+      border-top-left-radius: $border-radius;
+    }
 
-.positions .id {
-  width: 15px;
-}
+    tr:first-child th:last-child {
+      border-top-right-radius: $border-radius;
+    }
 
-.positions .size {
-  width: 30px;
-}
+    tr:last-child td:first-child {
+      border-bottom-left-radius: $border-radius;
+    }
 
-.positions .type {
-  width: 30px;
+    tr:last-child td:last-child {
+      border-bottom-right-radius: $border-radius;
+    }
+
+    th, td {
+      height: 20px;
+      width: 60px;
+      padding: $grid;
+      text-align: center;
+    }
+
+    th {
+      background: $primary;
+      border: {
+        color: $primary;
+        style: solid;
+        width: 1px;
+      }
+      color: $white;
+      font-weight: bold;
+    }
+
+    td {
+      border: {
+        color: $border-color;
+        style: solid;
+        width: 0 0 1px 1px;
+      }
+
+      &:last-child {
+        border-width: 0 1px 1px 1px
+      }
+    }
+
+    tr:hover {
+      background: lighten($primary-lightest, 20);
+    }
+
+    .id {
+      width: 15px;
+    }
+
+    .size {
+      width: 30px;
+    }
+
+    .type {
+      width: 30px;
+    }
+  }
 }
