@@ -15,19 +15,19 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class TechnicalsCalculationsComponent {
 
 	@Input()
-	public High;
+	public high;
 
 	@Input()
-	public Low;
+	public low;
 
 	@Input()
 	public type;
 
 	@Input()
-	public Open;
+	public open;
 
 	@Input()
-	public Close;
+	public close;
 
 	@Output()
 	calculatorPivotResults: EventEmitter<Array<string>> = new EventEmitter();
@@ -59,7 +59,7 @@ export class TechnicalsCalculationsComponent {
 	calculateTechnicals() {
 		this.showResults = true;
 		this.calculatorShowResults.emit(this.showResults);
-		this.range = this.High - this.Low;
+		this.range = this.high - this.low;
 		this.cal_fib();
 		this.cal_pivot();
 	}
@@ -67,17 +67,17 @@ export class TechnicalsCalculationsComponent {
 	cal_fib() {
 
 		if (this.type === 'Long') {
-			this.result_236 = ((this.range * 0.764) + this.Low).toFixed(5);
-			this.result_382 = ((this.range * 0.618) + this.Low).toFixed(5);
-			this.result_50 = ((this.range * 0.50) + this.Low).toFixed(5);
-			this.result_618 = ((this.range * 0.382) + this.Low).toFixed(5);
+			this.result_236 = ((this.range * 0.764) + this.low).toFixed(5);
+			this.result_382 = ((this.range * 0.618) + this.low).toFixed(5);
+			this.result_50 = ((this.range * 0.50) + this.low).toFixed(5);
+			this.result_618 = ((this.range * 0.382) + this.low).toFixed(5);
 		}
 
 		if (this.type === 'Short') {
-			this.result_236 = (this.High - (this.range * 0.764)).toFixed(5);
-			this.result_382 = (this.High - (this.range * 0.618)).toFixed(5);
-			this.result_50 = (this.High - (this.range * 0.50)).toFixed(5);
-			this.result_618 = (this.High - (this.range * 0.382)).toFixed(5);
+			this.result_236 = (this.high - (this.range * 0.764)).toFixed(5);
+			this.result_382 = (this.high - (this.range * 0.618)).toFixed(5);
+			this.result_50 = (this.high - (this.range * 0.50)).toFixed(5);
+			this.result_618 = (this.high - (this.range * 0.382)).toFixed(5);
 		}
 
 		this.fiboResults =
@@ -93,13 +93,13 @@ export class TechnicalsCalculationsComponent {
 
 	cal_pivot() {
 
-		this.Pivot = (this.High + this.Low + this.Close) / 3;
+		this.Pivot = (this.high + this.low + this.close + this.open) / 4;
 
 		this.result_R3 = (this.Pivot + this.range * 3).toFixed(5);
 		this.result_R2 = (this.Pivot + this.range * 2).toFixed(5);
-		this.result_R1 = (this.Pivot * 2 - this.Low).toFixed(5);
+		this.result_R1 = (this.Pivot * 2 - this.low).toFixed(5);
 		this.result_PP = (this.Pivot).toFixed(5);
-		this.result_S1 = (this.Pivot * 2 - this.High).toFixed(5);
+		this.result_S1 = (this.Pivot * 2 - this.high).toFixed(5);
 		this.result_S2 = (this.Pivot - this.range * 2).toFixed(5);
 		this.result_S3 = (this.Pivot - this.range * 3).toFixed(5);
 

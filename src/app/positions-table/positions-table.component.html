@@ -39,22 +39,23 @@
 		</li>
 		<li>
 			<button gui-button
-					(click)="pos_calc(); addPositionToTable(size, price, type, stopLoss, loss, profit)">
+					(click)="pos_calc(); addPositionToTable(id, type, size, price, loss, profit)">
 				Add
 			</button>
 		</li>
 	</ul>
 </section>
 
-<section class="positions-table">
+<section [ngClass]="{'tableHidden': isTableHidden}"
+		class="positions-table">
 	<table>
 		<tr>
 			<th class="id">Id</th>
 			<th class="type">Type</th>
 			<th class="size">Size</th>
 			<th class="price">Price</th>
-			<th class="loss">Loss</th>
-			<th class="profit">Profit</th>
+			<th class="loss">Pips (-)</th>
+			<th class="profit">Pips (+)</th>
 		</tr>
 		<tr *ngFor="let pos of positions">
 			<td class="id">{{pos.id}}</td>

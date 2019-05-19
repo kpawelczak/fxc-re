@@ -15,11 +15,11 @@ export class AppComponent {
 	private technicalsCheckedFibo: boolean;
 	private technicalsCheckedPivot: boolean;
 
-	public High;
-	public Low;
+	public high;
+	public low;
 	public type;
-	public Open;
-	public Close;
+	public open;
+	public close;
 
 	public fiboResults: Array<string>;
 	public pivotResults: Array<string>;
@@ -49,11 +49,11 @@ export class AppComponent {
 	}
 
 	setHighFromInput(DataHigh) {
-		this.High = DataHigh;
+		this.high = DataHigh;
 	}
 
 	setLowFromInput(DataLow) {
-		this.Low = DataLow;
+		this.low = DataLow;
 	}
 
 	setTypeFromInput(DataType) {
@@ -61,11 +61,11 @@ export class AppComponent {
 	}
 
 	setOpenFromInput(DataOpen) {
-		this.Open = DataOpen;
+		this.open = DataOpen;
 	}
 
 	setCloseFromInput(DataClose) {
-		this.Close = DataClose;
+		this.close = DataClose;
 	}
 
 	appCalculatorFiboResults(data) {

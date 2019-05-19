@@ -28,18 +28,18 @@ export class TechnicalsComponent {
 	@Output()
 	setClose: EventEmitter<string> = new EventEmitter();
 
-	public High: string;
-	public Low: string;
+	public high: string;
+	public low: string;
 	public type: string;
-	public Open: string;
-	public Close: string;
+	public open: string;
+	public close: string;
 
 	onChangeHigh() {
-		this.setHigh.emit(this.High);
+		this.setHigh.emit(this.high);
 	}
 
 	onChangeLow() {
-		this.setLow.emit(this.Low);
+		this.setLow.emit(this.low);
 	}
 
 	onChangeType() {
@@ -51,10 +51,10 @@ export class TechnicalsComponent {
 	}
 
 	onChangeOpen() {
-		this.setOpen.emit(this.Open);
+		this.setOpen.emit(this.open);
 	}
 
 	onChangeClose() {
-		this.setClose.emit(this.Close);
+		this.setClose.emit(this.close);
 	}
 }

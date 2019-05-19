@@ -12,7 +12,7 @@ export class PositionDataService {
 		return of(POSITIONS);
 	}
 
-	addPosition(position: Position) {
+	insertPosition(position: Position) {
 		Promise.resolve(POSITIONS).then((postions: Position[]) => postions.push(position));
 	}
 }

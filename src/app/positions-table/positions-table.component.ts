@@ -13,13 +13,15 @@ export class PositionsTableComponent implements OnInit {
 
 	positions: Position[];
 
-	public price: number;
-	public takeProfit: number;
-	public stopLoss: number;
-	public profit: number;
-	public type: string;
-	public loss: number;
-	public size: number;
+	private id: number = 1;
+	private type: string;
+	private size: number;
+	private price: number;
+	private loss: number;
+	private profit: number;
+	private takeProfit: number;
+	private stopLoss: number;
+	private isTableHidden: boolean = true;
 
 	constructor(private positionDataService: PositionDataService) {
 	}
@@ -33,31 +35,39 @@ export class PositionsTableComponent implements OnInit {
 			.subscribe(positions => this.positions = positions);
 	}
 
-	addPositionToTable(size: number, price: number, type: string, stopLoss: number, loss: number, profit: number): void {
+	addPositionToTable(
+		id: number,
+		type: string,
+		size: number,
+		price: number,
+		loss: number,
+		profit: number): void {
 
-		if (!price || !size || !price || !stopLoss) {
+		if (!this.price || !this.size || !this.price || !this.stopLoss) {
 			return;
 		}
 
-		if (price < 0 || size < 0 || price < 0 || stopLoss < 0) {
+		if (this.price < 0 || this.size < 0 || this.price < 0 || this.stopLoss < 0) {
 			return;
 		}
 
-		this.positionDataService.addPosition({ price, loss, type, profit, size } as Position);
+		this.id++;
+		this.isTableHidden = false;
+		this.positionDataService.insertPosition({ id, type, size, price, loss, profit } as Position);
 	}
 
 	pos_calc() {
 
 		if (this.takeProfit > this.price) {
 			this.type = 'buy';
-			this.profit = ((this.takeProfit - this.price) * 10000);
-			this.loss = Math.floor((this.price - this.stopLoss) * 100);
+			this.profit = Math.floor((this.takeProfit - this.price) * 10000);
+			this.loss = Math.floor((this.price - this.stopLoss) * 10000);
 		}
 
 		if (this.takeProfit < this.price) {
 			this.type = 'sell';
 			this.profit = Math.floor((this.price - this.takeProfit) * 10000);
-			this.loss = Math.floor((this.stopLoss - this.price) * 100);
+			this.loss = Math.floor((this.stopLoss - this.price) * 10000);
 		}
 
 		if (this.takeProfit === this.price) {
