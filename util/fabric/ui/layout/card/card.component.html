@@ -1,4 +1,6 @@
-<div class="gui-card-body">
+<div class="gui-card-body"
+	 [ngClass]="{'gui-content-block': isOnlyContentBlockEnabled()}">
+
 	<div [ngClass]="{'gui-card-title': isTitleEnabled()}">
 		{{title}}
 	</div>
@@ -6,9 +8,15 @@
 	<img [ngClass]="{'gui-card-img': isImgEnabled()}"
 		 src="{{image}}"/>
 
-	<div [ngClass]="{'gui-card-description': isDescriptionEnabled()}">
-		{{description}}
+	<div [ngClass]="{'gui-card-content-block': isContentBlockEnabled()}">
+		<div
+			*ngFor="let block of contentBlock"
+			[ngClass]="{'gui-card-content-block-item': isContentBlockEnabled()}">
+			{{block}}
+		</div>
 	</div>
 
-	<ng-content></ng-content>
+	<div class="gui-content">
+		<ng-content></ng-content>
+	</div>
 </div>

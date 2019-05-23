@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, ViewEncapsulation, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, ViewEncapsulation } from '@angular/core';
 
 @Component({
 	selector: 'gui-card',
@@ -19,7 +19,7 @@ export class FabricCardComponent {
 	image: string;
 
 	@Input()
-	description: string;
+	contentBlock: Array<string> = [];
 
 	isTitleEnabled(): boolean {
 		return !!this.title;
@@ -29,7 +29,11 @@ export class FabricCardComponent {
 		return !!this.image;
 	}
 
-	isDescriptionEnabled(): boolean {
-		return !!this.description;
+	isContentBlockEnabled(): boolean {
+		return !!this.contentBlock;
+	}
+
+	isOnlyContentBlockEnabled(): boolean {
+		return !this.title && !this.image && !!this.contentBlock;
 	}
 }
