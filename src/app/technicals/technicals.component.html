@@ -51,9 +51,10 @@
 <ul>
 	<gui-select
 			*ngIf="fiboChecked"
-			[ngClass]="{fiboHidden: fiboChecked}"
-			(optionChanged)="selectedOptionFromInput($event)"
 			(click)='onChangeType()'
-			[options]="['Long','Short']">
+			[options]="['Long','Short']"
+			[ngClass]="{fiboHidden: fiboChecked}"
+			[selected]="selected"
+			(optionChanged)="getSelectedOption($event)">
 	</gui-select>
 </ul>

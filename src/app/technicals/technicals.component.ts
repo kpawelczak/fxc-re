@@ -1,11 +1,11 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
 	selector: 'technicals',
 	templateUrl: './technicals.component.html',
 	styleUrls: ['./technicals.component.scss']
 })
-export class TechnicalsComponent {
+export class TechnicalsComponent implements OnInit {
 
 	@Input()
 	public fiboChecked;
@@ -33,6 +33,11 @@ export class TechnicalsComponent {
 	public type: string;
 	public open: string;
 	public close: string;
+	private selected: string = 'Long';
+
+	ngOnInit() {
+		this.setSelectedOption();
+	}
 
 	onChangeHigh() {
 		this.setHigh.emit(this.high);
@@ -46,8 +51,12 @@ export class TechnicalsComponent {
 		this.setType.emit(this.type);
 	}
 
-	selectedOptionFromInput(DataType) {
-		this.type = DataType;
+	getSelectedOption(type) {
+		this.type = type;
+	}
+
+	setSelectedOption() {
+		this.setType.emit(this.selected);
 	}
 
 	onChangeOpen() {

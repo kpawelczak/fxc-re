@@ -1,16 +1,17 @@
 import {
-	Component,
 	ChangeDetectionStrategy,
-	ViewEncapsulation,
-	Input,
-	Output,
-	EventEmitter,
+	ChangeDetectorRef,
+	Component,
 	ElementRef,
+	EventEmitter,
+	HostListener,
+	Input,
 	OnChanges,
+	Output,
+	Renderer2,
 	SimpleChanges,
 	ViewChild,
-	Renderer2,
-	ChangeDetectorRef
+	ViewEncapsulation
 } from '@angular/core';
 
 @Component({
@@ -27,6 +28,14 @@ export class FabricSelectComponent implements OnChanges {
 
 	@ViewChild('optionlist')
 	optionListRef: ElementRef;
+
+	@ViewChild('container')
+	containerRef: ElementRef;
+
+	@HostListener('window:resize')
+	onResize() {
+		this.windowSize = window.innerHeight;
+	}
 
 	@Input()
 	options: Array<string> = [];
@@ -48,7 +57,13 @@ export class FabricSelectComponent implements OnChanges {
 
 	selectedOption: string;
 
-	initAnimationDisabled = true;
+	initAnimationDisabled: boolean = true;
+
+	windowSize: number;
+
+	private canOpenDownward: boolean;
+
+	private canOpenUpward: boolean;
 
 	private open: boolean = false;
 
@@ -57,6 +72,7 @@ export class FabricSelectComponent implements OnChanges {
 	constructor(private elementRef: ElementRef,
 				private renderer: Renderer2,
 				private changeDetectorRef: ChangeDetectorRef) {
+		this.onResize();
 	}
 
 	ngOnChanges(changes: SimpleChanges) {
@@ -72,25 +88,42 @@ export class FabricSelectComponent implements OnChanges {
 		}
 	}
 
-	openOptions(): void {
-		this.setOpen(!this.open);
-		this.initAnimationDisabled = false;
-		this.changeDetectorRef.detectChanges();
+	calculateDirection(): void {
+		const containerEl = this.containerRef.nativeElement,
+			containerHeight = containerEl.offsetHeight,
+			rectBottom = containerEl.getBoundingClientRect().bottom,
+			optionsHeight = containerHeight * this.options.length,
+			availableBottomSpace = this.windowSize - rectBottom - optionsHeight,
+			availableTopSpace = rectBottom - optionsHeight - containerHeight;
+
+		this.canOpenUpward = availableTopSpace > 0;
+		this.canOpenDownward = availableBottomSpace > 0;
 	}
 
-	clickOutside(event: any): void {
-		if (!this.elementRef.nativeElement.contains(event.target)) {
-			this.setOpen(false);
+	tryToOpen(event: any): void {
+
+		if (this.isContainerDisabled(event)) {
+			event.stopPropagation();
+		} else {
+			this.toggleOptions(!this.open);
+			this.initAnimationDisabled = false;
+			this.changeDetectorRef.detectChanges();
 		}
 	}
 
-	setOpen(opened: boolean) {
+	clickOutside(event: any): void {
+		if (this.isContainerClicked(event)) {
+			this.toggleOptions(false);
+		}
+	}
+
+	toggleOptions(opened: boolean) {
 		this.open = opened;
 
 		if (this.open) {
-			this.addClass('gui-options-opened');
+			this.openOptions();
 		} else {
-			this.removeClass('gui-options-opened');
+			this.closeOptions();
 		}
 	}
 
@@ -108,7 +141,46 @@ export class FabricSelectComponent implements OnChanges {
 	tryToSelect(option: string): void {
 		if (this.options.indexOf(option) !== -1) {
 			this.selectedOption = option;
+			this.optionChanged.emit(option);
 		}
+	}
+
+	private openOptions(): void {
+		this.calculateDirection();
+
+		if (this.canOpenDownward || !this.canOpenUpward) {
+			this.openDownward();
+		} else {
+			this.openUpward();
+		}
+	}
+
+	private openDownward(): void {
+		this.addClass('gui-options-opened');
+		this.addClass('gui-downward');
+		this.removeClass('gui-upward');
+	}
+
+	private openUpward(): void {
+		this.addClass('gui-options-opened');
+		this.addClass('gui-upward');
+		this.removeClass('gui-downward');
+	}
+
+	private closeOptions(): void {
+		const optionsElHasOpenClass = this.elementRef.nativeElement.classList.contains('gui-options-opened');
+
+		if (optionsElHasOpenClass) {
+			this.removeClass('gui-options-opened');
+		}
+	}
+
+	private isContainerClicked(event: any): boolean {
+		return !this.elementRef.nativeElement.contains(event.target);
+	}
+
+	private isContainerDisabled(event: any): boolean {
+		return event.target.classList.contains('gui-disabled');
 	}
 
 	private setSelectedOption(optionIndex: number): void {

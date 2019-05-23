@@ -5,133 +5,176 @@ $arrow-color: $black-light;
 $border-select-color: $focus;
 $border-width: 1px;
 $padding: $grid $grid*4 $grid $grid*1.5;
+$padding-transformed: $grid $grid*1.5 $grid $grid*4;
 $selected-background: $gray-lightest;
 
 .gui-select {
 
-  .gui-select-container {
-    background: $white;
-    border: {
-      color: $border-color;
-      style: solid;
-      width: $border-width;
-      radius: $border-radius;
-    }
-    cursor: pointer;
-    color: $black;
-    display: inline-block;
-    font: $font;
-    padding: $padding;
-    position: relative;
+	.gui-select-container {
+		background: $white;
+		border: {
+			color: $border-color;
+			style: solid;
+			width: $border-width;
+			radius: $border-radius;
+		}
+		cursor: pointer;
+		color: $black;
+		display: inline-block;
+		font: $font;
+		padding: $padding;
+		position: relative;
 
-    &:hover {
-      border-color: $gray;
-    }
+		&:hover {
+			border-color: $gray;
+		}
 
-    .gui-select-arrow {
-      border: 4px solid transparent;
-      border-color: $arrow-color transparent transparent transparent;
-      position: absolute;
-      top: 5px;
-      right: 10px;
-      margin: 8px;
-      width: 0;
-      height: 0;
-    }
+		.gui-select-arrow {
+			border: 4px solid transparent;
+			border-color: $arrow-color transparent transparent transparent;
+			position: absolute;
+			top: 5px;
+			right: 10px;
+			margin: 8px;
+			width: 0;
+			height: 0;
+		}
 
-    .gui-options {
-      background: inherit;
-      border: {
-        color: $border-select-color;
-        style: solid;
-        width: $border-width;
-        top: none;
-        radius: 0 0 $border-radius $border-radius
-      }
-      margin: $grid 0 0 0;
-      left: -1px;
-      overflow: hidden;
-      padding: 0;
-      position: absolute;
-      z-index: 2;
-      animation: close 0.1s forwards;
+		.gui-options {
+			background: inherit;
+			left: -1px;
+			margin: $grid 0 0 0;
+			overflow: hidden;
+			padding: 0;
+			position: absolute;
+			z-index: 2;
+			animation: close 0.1s forwards;
 
-      .gui-option {
-        border-top: {
-          style: solid;
-          width: $border-width;
-          color: $gray-lightest;
-        }
-        padding: $padding;
-        list-style-type: none;
+			.gui-option {
+				padding: $padding;
+				list-style-type: none;
 
-        &:hover {
-          background: $gainsboro;
-        }
-      }
-    }
+				&:hover {
+					background: $gainsboro;
+				}
+			}
+		}
 
-    @include disableTextSelect();
-  }
+		@include disableTextSelect();
+	}
 
-  &.gui-options-opened {
+	&.gui-options-opened {
 
-    .gui-select-container {
-      border: {
-        color: $border-select-color;
-        radius: $border-radius $border-radius 0 0;
-      }
-    }
+		.gui-select-container {
+			border: {
+				color: $border-select-color;
+				radius: $border-radius $border-radius 0 0;
+			}
+		}
 
-    .gui-select-arrow {
-      border: 4px solid transparent;
-      border-color: transparent transparent $arrow-color transparent;
-      top: 1px;
-    }
+		.gui-options {
+			animation: load 0.2s forwards;
+		}
+	}
 
-    .gui-options {
-      animation: load 0.2s forwards;
-    }
-  }
+	&.gui-downward {
 
-  .gui-selected-option {
-    background: $selected-background;
-    font-weight: bold;
-  }
+		.gui-options {
+			border: {
+				color: $border-select-color;
+				style: solid;
+				width: $border-width;
+				top: none;
+				radius: 0 0 $border-radius $border-radius
+			}
+		}
 
-  .gui-disabled {
-    color: $disabled;
-    pointer-events: none;
+		.gui-option {
+			border: {
+				style: solid;
+				width: $border-width 0 0 0;
+				color: $gray-lightest;
+			}
+		}
+	}
 
-    .gui-select-arrow {
-      border-color: $disabled transparent transparent transparent;
-    }
-  }
+	&.gui-upward {
 
-  .initAnimationDisabled {
+		.gui-select-container {
+			padding: $padding-transformed;
+			transform: rotate(180deg);
 
-    &.gui-options {
-      display: none;
-    }
-  }
+			.gui-select-value {
+				transform: rotate(180deg);
+			}
 
-  @keyframes load {
-    0% {
-      transform: translateY(-50%) scaleY(0);
-    }
+			.gui-select-arrow {
+				border: 4px solid transparent;
+				border-color: transparent transparent $arrow-color transparent;
+				top: auto;
+				left: 10px;
+				bottom: 5px;
+			}
+		}
 
-    100% {
-      transform: translateY(0%) scaleY(1);
-    }
-  }
+		.gui-options {
+			border: {
+				color: $border-select-color;
+				style: solid;
+				width: $border-width;
+				top: none;
+				radius: 0 0 $border-radius $border-radius
+			}
+		}
 
-  @keyframes close {
-    0% {
-      transform: translateY(0%) scaleY(1);
-    }
+		.gui-option {
+			border: {
+				style: solid;
+				width: 0 0 $border-width 0;
+				color: $gray-lightest;
+			}
+			transform: rotate(180deg);
+		}
+	}
 
-    100% {
-      transform: translateY(-50%) scaleY(0);
-    }
-  }
+	.gui-selected-option {
+		background: $selected-background;
+		font-weight: bold;
+	}
+
+	.gui-disabled {
+		color: $disabled;
+		pointer-events: none;
+
+		.gui-select-arrow {
+			border-color: $disabled transparent transparent transparent;
+		}
+	}
+
+	.initAnimationDisabled {
+
+		&.gui-options {
+			display: none;
+		}
+	}
+
+	@keyframes load {
+		0% {
+			transform: translateY(-50%) scaleY(0);
+		}
+
+		100% {
+			transform: translateY(0%) scaleY(1);
+		}
+	}
+
+	@keyframes close {
+		0% {
+			transform: translateY(0%) scaleY(1);
+		}
+
+		100% {
+			transform: translateY(-50%) scaleY(0);
+		}
+	}
 }

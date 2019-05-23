@@ -1,12 +1,13 @@
-<div (click)="openOptions()"
+<div #container
+	(click)="tryToOpen($event)"
 	 (document:click)="clickOutside($event)"
 	 [style.width.px]="width"
 	 [ngClass]="{'gui-disabled': disabled}"
 	 class="gui-select-container">
 
-	<span class="gui-select-value">
+	<div class="gui-select-value">
 		{{selectedOption}}
-	</span>
+	</div>
 
 	<span class="gui-select-arrow"></span>
 
