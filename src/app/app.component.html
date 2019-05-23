@@ -52,7 +52,7 @@
 		</tech-calc>
 	</div>
 
-	<section *ngIf="showResults"
+	<div *ngIf="showResults"
 			 [ngClass]="{resultsHidden: showResults}">
 		<div *ngIf="showFibo"
 			 [ngClass]="{fiboHidden: showFibo}"
@@ -95,7 +95,7 @@
 			<gui-chip>S3 = {{pivotResults[6]}}</gui-chip>
 			<br>
 		</div>
-	</section>
+	</div>
 	<br>
 </div>
 <section style="margin-bottom:300px">
