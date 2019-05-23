@@ -8,6 +8,7 @@ import { TechnicalsCalculationsComponent } from './technicals/technicals-calcula
 import { TechnicalsComponent } from './technicals/technicals.component';
 
 import { FabricModule } from 'util/fabric/ui/fabric.module';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
 
@@ -21,7 +22,8 @@ import { FabricModule } from 'util/fabric/ui/fabric.module';
 		AppComponent,
 		PositionsTableComponent,
 		TechnicalsCalculationsComponent,
-		TechnicalsComponent
+		TechnicalsComponent,
+		HeaderComponent
 	],
 	bootstrap: [AppComponent]
 })
