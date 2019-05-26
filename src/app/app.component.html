@@ -57,42 +57,13 @@
 		<div *ngIf="showFibo"
 			 [ngClass]="{fiboHidden: showFibo}"
 			 class="fibo-results">
-			<ul>
-				<gui-chip> 23.6 = {{fiboResults[0]}}</gui-chip>
-			</ul>
-			<ul>
-				<gui-chip> 38.2 = {{fiboResults[1]}}</gui-chip>
-			</ul>
-			<ul>
-				<gui-chip> 50 = {{fiboResults[2]}}</gui-chip>
-			</ul>
-			<ul>
-				<gui-chip> 61.8 = {{fiboResults[3]}}</gui-chip>
-			</ul>
+			<fibonacci-results [fiboResults]="fiboResults"></fibonacci-results>
 		</div>
 
 		<div *ngIf="showPivot"
 			 [ngClass]="{pivotsHidden: showPivot}"
 			 class="pivot-results">
-			<gui-chip>R3 = {{pivotResults[0]}}</gui-chip>
-			<br>
-
-			<gui-chip>R2 = {{pivotResults[1]}}</gui-chip>
-			<br>
-
-			<gui-chip>R1 = {{pivotResults[2]}}</gui-chip>
-			<br>
-
-			<gui-chip [secondary]="true">Pivot = {{pivotResults[3]}}</gui-chip>
-			<br>
-
-			<gui-chip>S1 = {{pivotResults[4]}}</gui-chip>
-			<br>
-
-			<gui-chip>S2 = {{pivotResults[5]}}</gui-chip>
-			<br>
-
-			<gui-chip>S3 = {{pivotResults[6]}}</gui-chip>
+			<pivots-results [pivotResults]="pivotResults"></pivots-results>
 			<br>
 		</div>
 	</div>

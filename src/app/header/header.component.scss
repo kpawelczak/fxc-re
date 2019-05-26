@@ -1,9 +1,10 @@
 @import 'util/fabric/ui/variables.scss';
 
 .app-header {
-  padding: 20px;
+  padding: $grid/2;
   text-align: center;
   background: $primary;
   color: white;
-  font-size: 24px;
+  font-size: $grid*2;
+  font-family: $font-family;
 }
