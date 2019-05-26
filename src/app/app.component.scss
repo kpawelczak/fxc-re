@@ -12,7 +12,9 @@
 .fibo-results {
   position: relative;
   left: 30%;
-  top: 32+52.78px;
+  &.fibo-results-top {
+    top: 32+52.78px;
+  }
 }
 
 .pivot-results {

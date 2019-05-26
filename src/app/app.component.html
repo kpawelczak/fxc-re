@@ -48,7 +48,7 @@
 
 		<div class="technical-results">
 			<div *ngIf="showFibo"
-				 [ngClass]="{'fibo-results': showFibo}">
+				 [ngClass]="{'fibo-results': showFibo, 'fibo-results-top':showPivot}">
 				<fibonacci-results [fiboResults]="fiboResults"></fibonacci-results>
 			</div>
 
