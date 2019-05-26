@@ -18,7 +18,7 @@ $margin: $grid / 2;
   cursor: pointer;
   display: inline-block;
   font-family: $font-family;
-  font-size: 13.3333px;
+  font-size: $font-size;
   outline: none;
   padding: $padding-horizontal $padding-vertical $padding-horizontal;
   transition: background 0.2s;

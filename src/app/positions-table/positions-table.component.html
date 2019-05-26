@@ -1,69 +1,71 @@
-<section>
-	<ul>
-		<gui-chip [primary]="true">Positons</gui-chip>
-		<li>
-			<gui-chip>Price</gui-chip>
-			<label>
-				<input gui-input
-					   [(ngModel)]="price"
-					   placeholder="Enter Price"
-					   type="number">
-			</label>
-		</li>
-		<li>
-			<gui-chip>Take Profit</gui-chip>
-			<label>
-				<input gui-input
-					   [(ngModel)]="takeProfit"
-					   placeholder="Enter Take Profit"
-					   type="number">
-			</label>
-		</li>
-		<li>
-			<gui-chip>Stop Loss</gui-chip>
-			<label>
-				<input gui-input
-					   [(ngModel)]="stopLoss"
-					   placeholder="Enter Stop Loss"
-					   type="number">
-			</label>
-		</li>
-		<li>
-			<gui-chip>Size</gui-chip>
-			<label>
-				<input gui-input
-					   [(ngModel)]="size"
-					   placeholder="Enter Size"
-					   type="number">
-			</label>
-		</li>
-		<li>
-			<button gui-button
-					(click)="pos_calc(); addPositionToTable(id, type, size, price, loss, profit)">
-				Add
-			</button>
-		</li>
-	</ul>
-</section>
+<div class="positions-table-content">
+	<section>
+		<ul>
+			<gui-chip [primary]="true">Positons</gui-chip>
+			<li>
+				<gui-chip>Price</gui-chip>
+				<label>
+					<input gui-input
+						   [(ngModel)]="price"
+						   placeholder="Enter Price"
+						   type="number">
+				</label>
+			</li>
+			<li>
+				<gui-chip>Take Profit</gui-chip>
+				<label>
+					<input gui-input
+						   [(ngModel)]="takeProfit"
+						   placeholder="Enter Take Profit"
+						   type="number">
+				</label>
+			</li>
+			<li>
+				<gui-chip>Stop Loss</gui-chip>
+				<label>
+					<input gui-input
+						   [(ngModel)]="stopLoss"
+						   placeholder="Enter Stop Loss"
+						   type="number">
+				</label>
+			</li>
+			<li>
+				<gui-chip>Size</gui-chip>
+				<label>
+					<input gui-input
+						   [(ngModel)]="size"
+						   placeholder="Enter Size"
+						   type="number">
+				</label>
+			</li>
+			<li>
+				<button gui-button
+						(click)="pos_calc(); addPositionToTable(id, type, size, price, loss, profit)">
+					Add
+				</button>
+			</li>
+		</ul>
+	</section>
 
-<section [ngClass]="{'tableHidden': isTableHidden}"
-		class="positions-table">
-	<table>
-		<tr>
-			<th class="id">Id</th>
-			<th class="type">Type</th>
-			<th class="size">Size</th>
-			<th class="price">Price</th>
-			<th class="loss">Pips (-)</th>
-			<th class="profit">Pips (+)</th>
-		</tr>
-		<tr *ngFor="let pos of positions">
-			<td class="id">{{pos.id}}</td>
-			<td class="type">{{pos.type}}</td>
-			<td class="size">{{pos.size}}</td>
-			<td class="price">{{pos.price}}</td>
-			<td class="loss">{{pos.loss}}</td>
-			<td class="profit">{{pos.profit}}</td>
-		</tr>
-	</table>
-</section>
+	<section [ngClass]="{'tableHidden': isTableHidden}"
+			 class="positions-table">
+		<table>
+			<tr>
+				<th class="id">Id</th>
+				<th class="type">Type</th>
+				<th class="size">Size</th>
+				<th class="price">Price</th>
+				<th class="loss">Pips (-)</th>
+				<th class="profit">Pips (+)</th>
+			</tr>
+			<tr *ngFor="let pos of positions">
+				<td class="id">{{pos.id}}</td>
+				<td class="type">{{pos.type}}</td>
+				<td class="size">{{pos.size}}</td>
+				<td class="price">{{pos.price}}</td>
+				<td class="loss">{{pos.loss}}</td>
+				<td class="profit">{{pos.profit}}</td>
+			</tr>
+		</table>
+	</section>
+</div>

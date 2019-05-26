@@ -1,15 +1,23 @@
+@import 'util/fabric/ui/variables.scss';
 
+.app-body{
+  padding: $grid $grid*16 ;
+  background: $white;
+}
+.technicals-form, .technical-results {
+  display: inline-flex;
+}
 
 .fibo-results {
-  position: absolute;
-  left: 300px;
-  top: 201px;
+  position: relative;
+  left: 30%;
+  top: 32+52.78px;
 }
 
 .pivot-results {
-  position: absolute;
-  left: 500px;
-  top: 215px;
+  position: relative;
+  left: 45%;
+  //top: 20%;
 }
 
 .form-checkbox {

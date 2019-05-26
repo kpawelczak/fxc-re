@@ -1,74 +1,76 @@
 <app-header></app-header>
-<ul>
-	<gui-button-toggle
-			(changed)="technicalsChecked($event)"
-			(click)="techBtnChecked()"
-			[primary]="true">
-		Technicals
-	</gui-button-toggle>
-	<gui-badge>?</gui-badge>
-</ul>
-
-<div *ngIf="showTechnicals"
-	 [ngClass]="{technicalsHidden: showTechnicals}">
+<div class="app-body">
 	<ul>
-		<gui-chip>
-			<gui-checkbox
-					(changed)="fiboChecked($event)"
-					[checked]="technicalsCheckedFibo"
-					style="font-weight: bold">
-				Fibonacci
-			</gui-checkbox>
-		</gui-chip>
-
-		<gui-chip>
-			<gui-checkbox
-					(changed)="pivotChecked($event)"
-					[checked]="technicalsCheckedPivot"
-					style="font-weight: bold">
-				Pivot Points
-			</gui-checkbox>
-		</gui-chip>
+		<gui-button-toggle
+				(changed)="technicalsChecked($event)"
+				(click)="techBtnChecked()"
+				[primary]="true">
+			Technicals
+		</gui-button-toggle>
+		<gui-badge>?</gui-badge>
 	</ul>
 
-	<div>
-		<technicals
-				[fiboChecked]="showFibo"
-				[pivotChecked]="showPivot"
-				(setHigh)='setHighFromInput($event)'
-				(setLow)='setLowFromInput($event)'
-				(setType)='setTypeFromInput($event)'
-				(setOpen)='setOpenFromInput($event)'
-				(setClose)='setCloseFromInput($event)'>
-		</technicals>
+	<div *ngIf="showTechnicals"
+		 [ngClass]="{'technicals-form': showTechnicals}">
+		<div>
+			<ul>
+				<gui-chip>
+					<gui-checkbox
+							(changed)="fiboChecked($event)"
+							[checked]="technicalsCheckedFibo"
+							style="font-weight: bold">
+						Fibonacci
+					</gui-checkbox>
+				</gui-chip>
 
-		<tech-calc
-				[high]="high" [low]="low"
-				[open]="open" [close]="close"
-				[type]="type"
-				(calculatorShowResults)="showResultsCalc($event)"
-				(calculatorFiboResults)="appCalculatorFiboResults($event)"
-				(calculatorPivotResults)="appCalculatorPivotResults($event)">
-		</tech-calc>
-	</div>
+				<gui-chip>
+					<gui-checkbox
+							(changed)="pivotChecked($event)"
+							[checked]="technicalsCheckedPivot"
+							style="font-weight: bold">
+						Pivot Points
+					</gui-checkbox>
+				</gui-chip>
+			</ul>
 
-	<div *ngIf="showResults"
-			 [ngClass]="{resultsHidden: showResults}">
-		<div *ngIf="showFibo"
-			 [ngClass]="{fiboHidden: showFibo}"
-			 class="fibo-results">
-			<fibonacci-results [fiboResults]="fiboResults"></fibonacci-results>
+
+			<technicals
+					[fiboChecked]="showFibo"
+					[pivotChecked]="showPivot"
+					(setHigh)='setHighFromInput($event)'
+					(setLow)='setLowFromInput($event)'
+					(setType)='setTypeFromInput($event)'
+					(setOpen)='setOpenFromInput($event)'
+					(setClose)='setCloseFromInput($event)'>
+			</technicals>
+
+			<tech-calc
+					[high]="high" [low]="low"
+					[open]="open" [close]="close"
+					[type]="type"
+					(calculatorShowResults)="showResultsCalc($event)"
+					(calculatorFiboResults)="appCalculatorFiboResults($event)"
+					(calculatorPivotResults)="appCalculatorPivotResults($event)">
+			</tech-calc>
 		</div>
 
-		<div *ngIf="showPivot"
-			 [ngClass]="{pivotsHidden: showPivot}"
-			 class="pivot-results">
-			<pivots-results [pivotResults]="pivotResults"></pivots-results>
-			<br>
+		<div *ngIf="showResults"
+			 [ngClass]="{'technical-results': showResults}">
+			<div *ngIf="showFibo"
+				 [ngClass]="{fiboHidden: showFibo}"
+				 class="fibo-results">
+				<fibonacci-results [fiboResults]="fiboResults"></fibonacci-results>
+			</div>
+
+			<div *ngIf="showPivot"
+				 [ngClass]="{pivotsHidden: showPivot}"
+				 class="pivot-results">
+				<pivots-results [pivotResults]="pivotResults"></pivots-results>
+			</div>
 		</div>
+		<br>
 	</div>
-	<br>
+	<section style="margin-bottom:150px">
+		<positions-table></positions-table>
+	</section>
 </div>
-<section style="margin-bottom:300px">
-	<positions-table></positions-table>
-</section>

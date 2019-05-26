@@ -13,6 +13,8 @@ export class TechnicalsComponent implements OnInit {
 	@Input()
 	public pivotChecked;
 
+
+
 	@Output()
 	setHigh: EventEmitter<string> = new EventEmitter();
 
@@ -38,6 +40,28 @@ export class TechnicalsComponent implements OnInit {
 	ngOnInit() {
 		this.setSelectedOption();
 	}
+
+
+
+	@Output()
+	inputChanged: EventEmitter<Array<string>> = new EventEmitter();
+
+	private inputValues: Array<string> = [];
+
+
+	inputFilled() {
+
+		this.inputValues= [
+			this.high,
+			this.low,
+			this.type,
+			this.open,
+			this.close
+		];
+
+		this.inputChanged.emit(this.inputValues)
+	}
+
 
 	onChangeHigh() {
 		this.setHigh.emit(this.high);
