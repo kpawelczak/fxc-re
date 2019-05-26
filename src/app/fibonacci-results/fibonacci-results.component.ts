@@ -11,14 +11,8 @@ export class FibonacciResultsComponent implements OnInit {
 	fiboResults: Array<string>;
 
 	ngOnInit() {
-
 		if (this.fiboResults === undefined) {
-			return this.fiboResults = [
-				'0',
-				'0',
-				'0',
-				'0'
-			];
+			return this.fiboResults = ['0', '0', '0', '0'];
 		}
 	}
 }

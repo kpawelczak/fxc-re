@@ -4,7 +4,7 @@
 		<label>
 			<input gui-input
 				   [(ngModel)]='high'
-				   (keyup)='onChangeHigh()'
+				   (keyup)='formChanged()'
 				   placeholder="Enter High"
 				   type="number">
 		</label>
@@ -16,7 +16,7 @@
 		<label>
 			<input gui-input
 				   [(ngModel)]='low'
-				   (keyup)='onChangeLow()'
+				   (keyup)='formChanged()'
 				   placeholder="Enter Low"
 				   type="number">
 		</label>
@@ -29,7 +29,7 @@
 		<label>
 			<input gui-input
 				   [(ngModel)]='open'
-				   (keyup)='onChangeOpen()'
+				   (keyup)='formChanged()'
 				   placeholder="Enter Open"
 				   type="number">
 		</label>
@@ -42,7 +42,7 @@
 		<label>
 			<input gui-input
 				   [(ngModel)]='close'
-				   (keyup)='onChangeClose()'
+				   (keyup)='formChanged()'
 				   placeholder="Enter Close"
 				   type="number">
 		</label>
@@ -51,11 +51,10 @@
 <ul>
 	<gui-select
 			*ngIf="fiboChecked"
-			(click)='onChangeType()'
-			[options]="['Long','Short']"
+			(click)='formChanged()'
+			[options]="options"
 			[ngClass]="{fiboHidden: fiboChecked}"
 			[selected]="selected"
 			(optionChanged)="getSelectedOption($event)">
 	</gui-select>
 </ul>
-<ul></ul>

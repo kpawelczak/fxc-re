@@ -1,9 +1,10 @@
 @import 'util/fabric/ui/variables.scss';
 
-.app-body{
-  padding: $grid $grid*16 ;
+.app-body {
+  padding: $grid $grid*20;
   background: $white;
 }
+
 .technicals-form, .technical-results {
   display: inline-flex;
 }
@@ -17,7 +18,6 @@
 .pivot-results {
   position: relative;
   left: 45%;
-  //top: 20%;
 }
 
 .form-checkbox {

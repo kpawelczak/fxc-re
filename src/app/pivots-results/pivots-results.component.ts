@@ -11,17 +11,8 @@ export class PivotsResultsComponent implements OnInit {
 	pivotResults: Array<string>;
 
 	ngOnInit() {
-
 		if (this.pivotResults === undefined) {
-			return this.pivotResults = [
-				'0',
-				'0',
-				'0',
-				'0',
-				'0',
-				'0',
-				'0'
-			];
+			return this.pivotResults = ['0', '0', '0', '0', '0', '0', '0'];
 		}
 	}
 }

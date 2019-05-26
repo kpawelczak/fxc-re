@@ -33,42 +33,31 @@
 				</gui-chip>
 			</ul>
 
-
 			<technicals
 					[fiboChecked]="showFibo"
 					[pivotChecked]="showPivot"
-					(setHigh)='setHighFromInput($event)'
-					(setLow)='setLowFromInput($event)'
-					(setType)='setTypeFromInput($event)'
-					(setOpen)='setOpenFromInput($event)'
-					(setClose)='setCloseFromInput($event)'>
+					(inputChanged)="appTechnicalsInputValues($event)">
 			</technicals>
 
 			<tech-calc
-					[high]="high" [low]="low"
-					[open]="open" [close]="close"
-					[type]="type"
-					(calculatorShowResults)="showResultsCalc($event)"
+					[inputValues]="inputVaules"
 					(calculatorFiboResults)="appCalculatorFiboResults($event)"
 					(calculatorPivotResults)="appCalculatorPivotResults($event)">
 			</tech-calc>
 		</div>
 
-		<div *ngIf="showResults"
-			 [ngClass]="{'technical-results': showResults}">
+		<div class="technical-results">
 			<div *ngIf="showFibo"
-				 [ngClass]="{fiboHidden: showFibo}"
-				 class="fibo-results">
+				 [ngClass]="{'fibo-results': showFibo}">
 				<fibonacci-results [fiboResults]="fiboResults"></fibonacci-results>
 			</div>
 
 			<div *ngIf="showPivot"
-				 [ngClass]="{pivotsHidden: showPivot}"
-				 class="pivot-results">
+				 [ngClass]="{'pivot-results': showPivot}">
 				<pivots-results [pivotResults]="pivotResults"></pivots-results>
 			</div>
 		</div>
-		<br>
+
 	</div>
 	<section style="margin-bottom:150px">
 		<positions-table></positions-table>
