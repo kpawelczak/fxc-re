@@ -43,11 +43,11 @@ export class PositionsTableComponent implements OnInit {
 		loss: number,
 		profit: number): void {
 
-		if (!this.price || !this.size || !this.price || !this.stopLoss) {
+		if (!this.price || !this.size || !this.takeProfit || !this.stopLoss) {
 			return;
 		}
 
-		if (this.price < 0 || this.size < 0 || this.price < 0 || this.stopLoss < 0) {
+		if (this.price < 0 || this.size < 0 || this.takeProfit < 0 || this.stopLoss < 0) {
 			return;
 		}
 
