@@ -40,8 +40,12 @@
 			</li>
 			<li>
 				<button gui-button
-						(click)="pos_calc(); addPositionToTable(id, type, size, price, loss, profit)">
+						(click)="positionCalculate(); addPositionToTable(id, type, size, price, loss, profit)">
 					Add
+				</button>
+				<button gui-button
+						(click)="clear()">
+					clear
 				</button>
 			</li>
 		</ul>
@@ -57,6 +61,7 @@
 				<th class="price">Price</th>
 				<th class="loss">Pips (-)</th>
 				<th class="profit">Pips (+)</th>
+				<th>Delete</th>
 			</tr>
 			<tr *ngFor="let pos of positions">
 				<td class="id">{{pos.id}}</td>
@@ -65,6 +70,13 @@
 				<td class="price">{{pos.price}}</td>
 				<td class="loss">{{pos.loss}}</td>
 				<td class="profit">{{pos.profit}}</td>
+				<td>
+					<button gui-button
+							(click)="delete()"
+							[primary]="true"
+							style="padding: 4px">x
+					</button>
+				</td>
 			</tr>
 		</table>
 	</section>

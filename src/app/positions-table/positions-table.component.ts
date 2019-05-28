@@ -56,7 +56,7 @@ export class PositionsTableComponent implements OnInit {
 		this.positionDataService.insertPosition({ id, type, size, price, loss, profit } as Position);
 	}
 
-	pos_calc() {
+	positionCalculate() {
 
 		if (this.takeProfit > this.price) {
 			this.type = 'buy';
@@ -75,5 +75,15 @@ export class PositionsTableComponent implements OnInit {
 			this.profit = 0;
 			this.loss = 0;
 		}
+	}
+
+	delete() {
+
+	}
+
+	clear() {
+		this.id = 1;
+		this.isTableHidden = true;
+		this.positionDataService.clearPositions();
 	}
 }
