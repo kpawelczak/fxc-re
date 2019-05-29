@@ -77,8 +77,8 @@ export class PositionsTableComponent implements OnInit {
 		}
 	}
 
-	delete() {
-
+	delete(position: Position): void {
+		this.positionDataService.deletePosition(position);
 	}
 
 	clear() {

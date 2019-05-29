@@ -20,6 +20,16 @@ export class PositionDataService {
 		this.positions$.next(this.positions);
 	}
 
+	deletePosition(position: Position) {
+		for (let i = 0; i < this.positions.length; i++) {
+			if (this.positions[i] === position) {
+				this.positions.splice(i, 1);
+				i--;
+			}
+			this.positions$.next(this.positions);
+		}
+	}
+
 	clearPositions() {
 		this.positions = [];
 		this.positions$.next(this.positions);

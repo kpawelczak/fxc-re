@@ -63,18 +63,18 @@
 				<th class="profit">Pips (+)</th>
 				<th>Delete</th>
 			</tr>
-			<tr *ngFor="let pos of positions">
-				<td class="id">{{pos.id}}</td>
-				<td class="type">{{pos.type}}</td>
-				<td class="size">{{pos.size}}</td>
-				<td class="price">{{pos.price}}</td>
-				<td class="loss">{{pos.loss}}</td>
-				<td class="profit">{{pos.profit}}</td>
+			<tr *ngFor="let position of positions">
+				<td class="id">{{position.id}}</td>
+				<td class="type">{{position.type}}</td>
+				<td class="size">{{position.size}}</td>
+				<td class="price">{{position.price}}</td>
+				<td class="loss">{{position.loss}}</td>
+				<td class="profit">{{position.profit}}</td>
 				<td>
 					<button gui-button
-							(click)="delete()"
+							(click)="delete(position)"
 							[primary]="true"
-							style="padding: 4px">x
+							class="delete">x
 					</button>
 				</td>
 			</tr>

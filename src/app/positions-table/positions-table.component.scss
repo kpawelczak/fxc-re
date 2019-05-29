@@ -83,6 +83,13 @@
   }
 }
 
+.delete {
+  padding: 0 8px 3px 8px;
+  height: $font-size+6px;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+
 .tableHidden {
   &.positions-table {
     display: none;
