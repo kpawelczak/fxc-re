@@ -16,7 +16,7 @@ export class AppComponent {
 
 	public fiboResults: Array<string>;
 	public pivotResults: Array<string>;
-	public inputVaules: Array<string>;
+	public inputValues: Array<string>;
 
 	fiboChecked(data) {
 		this.showFibo = data;
@@ -46,6 +46,6 @@ export class AppComponent {
 	}
 
 	appTechnicalsInputValues(data) {
-		this.inputVaules = data;
+		this.inputValues = data;
 	}
 }
