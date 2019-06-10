@@ -77,6 +77,12 @@ export class PositionsTableComponent implements OnInit {
 		}
 	}
 
+	update(event, position) {
+		event.preventDefault();
+
+		console.log(position);
+	}
+
 	delete(position: Position): void {
 		this.positionDataService.deletePosition(position);
 	}

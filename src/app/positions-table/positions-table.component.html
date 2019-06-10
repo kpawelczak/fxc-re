@@ -58,16 +58,20 @@
 				<th class="id">Id</th>
 				<th class="type">Type</th>
 				<th class="size">Size</th>
-				<th class="price">Price</th>
-				<th class="loss">Pips (-)</th>
-				<th class="profit">Pips (+)</th>
+				<th>Price</th>
+				<th>Pips (-)</th>
+				<th>Pips (+)</th>
 				<th>Delete</th>
 			</tr>
 			<tr *ngFor="let position of positions">
 				<td class="id">{{position.id}}</td>
 				<td class="type">{{position.type}}</td>
 				<td class="size">{{position.size}}</td>
-				<td class="price">{{position.price}}</td>
+				<td (keydown.enter)="update($event, position)"
+					class="price"
+					contenteditable="true">
+					{{position.price}}
+				</td>
 				<td class="loss">{{position.loss}}</td>
 				<td class="profit">{{position.profit}}</td>
 				<td>
