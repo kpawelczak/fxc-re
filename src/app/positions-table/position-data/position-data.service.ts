@@ -30,6 +30,16 @@ export class PositionDataService {
 		}
 	}
 
+	updatePosition(position: Position) {
+		for (let i = 0; i < this.positions.length; i++) {
+			if (this.positions[i].id === position.id) {
+				this.positions[i] = position;
+				console.log(position)
+			}
+			this.positions$.next(this.positions);
+		}
+	}
+
 	clearPositions() {
 		this.positions = [];
 		this.positions$.next(this.positions);

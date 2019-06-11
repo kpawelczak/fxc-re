@@ -79,13 +79,14 @@ export class PositionsTableComponent implements OnInit {
 		}
 	}
 
-	update(event, position: Position): void {
+	update(event: Event, position: Position): void {
 		event.preventDefault();
-		let price = Math.floor(position.price);
 
-		this.positionCalculate(price, this.stopLoss, this.takeProfit);
+		this.positionCalculate(position.price, this.stopLoss, this.takeProfit);
 
+		this.positionDataService.updatePosition(position);
 		console.log(this.profit);
+
 	}
 
 	delete(position: Position): void {
@@ -97,4 +98,5 @@ export class PositionsTableComponent implements OnInit {
 		this.isTableHidden = true;
 		this.positionDataService.clearPositions();
 	}
+
 }
