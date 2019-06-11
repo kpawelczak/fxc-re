@@ -40,7 +40,7 @@
 			</li>
 			<li>
 				<button gui-button
-						(click)="positionCalculate(price, stopLoss, takeProfit);
+						(click)="calculate(price, stopLoss, takeProfit);
 								addPositionToTable(id, type, size, price, loss, profit, stopLoss, takeProfit)">
 					Add
 				</button>
@@ -60,6 +60,8 @@
 				<th class="type">Type</th>
 				<th class="size">Size</th>
 				<th>Price</th>
+				<th>S / L</th>
+				<th>T / P</th>
 				<th>Pips (-)</th>
 				<th>Pips (+)</th>
 				<th>Delete</th>
@@ -70,12 +72,21 @@
 				<td class="size">{{position.size}}</td>
 				<td (keydown.enter)="update($event, position)"
 					(input)="position.price=$event.target.innerText"
-					class="price"
 					contenteditable="true">
 					{{position.price}}
 				</td>
-				<td class="loss">{{position.loss}}</td>
-				<td class="profit">{{position.profit}}</td>
+				<td (keydown.enter)="update($event, position)"
+					(input)="position.stopLoss=$event.target.innerText"
+					contenteditable="true">
+					{{position.stopLoss}}
+				</td>
+				<td (keydown.enter)="update($event, position)"
+					(input)="position.takeProfit=$event.target.innerText"
+					contenteditable="true">
+					{{position.takeProfit}}
+				</td>
+				<td>{{position.loss}}</td>
+				<td>{{position.profit}}</td>
 				<td>
 					<button gui-button
 							(click)="delete(position)"
