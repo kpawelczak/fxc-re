@@ -40,7 +40,8 @@
 			</li>
 			<li>
 				<button gui-button
-						(click)="positionCalculate(); addPositionToTable(id, type, size, price, loss, profit)">
+						(click)="positionCalculate(price, stopLoss, takeProfit);
+								addPositionToTable(id, type, size, price, loss, profit, stopLoss, takeProfit)">
 					Add
 				</button>
 				<button gui-button
@@ -68,6 +69,7 @@
 				<td class="type">{{position.type}}</td>
 				<td class="size">{{position.size}}</td>
 				<td (keydown.enter)="update($event, position)"
+					(input)="position.price=$event.target.innerText"
 					class="price"
 					contenteditable="true">
 					{{position.price}}

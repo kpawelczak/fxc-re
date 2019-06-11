@@ -41,13 +41,15 @@ export class PositionsTableComponent implements OnInit {
 		size: number,
 		price: number,
 		loss: number,
-		profit: number): void {
+		profit: number,
+		stopLoss: number,
+		takeProfit: number): void {
 
-		if (!this.price || !this.size || !this.takeProfit || !this.stopLoss) {
+		if (!price || !size || !takeProfit || !stopLoss) {
 			return;
 		}
 
-		if (this.price < 0 || this.size < 0 || this.takeProfit < 0 || this.stopLoss < 0) {
+		if (price < 0 || size < 0 || takeProfit < 0 || stopLoss < 0) {
 			return;
 		}
 
@@ -56,31 +58,34 @@ export class PositionsTableComponent implements OnInit {
 		this.positionDataService.insertPosition({ id, type, size, price, loss, profit } as Position);
 	}
 
-	positionCalculate() {
+	positionCalculate(price: number, stopLoss: number, takeProfit: number): void {
 
-		if (this.takeProfit > this.price) {
+		if (takeProfit > price) {
 			this.type = 'buy';
-			this.profit = Math.floor((this.takeProfit - this.price) * 10000);
-			this.loss = Math.floor((this.price - this.stopLoss) * 10000);
+			this.profit = Math.floor((takeProfit - price) * 10000);
+			this.loss = Math.floor((price - stopLoss) * 10000);
 		}
 
-		if (this.takeProfit < this.price) {
+		if (takeProfit < price) {
 			this.type = 'sell';
-			this.profit = Math.floor((this.price - this.takeProfit) * 10000);
-			this.loss = Math.floor((this.stopLoss - this.price) * 10000);
+			this.profit = Math.floor((price - takeProfit) * 10000);
+			this.loss = Math.floor((stopLoss - price) * 10000);
 		}
 
-		if (this.takeProfit === this.price) {
+		if (takeProfit === price) {
 			this.type = '-';
 			this.profit = 0;
 			this.loss = 0;
 		}
 	}
 
-	update(event, position) {
+	update(event, position: Position): void {
 		event.preventDefault();
+		let price = Math.floor(position.price);
 
-		console.log(position);
+		this.positionCalculate(price, this.stopLoss, this.takeProfit);
+
+		console.log(this.profit);
 	}
 
 	delete(position: Position): void {
