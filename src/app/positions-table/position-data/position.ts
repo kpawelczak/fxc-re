@@ -3,6 +3,8 @@ export class Position {
 	type: string;
 	size: number;
 	price: number;
+	stopLoss: number;
+	takeProfit: number;
 	loss: number;
 	profit: number;
 }

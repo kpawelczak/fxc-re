@@ -30,60 +30,78 @@ export class PositionsTableComponent implements OnInit {
 		this.getPositions();
 	}
 
-	getPositions(): void {
+	private getPositions(): void {
 		this.positionDataService.getPositions()
 			.subscribe(positions => this.positions = positions);
 	}
 
-	addPositionToTable(
+	private addPositionToTable(
 		id: number,
 		type: string,
 		size: number,
 		price: number,
 		loss: number,
-		profit: number): void {
+		profit: number,
+		stopLoss: number,
+		takeProfit: number): void {
 
-		if (!this.price || !this.size || !this.takeProfit || !this.stopLoss) {
+		if (!price || !size || !takeProfit || !stopLoss) {
 			return;
 		}
 
-		if (this.price < 0 || this.size < 0 || this.takeProfit < 0 || this.stopLoss < 0) {
+		if (price < 0 || size < 0 || takeProfit < 0 || stopLoss < 0) {
 			return;
 		}
 
 		this.id++;
 		this.isTableHidden = false;
-		this.positionDataService.insertPosition({ id, type, size, price, loss, profit } as Position);
+		this.positionDataService.insertPosition({ id, type, size, price, loss, profit, stopLoss, takeProfit } as Position);
 	}
 
-	positionCalculate() {
+	private calculate(price: number, stopLoss: number, takeProfit: number): void {
 
-		if (this.takeProfit > this.price) {
+		const _price = price * 1,
+			_takeProfit = takeProfit * 1,
+			_stopLoss = stopLoss * 1;
+
+		if (_takeProfit > _price) {
 			this.type = 'buy';
-			this.profit = Math.floor((this.takeProfit - this.price) * 10000);
-			this.loss = Math.floor((this.price - this.stopLoss) * 10000);
+			this.profit = Math.floor((_takeProfit - _price) * 10000);
+			this.loss = Math.floor((_price - _stopLoss) * 10000);
 		}
 
-		if (this.takeProfit < this.price) {
+		if (_takeProfit < _price) {
 			this.type = 'sell';
-			this.profit = Math.floor((this.price - this.takeProfit) * 10000);
-			this.loss = Math.floor((this.stopLoss - this.price) * 10000);
+			this.profit = Math.floor((_price - _takeProfit) * 10000);
+			this.loss = Math.floor((_stopLoss - _price) * 10000);
 		}
 
-		if (this.takeProfit === this.price) {
+		if (_takeProfit === _price) {
 			this.type = '-';
 			this.profit = 0;
 			this.loss = 0;
 		}
 	}
 
-	delete(position: Position): void {
+	private update(event: Event, position: Position): void {
+		event.preventDefault();
+
+		this.calculate(position.price, position.stopLoss, position.takeProfit);
+		position.profit = this.profit;
+		position.loss = this.loss;
+		position.type = this.type;
+
+		this.positionDataService.updatePosition(position);
+	}
+
+	private delete(position: Position): void {
 		this.positionDataService.deletePosition(position);
 	}
 
-	clear() {
+	private clear() {
 		this.id = 1;
 		this.isTableHidden = true;
 		this.positionDataService.clearPositions();
 	}
+
 }

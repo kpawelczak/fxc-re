@@ -95,3 +95,8 @@
     display: none;
   }
 }
+
+[contenteditable]:focus {
+  outline: none;
+  background: $secondary-light;
+}
