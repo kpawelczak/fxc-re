@@ -2,7 +2,7 @@
 
 **Introduction**
 
- Forex Calculator is simple tool for traders, that seek better view of their transactions in the Forex market or to make more appropriate trading decisions.
+ Forex Calculators are simple tools for traders, that seek better view of their transactions in the Forex market or to make more appropriate trading decisions.
 
 It includes three calculators: 
 * _Fibonacci_ - will calculate Fibonacci retracements (23.6%, 38.2%, 50%, 61.8%) based on three values: **high, low and type**
