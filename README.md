@@ -31,7 +31,7 @@ or
 
 _Technical levels_
 
- To get Fibonacci and Pivot Points levels simply click on **Technicals** button. Depending on what you want to see check **Fibonacci** and/or **Pivot Points** checkboxes. After which type in required values and set trade **type** (for Fibonacci retracements). Values are calculated dynamically.
+ To get Fibonacci and Pivot Points levels simply click on **Technicals** button. Depending on what you want to see check **Fibonacci** and/or **Pivot Points** checkboxes. After which type in required values and set trade **type** (Fibonacci retracements). Values are calculated dynamically.
 
 _Positions_
 
