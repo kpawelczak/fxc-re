@@ -15,12 +15,12 @@ export class PositionDataService {
 		return this.positions$.asObservable();
 	}
 
-	insertPosition(position: Position) {
+	insertPosition(position: Position): void {
 		this.positions.push(position);
 		this.positions$.next(this.positions);
 	}
 
-	deletePosition(position: Position) {
+	deletePosition(position: Position): void {
 		for (let i = 0; i < this.positions.length; i++) {
 			if (this.positions[i] === position) {
 				this.positions.splice(i, 1);
@@ -30,7 +30,7 @@ export class PositionDataService {
 		}
 	}
 
-	updatePosition(position: Position) {
+	updatePosition(position: Position): void {
 		for (let i = 0; i < this.positions.length; i++) {
 			if (this.positions[i].id === position.id) {
 				this.positions[i] = position;
@@ -39,7 +39,7 @@ export class PositionDataService {
 		}
 	}
 
-	clearPositions() {
+	clearPositions(): void {
 		this.positions = [];
 		this.positions$.next(this.positions);
 	}
