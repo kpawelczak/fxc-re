@@ -7,16 +7,16 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
-	public showFibo: boolean = false;
-	public showPivot: boolean = false;
-	public showTechnicals: boolean = false;
+	showFibo: boolean = false;
+	showPivot: boolean = false;
+	showTechnicals: boolean = false;
 
 	private technicalsCheckedFibo: boolean;
 	private technicalsCheckedPivot: boolean;
 
-	public fiboResults: Array<string>;
-	public pivotResults: Array<string>;
-	public inputValues: Array<string>;
+	fiboResults: Array<string>;
+	pivotResults: Array<string>;
+	inputValues: Array<string>;
 
 	fiboChecked(data) {
 		this.showFibo = data;

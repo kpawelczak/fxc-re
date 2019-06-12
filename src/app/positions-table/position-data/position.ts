@@ -7,4 +7,6 @@ export class Position {
 	takeProfit: number;
 	loss: number;
 	profit: number;
+	moneyLoss:number;
+	moneyProfit:number
 }

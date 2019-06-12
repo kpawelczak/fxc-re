@@ -8,7 +8,7 @@ import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from
 export class TechnicalsCalculationsComponent implements OnChanges {
 
 	@Input()
-	public inputValues: Array<any> = [];
+	inputValues: Array<any> = [];
 
 	@Output()
 	calculatorPivotResults: EventEmitter<Array<string>> = new EventEmitter();

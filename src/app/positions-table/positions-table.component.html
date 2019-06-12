@@ -31,6 +31,9 @@
 			</li>
 			<li>
 				<gui-chip>Size</gui-chip>
+				<gui-badge [primary]="true" class="badge-tooltip">?
+				<span class="tooltip-text">Price per pip in desired currency</span>
+				</gui-badge>
 				<label>
 					<input gui-input
 						   [(ngModel)]="size"
@@ -40,8 +43,19 @@
 			</li>
 			<li>
 				<button gui-button
-						(click)="calculate(price, stopLoss, takeProfit);
-								addPositionToTable(id, type, size, price, loss, profit, stopLoss, takeProfit)">
+						(click)="calculate(price, stopLoss, takeProfit, size);
+								addPositionToTable(
+								id,
+								type,
+								size,
+								price,
+								loss,
+								profit,
+								stopLoss,
+								takeProfit,
+								moneyLoss,
+								moneyProfit
+								)">
 					Add
 				</button>
 				<button gui-button
@@ -64,29 +78,43 @@
 				<th>T / P</th>
 				<th>Pips (-)</th>
 				<th>Pips (+)</th>
+				<th>Loss($)</th>
+				<th>Profit($)</th>
 				<th>Delete</th>
 			</tr>
 			<tr *ngFor="let position of positions">
 				<td class="id">{{position.id}}</td>
 				<td class="type">{{position.type}}</td>
-				<td class="size">{{position.size}}</td>
-				<td (keydown.enter)="update($event, position)"
-					(input)="position.price=$event.target.innerText"
-					contenteditable="true">
-					{{position.price}}
+				<td class="size"><input
+						[(ngModel)]="position.size"
+						(keydown.enter)="update($event, position)"
+						type="number"
+						value="{{position.size}}"></td>
+				<td class="td-price">
+					<input
+							[(ngModel)]="position.price"
+							(keydown.enter)="update($event, position)"
+							type="number"
+							value="{{position.price}}">
 				</td>
-				<td (keydown.enter)="update($event, position)"
-					(input)="position.stopLoss=$event.target.innerText"
-					contenteditable="true">
-					{{position.stopLoss}}
+				<td class="td-stop-loss">
+					<input
+							(keydown.enter)="update($event, position)"
+							[(ngModel)]="position.stopLoss"
+							type="number"
+							value="{{position.stopLoss}}">
 				</td>
-				<td (keydown.enter)="update($event, position)"
-					(input)="position.takeProfit=$event.target.innerText"
-					contenteditable="true">
-					{{position.takeProfit}}
+				<td class="td-take-profit">
+					<input
+							(keydown.enter)="update($event, position)"
+							[(ngModel)]="position.takeProfit"
+							type="number"
+							value="{{position.takeProfit}}">
 				</td>
 				<td>{{position.loss}}</td>
 				<td>{{position.profit}}</td>
+				<td>{{position.moneyLoss}}</td>
+				<td>{{position.moneyProfit}}</td>
 				<td>
 					<button gui-button
 							(click)="delete(position)"

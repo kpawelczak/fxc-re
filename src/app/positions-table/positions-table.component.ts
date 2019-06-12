@@ -21,6 +21,8 @@ export class PositionsTableComponent implements OnInit {
 	private profit: number;
 	private takeProfit: number;
 	private stopLoss: number;
+	private moneyLoss: number;
+	private moneyProfit: number;
 	private isTableHidden: boolean = true;
 
 	constructor(private positionDataService: PositionDataService) {
@@ -43,7 +45,9 @@ export class PositionsTableComponent implements OnInit {
 		loss: number,
 		profit: number,
 		stopLoss: number,
-		takeProfit: number): void {
+		takeProfit: number,
+		moneyLoss: number,
+		moneyProfit: number): void {
 
 		if (!price || !size || !takeProfit || !stopLoss) {
 			return;
@@ -55,42 +59,56 @@ export class PositionsTableComponent implements OnInit {
 
 		this.id++;
 		this.isTableHidden = false;
-		this.positionDataService.insertPosition({ id, type, size, price, loss, profit, stopLoss, takeProfit } as Position);
+		this.positionDataService
+			.insertPosition({
+				id,
+				type,
+				size,
+				price,
+				loss,
+				profit,
+				stopLoss,
+				takeProfit,
+				moneyLoss,
+				moneyProfit
+			} as Position);
 	}
 
-	private calculate(price: number, stopLoss: number, takeProfit: number): void {
+	private calculate(price: number, stopLoss: number, takeProfit: number, size: number): void {
 
-		const decimal = 10000,
-			_price = price*1,
-			_takeProfit = takeProfit*1,
-			_stopLoss = stopLoss*1;
+		const decimal = 10000;
 
-		if (_takeProfit > _price) {
+		if (takeProfit > price) {
 			this.type = 'buy';
-			this.profit = Math.round((_takeProfit - _price) * decimal);
-			this.loss = Math.round((_price - _stopLoss) * decimal);
+			this.profit = Math.round((takeProfit - price) * decimal);
+			this.loss = Math.round((price - stopLoss) * decimal);
 		}
 
-		if (_takeProfit < _price) {
+		if (takeProfit < price) {
 			this.type = 'sell';
-			this.profit = Math.round((_price - _takeProfit) * decimal);
-			this.loss = Math.round((_stopLoss - _price) * decimal);
+			this.profit = Math.round((price - takeProfit) * decimal);
+			this.loss = Math.round((stopLoss - price) * decimal);
 		}
 
-		if (_takeProfit === _price) {
+		if (takeProfit === price) {
 			this.type = '-';
 			this.profit = 0;
 			this.loss = 0;
 		}
+
+		this.moneyLoss = this.loss * size;
+		this.moneyProfit = this.profit * size;
 	}
 
 	private update(event: Event, position: Position): void {
 		event.preventDefault();
 
-		this.calculate(position.price, position.stopLoss, position.takeProfit);
+		this.calculate(position.price, position.stopLoss, position.takeProfit, position.size);
 		position.profit = this.profit;
 		position.loss = this.loss;
 		position.type = this.type;
+		position.moneyLoss = this.moneyLoss;
+		position.moneyProfit = this.moneyProfit;
 
 		this.positionDataService.updatePosition(position);
 	}

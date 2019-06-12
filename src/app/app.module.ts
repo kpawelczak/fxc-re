@@ -9,8 +9,8 @@ import { TechnicalsComponent } from './technicals/technicals.component';
 
 import { FabricModule } from 'util/fabric/ui/fabric.module';
 import { HeaderComponent } from './header/header.component';
-import { FibonacciResultsComponent } from './fibonacci-results/fibonacci-results.component';
-import { PivotsResultsComponent } from './pivots-results/pivots-results.component';
+import { FibonacciResultsComponent } from './technicals/fibonacci-results/fibonacci-results.component';
+import { PivotsResultsComponent } from './technicals/pivots-results/pivots-results.component';
 
 @NgModule({
 

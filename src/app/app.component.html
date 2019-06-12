@@ -7,7 +7,6 @@
 				[primary]="true">
 			Technicals
 		</gui-button-toggle>
-		<gui-badge>?</gui-badge>
 	</ul>
 
 	<div *ngIf="showTechnicals"
@@ -40,7 +39,7 @@
 			</technicals>
 
 			<tech-calc
-					[inputValues]="inputVaules"
+					[inputValues]="inputValues"
 					(calculatorFiboResults)="appCalculatorFiboResults($event)"
 					(calculatorPivotResults)="appCalculatorPivotResults($event)">
 			</tech-calc>

@@ -16,7 +16,7 @@ export class TechnicalsComponent implements OnInit {
 	@Output()
 	inputChanged: EventEmitter<Array<any>> = new EventEmitter();
 
-	private inputValues: Array<any> = [];
+	inputValues: Array<any> = [];
 	private options: Array<string> = ['Long', 'Short'];
 	private high: number;
 	private low: number;

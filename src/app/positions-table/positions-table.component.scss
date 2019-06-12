@@ -42,6 +42,14 @@
       text-align: center;
     }
 
+    tr:hover {
+      background: lighten($primary-lightest, 20);
+
+      input {
+        background: lighten($primary-lightest, 20);
+      }
+    }
+
     th {
       background: $primary;
       border: {
@@ -63,10 +71,27 @@
       &:last-child {
         border-width: 0 1px 1px 1px
       }
+
+      &.size {
+        padding: 0;
+      }
+
+      input {
+        border: none;
+        height: 100%;
+        width: 100%;
+        font-size: 21px;
+        text-align: center;
+
+        &:focus {
+          outline: none;
+          background: $secondary-light;
+        }
+      }
     }
 
-    tr:hover {
-      background: lighten($primary-lightest, 20);
+    .td-price, .td-stop-loss, .td-take-profit {
+      padding: 0;
     }
 
     .id {
@@ -96,7 +121,25 @@
   }
 }
 
-[contenteditable]:focus {
-  outline: none;
-  background: $secondary-light;
+.badge-tooltip:hover {
+  .tooltip-text {
+    display: inline-block;
+  }
 }
+
+.tooltip-text {
+  position: absolute;
+  display: none;
+  background-color: $blue-dark;
+  border-radius: $border-radius;
+  color: $white;
+  font-size: $badge-font-size;
+  padding: $grid/4;
+  text-align: center;
+  width: 100px;
+  top: 0;
+  left: 101%;
+  z-index: 1;
+}
+
+
