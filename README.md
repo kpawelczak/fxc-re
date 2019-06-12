@@ -36,7 +36,7 @@ _Technical levels_
 _Positions_
 
  To calculate risk and profit, type in required values in **Positions** form and click the **add** button. 
-In the table the following cells: **Size, Price, S/L, T/P** can be edited by clicking on them. 
+In the table the following cells: **Size, Price, S/L, T/P** can be edited. To do so click on the cell that you want to change, type in changes and confirm by pressing _enter_.
 To delete position from the table click on the **X** button located at the end of the table row.
 The **clear** button removes all positions from the table.
 
