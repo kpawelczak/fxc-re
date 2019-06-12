@@ -60,20 +60,21 @@ export class PositionsTableComponent implements OnInit {
 
 	private calculate(price: number, stopLoss: number, takeProfit: number): void {
 
-		const _price = price * 1,
-			_takeProfit = takeProfit * 1,
-			_stopLoss = stopLoss * 1;
+		const decimal = 10000,
+			_price = price*1,
+			_takeProfit = takeProfit*1,
+			_stopLoss = stopLoss*1;
 
 		if (_takeProfit > _price) {
 			this.type = 'buy';
-			this.profit = Math.floor((_takeProfit - _price) * 10000);
-			this.loss = Math.floor((_price - _stopLoss) * 10000);
+			this.profit = Math.round((_takeProfit - _price) * decimal);
+			this.loss = Math.round((_price - _stopLoss) * decimal);
 		}
 
 		if (_takeProfit < _price) {
 			this.type = 'sell';
-			this.profit = Math.floor((_price - _takeProfit) * 10000);
-			this.loss = Math.floor((_stopLoss - _price) * 10000);
+			this.profit = Math.round((_price - _takeProfit) * decimal);
+			this.loss = Math.round((_stopLoss - _price) * decimal);
 		}
 
 		if (_takeProfit === _price) {
