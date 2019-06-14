@@ -27,6 +27,10 @@ or
 <code>ng serve -o</code>
 5. Open the browser and navigate to http://localhost:4200/
 
+or
+
+click on the link https://kpawelczak.github.io/forex-calculators/
+
 **How to use**
 
 _Technical levels_
