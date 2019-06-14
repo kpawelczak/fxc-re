@@ -8,18 +8,18 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 export class TechnicalsComponent implements OnInit {
 
 	@Input()
-	private fiboChecked: boolean;
+	fiboChecked: boolean;
 
 	@Input()
-	private pivotChecked: boolean;
+	pivotChecked: boolean;
 
 	@Output()
 	inputChanged: EventEmitter<Array<any>> = new EventEmitter();
 
 	inputValues: Array<any> = [];
+	high: number;
+	low: number;
 	private options: Array<string> = ['Long', 'Short'];
-	private high: number;
-	private low: number;
 	private open: number;
 	private close: number;
 	private type: string;

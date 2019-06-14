@@ -13,17 +13,17 @@ export class PositionsTableComponent implements OnInit {
 
 	positions: Position[];
 
-	private id: number = 1;
-	private type: string;
-	private size: number;
-	private price: number;
-	private loss: number;
-	private profit: number;
-	private takeProfit: number;
-	private stopLoss: number;
-	private moneyLoss: number;
-	private moneyProfit: number;
-	private isTableHidden: boolean = true;
+	id: number = 1;
+	type: string;
+	size: number;
+	price: number;
+	loss: number;
+	profit: number;
+	takeProfit: number;
+	stopLoss: number;
+	moneyLoss: number;
+	moneyProfit: number;
+	isTableHidden: boolean = true;
 
 	constructor(private positionDataService: PositionDataService) {
 	}
@@ -37,7 +37,7 @@ export class PositionsTableComponent implements OnInit {
 			.subscribe(positions => this.positions = positions);
 	}
 
-	private addPositionToTable(
+	addPositionToTable(
 		id: number,
 		type: string,
 		size: number,
@@ -74,7 +74,7 @@ export class PositionsTableComponent implements OnInit {
 			} as Position);
 	}
 
-	private calculate(price: number, stopLoss: number, takeProfit: number, size: number): void {
+	calculate(price: number, stopLoss: number, takeProfit: number, size: number): void {
 
 		const decimal = 10000;
 
@@ -100,7 +100,7 @@ export class PositionsTableComponent implements OnInit {
 		this.moneyProfit = this.profit * size;
 	}
 
-	private update(event: Event, position: Position): void {
+	update(event: Event, position: Position): void {
 		event.preventDefault();
 
 		this.calculate(position.price, position.stopLoss, position.takeProfit, position.size);
@@ -113,11 +113,11 @@ export class PositionsTableComponent implements OnInit {
 		this.positionDataService.updatePosition(position);
 	}
 
-	private delete(position: Position): void {
+	delete(position: Position): void {
 		this.positionDataService.deletePosition(position);
 	}
 
-	private clear() {
+	clear() {
 		this.id = 1;
 		this.isTableHidden = true;
 		this.positionDataService.clearPositions();
