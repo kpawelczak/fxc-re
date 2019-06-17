@@ -35,6 +35,7 @@ export class PositionDataService {
 			if (this.positions[i].id === position.id) {
 				this.positions[i] = position;
 			}
+
 			this.positions$.next(this.positions);
 		}
 	}

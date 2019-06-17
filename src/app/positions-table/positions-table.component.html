@@ -32,7 +32,7 @@
 			<li>
 				<gui-chip>Size</gui-chip>
 				<gui-badge [primary]="true" class="badge-tooltip">?
-				<span class="tooltip-text">Price per pip in desired currency</span>
+					<span class="tooltip-text">Price per pip in desired currency</span>
 				</gui-badge>
 				<label>
 					<input gui-input
@@ -66,7 +66,7 @@
 		</ul>
 	</section>
 
-	<section [ngClass]="{'tableHidden': isTableHidden}"
+	<section [ngClass]="{'table-hidden': isTableHidden}"
 			 class="positions-table">
 		<table>
 			<tr>
@@ -123,6 +123,27 @@
 					</button>
 				</td>
 			</tr>
+			<tr class="table-totals">
+				<td>
+					Totals:
+				</td>
+				<td>
+					{{totalLoss}}
+				</td>
+				<td>
+					{{totalProfit}}
+				</td>
+				<td>
+					{{totalMoneyLoss}}
+				</td>
+				<td>
+					{{totalMoneyProfit}}
+				</td>
+				<td>
+					-
+				</td>
+			</tr>
 		</table>
+
 	</section>
 </div>

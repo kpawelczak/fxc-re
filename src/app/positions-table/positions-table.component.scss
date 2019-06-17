@@ -31,6 +31,10 @@
       border-bottom-left-radius: $border-radius;
     }
 
+    tr:nth-last-child(2) td:first-child {
+      border-bottom-left-radius: $border-radius;
+    }
+
     tr:last-child td:last-child {
       border-bottom-right-radius: $border-radius;
     }
@@ -106,6 +110,15 @@
       width: 30px;
     }
   }
+
+  .table-totals {
+    position: absolute;
+    right: 0;
+
+    td {
+      width: 81px;
+    }
+  }
 }
 
 .delete {
@@ -115,7 +128,7 @@
   vertical-align: middle;
 }
 
-.tableHidden {
+.table-hidden {
   &.positions-table {
     display: none;
   }

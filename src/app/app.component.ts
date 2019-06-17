@@ -14,9 +14,9 @@ export class AppComponent {
 	private technicalsCheckedFibo: boolean;
 	private technicalsCheckedPivot: boolean;
 
-	fiboResults: Array<string>;
-	pivotResults: Array<string>;
-	inputValues: Array<string>;
+	fiboResults: Array<number>;
+	pivotResults: Array<number>;
+	inputValues: Array<any>;
 
 	fiboChecked(data) {
 		this.showFibo = data;

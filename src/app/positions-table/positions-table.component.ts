@@ -23,6 +23,10 @@ export class PositionsTableComponent implements OnInit {
 	stopLoss: number;
 	moneyLoss: number;
 	moneyProfit: number;
+	totalLoss: number;
+	totalProfit: number;
+	totalMoneyProfit: number;
+	totalMoneyLoss: number;
 	isTableHidden: boolean = true;
 
 	constructor(private positionDataService: PositionDataService) {
@@ -72,6 +76,7 @@ export class PositionsTableComponent implements OnInit {
 				moneyLoss,
 				moneyProfit
 			} as Position);
+		this.calculateTotals();
 	}
 
 	calculate(price: number, stopLoss: number, takeProfit: number, size: number): void {
@@ -111,16 +116,40 @@ export class PositionsTableComponent implements OnInit {
 		position.moneyProfit = this.moneyProfit;
 
 		this.positionDataService.updatePosition(position);
+		this.calculateTotals();
 	}
 
 	delete(position: Position): void {
 		this.positionDataService.deletePosition(position);
+		this.calculateTotals();
 	}
 
-	clear() {
+	clear(): void {
 		this.id = 1;
 		this.isTableHidden = true;
 		this.positionDataService.clearPositions();
+		this.calculateTotals();
 	}
 
+	calculateTotals(): void {
+
+		this.totalProfit = 0;
+		this.totalLoss = 0;
+		this.totalMoneyProfit = 0;
+		this.totalMoneyLoss = 0;
+
+		for (let i = 0; i < this.positions.length; i++) {
+			this.totalLoss += this.positions[i].loss;
+		}
+		for (let i = 0; i < this.positions.length; i++) {
+			this.totalProfit += this.positions[i].profit;
+		}
+		for (let i = 0; i < this.positions.length; i++) {
+			this.totalMoneyProfit += this.positions[i].moneyProfit;
+		}
+		for (let i = 0; i < this.positions.length; i++) {
+			this.totalMoneyLoss += this.positions[i].moneyLoss;
+		}
+
+	}
 }
