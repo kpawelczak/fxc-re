@@ -101,8 +101,8 @@ export class PositionsTableComponent implements OnInit {
 			this.loss = 0;
 		}
 
-		this.moneyLoss = this.loss * size;
-		this.moneyProfit = this.profit * size;
+		this.moneyLoss = Math.floor(this.loss * size);
+		this.moneyProfit = Math.floor(this.profit * size);
 	}
 
 	update(event: Event, position: Position): void {
