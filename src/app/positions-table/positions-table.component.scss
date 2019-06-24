@@ -9,6 +9,7 @@
 }
 
 .positions-table {
+  background: $white;
   font-family: $font-family;
   font-size: $font-size;
   position: relative;
@@ -27,7 +28,7 @@
       border-top-right-radius: $border-radius;
     }
 
-    tr:last-child td:first-child {
+    tr:last-child td:nth-child(2) {
       border-bottom-left-radius: $border-radius;
     }
 
@@ -51,6 +52,10 @@
 
       input {
         background: lighten($primary-lightest, 20);
+      }
+
+      #alignRight {
+        background: $white;
       }
     }
 
@@ -81,6 +86,7 @@
       }
 
       input {
+        background: $white;
         border: none;
         height: 100%;
         width: 100%;
@@ -111,12 +117,11 @@
     }
   }
 
-  .table-totals {
-    position: absolute;
-    right: 0;
-
-    td {
-      width: 81px;
+  #alignRight {
+    border: {
+      color: transparent;
+      style: solid;
+      width: 0 0 1px 1px;
     }
   }
 }

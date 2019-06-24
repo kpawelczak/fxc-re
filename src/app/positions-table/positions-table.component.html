@@ -113,8 +113,8 @@
 				</td>
 				<td>{{position.loss}}</td>
 				<td>{{position.profit}}</td>
-				<td>{{position.moneyLoss}}</td>
-				<td>{{position.moneyProfit}}</td>
+				<td>{{position.moneyLoss.toFixed(2)}}</td>
+				<td>{{position.moneyProfit.toFixed(2)}}</td>
 				<td>
 					<button gui-button
 							(click)="delete(position)"
@@ -123,7 +123,8 @@
 					</button>
 				</td>
 			</tr>
-			<tr class="table-totals">
+			<tr>
+				<td colspan="5" id="alignRight"></td>
 				<td>
 					Total:
 				</td>
@@ -144,6 +145,5 @@
 				</td>
 			</tr>
 		</table>
-
 	</section>
 </div>

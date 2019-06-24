@@ -25,8 +25,8 @@ export class PositionsTableComponent implements OnInit {
 	moneyProfit: number;
 	totalLoss: number;
 	totalProfit: number;
-	totalMoneyProfit: number;
-	totalMoneyLoss: number;
+	totalMoneyProfit: number = 0;
+	totalMoneyLoss: number = 0;
 	isTableHidden: boolean = true;
 
 	constructor(private positionDataService: PositionDataService) {
@@ -145,10 +145,10 @@ export class PositionsTableComponent implements OnInit {
 			this.totalProfit += this.positions[i].profit;
 		}
 		for (let i = 0; i < this.positions.length; i++) {
-			this.totalMoneyProfit += this.positions[i].moneyProfit;
+			this.totalMoneyProfit += +this.positions[i].moneyProfit.toFixed(2);
 		}
 		for (let i = 0; i < this.positions.length; i++) {
-			this.totalMoneyLoss += this.positions[i].moneyLoss;
+			this.totalMoneyLoss += +this.positions[i].moneyLoss.toFixed(2);
 		}
 	}
 }
