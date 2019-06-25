@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Position } from './position-data/position';
 import { PositionDataService } from './position-data/position-data.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
 	selector: 'positions-table',
@@ -12,6 +13,8 @@ import { PositionDataService } from './position-data/position-data.service';
 export class PositionsTableComponent implements OnInit {
 
 	positions: Position[];
+
+	positionForm: FormGroup;
 
 	id: number = 1;
 	type: string;
@@ -29,39 +32,53 @@ export class PositionsTableComponent implements OnInit {
 	totalMoneyLoss: number = 0;
 	isTableHidden: boolean = true;
 
-	constructor(private positionDataService: PositionDataService) {
+	constructor(private positionDataService: PositionDataService,
+				private formBuilder: FormBuilder) {
+
+		this.positionForm = this.formBuilder.group({
+			'size': ['', [
+				Validators.required,
+				Validators.min(0.000001)]],
+			'price': ['', [
+				Validators.required,
+				Validators.min(0.000001)]],
+			'takeProfit': ['', [
+				Validators.required,
+				Validators.min(0.000001)]],
+			'stopLoss': ['', [
+				Validators.required,
+				Validators.min(0.000001)]]
+		});
 	}
 
 	ngOnInit() {
 		this.getPositions();
 	}
 
-	private getPositions(): void {
-		this.positionDataService.getPositions()
-			.subscribe(positions => this.positions = positions);
+	addPosition(post) {
+		this.size = post.size;
+		this.price = post.price;
+		this.takeProfit = post.takeProfit;
+		this.stopLoss = post.stopLoss;
+
+		this.calculate(this.price, this.stopLoss, this.takeProfit, this.size);
+		this.sendPositionToTable(this.size, this.price, this.stopLoss, this.takeProfit);
 	}
 
-	addPositionToTable(
-		id: number,
-		type: string,
+	sendPositionToTable(
 		size: number,
 		price: number,
-		loss: number,
-		profit: number,
 		stopLoss: number,
-		takeProfit: number,
-		moneyLoss: number,
-		moneyProfit: number): void {
+		takeProfit: number
+	): void {
 
-		if (!price || !size || !takeProfit || !stopLoss) {
-			return;
-		}
+		const id = this.id++,
+			type = this.type,
+			loss = this.loss,
+			profit = this.profit,
+			moneyLoss = this.moneyLoss,
+			moneyProfit = this.moneyProfit;
 
-		if (price < 0 || size < 0 || takeProfit < 0 || stopLoss < 0) {
-			return;
-		}
-
-		this.id++;
 		this.isTableHidden = false;
 		this.positionDataService
 			.insertPosition({
@@ -150,5 +167,10 @@ export class PositionsTableComponent implements OnInit {
 		for (let i = 0; i < this.positions.length; i++) {
 			this.totalMoneyLoss += +this.positions[i].moneyLoss.toFixed(2);
 		}
+	}
+
+	private getPositions(): void {
+		this.positionDataService.getPositions()
+			.subscribe(positions => this.positions = positions);
 	}
 }

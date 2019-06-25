@@ -1,12 +1,13 @@
 <div class="positions-table-content">
-	<section>
+	<form [formGroup]="positionForm"
+		  (ngSubmit)="addPosition(positionForm.value)">
 		<ul>
 			<gui-chip [primary]="true">Positons</gui-chip>
 			<li>
 				<gui-chip>Price</gui-chip>
 				<label>
 					<input gui-input
-						   [(ngModel)]="price"
+						   formControlName="price"
 						   placeholder="Enter Price"
 						   type="number">
 				</label>
@@ -15,7 +16,7 @@
 				<gui-chip>Take Profit</gui-chip>
 				<label>
 					<input gui-input
-						   [(ngModel)]="takeProfit"
+						   formControlName="takeProfit"
 						   placeholder="Enter Take Profit"
 						   type="number">
 				</label>
@@ -24,7 +25,7 @@
 				<gui-chip>Stop Loss</gui-chip>
 				<label>
 					<input gui-input
-						   [(ngModel)]="stopLoss"
+						   formControlName="stopLoss"
 						   placeholder="Enter Stop Loss"
 						   type="number">
 				</label>
@@ -36,35 +37,25 @@
 				</gui-badge>
 				<label>
 					<input gui-input
-						   [(ngModel)]="size"
+						   formControlName="size"
 						   placeholder="Enter Size"
 						   type="number">
 				</label>
 			</li>
 			<li>
 				<button gui-button
-						(click)="calculate(price, stopLoss, takeProfit, size);
-								addPositionToTable(
-								id,
-								type,
-								size,
-								price,
-								loss,
-								profit,
-								stopLoss,
-								takeProfit,
-								moneyLoss,
-								moneyProfit
-								)">
+						[disabled]="!positionForm.valid"
+						type="submit">
 					Add
 				</button>
 				<button gui-button
-						(click)="clear()">
+						(click)="clear()"
+						type="reset">
 					clear
 				</button>
 			</li>
 		</ul>
-	</section>
+	</form>
 
 	<section [ngClass]="{'table-hidden': isTableHidden}"
 			 class="positions-table">
@@ -99,8 +90,8 @@
 				</td>
 				<td class="td-stop-loss">
 					<input
-							(keydown.enter)="update($event, position)"
 							[(ngModel)]="position.stopLoss"
+							(keydown.enter)="update($event, position)"
 							type="number"
 							value="{{position.stopLoss}}">
 				</td>
