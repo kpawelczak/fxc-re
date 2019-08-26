@@ -1,65 +1,91 @@
 <div class="positions-table-content">
+
 	<form [formGroup]="positionForm"
 		  (ngSubmit)="addPosition(positionForm.value)">
+
 		<ul>
+
 			<gui-chip [primary]="true">Positons</gui-chip>
+
 			<li>
+
 				<gui-chip>Price</gui-chip>
+
 				<label>
 					<input gui-input
 						   formControlName="price"
 						   placeholder="Enter Price"
 						   type="number">
 				</label>
+
 			</li>
+
 			<li>
+
 				<gui-chip>Take Profit</gui-chip>
+
 				<label>
 					<input gui-input
 						   formControlName="takeProfit"
 						   placeholder="Enter Take Profit"
 						   type="number">
 				</label>
+
 			</li>
+
 			<li>
+
 				<gui-chip>Stop Loss</gui-chip>
+
 				<label>
 					<input gui-input
 						   formControlName="stopLoss"
 						   placeholder="Enter Stop Loss"
 						   type="number">
 				</label>
+
 			</li>
+
 			<li>
+
 				<gui-chip>Size</gui-chip>
+
 				<gui-badge [primary]="true" class="badge-tooltip">?
 					<span class="tooltip-text">Price per pip in desired currency</span>
 				</gui-badge>
+
 				<label>
 					<input gui-input
 						   formControlName="size"
 						   placeholder="Enter Size"
 						   type="number">
 				</label>
+
 			</li>
+
 			<li>
+
 				<button gui-button
 						[disabled]="!positionForm.valid"
 						type="submit">
 					Add
 				</button>
+
 				<button gui-button
 						(click)="clear()"
 						type="reset">
 					clear
 				</button>
+
 			</li>
 		</ul>
+
 	</form>
 
-	<section [ngClass]="{'table-hidden': isTableHidden}"
-			 class="positions-table">
+	<section [ngClass]="{'table-hidden': isTableHidden}" class="positions-table">
+
 		<table>
+
 			<tr>
 				<th class="id">Id</th>
 				<th class="type">Type</th>
@@ -73,6 +99,7 @@
 				<th>Profit($)</th>
 				<th>Delete</th>
 			</tr>
+
 			<tr *ngFor="let position of positions">
 				<td class="id">{{position.id}}</td>
 				<td class="type">{{position.type}}</td>
@@ -114,6 +141,7 @@
 					</button>
 				</td>
 			</tr>
+
 			<tr>
 				<td colspan="5" id="alignRight"></td>
 				<td>
@@ -134,7 +162,9 @@
 				<td>
 					-
 				</td>
+
 			</tr>
 		</table>
+
 	</section>
 </div>

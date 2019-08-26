@@ -1,8 +1,7 @@
 @import 'util/fabric/ui/variables.scss';
 
 .app-body {
-  padding: $grid $grid*6;
-  background: $white;
+  padding: $grid*2 $grid;
 }
 
 .technicals-form, .technical-results {

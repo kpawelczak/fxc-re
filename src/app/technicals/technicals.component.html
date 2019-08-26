@@ -1,6 +1,9 @@
 <ul>
+
 	<li>
+
 		<gui-chip>High</gui-chip>
+
 		<label>
 			<input gui-input
 				   [(ngModel)]='high'
@@ -8,11 +11,17 @@
 				   placeholder="Enter High"
 				   type="number">
 		</label>
+
 	</li>
+
 </ul>
+
 <ul>
+
 	<li>
+
 		<gui-chip>Low</gui-chip>
+
 		<label>
 			<input gui-input
 				   [(ngModel)]='low'
@@ -20,12 +29,16 @@
 				   placeholder="Enter Low"
 				   type="number">
 		</label>
+
 	</li>
+
 </ul>
-<ul *ngIf="pivotChecked"
-	[ngClass]="{pivotHidden: pivotChecked}">
+<ul *ngIf="pivotChecked" [ngClass]="{pivotHidden: pivotChecked}">
+
 	<li>
+
 		<gui-chip>Open</gui-chip>
+
 		<label>
 			<input gui-input
 				   [(ngModel)]='open'
@@ -33,12 +46,17 @@
 				   placeholder="Enter Open"
 				   type="number">
 		</label>
+
 	</li>
+
 </ul>
-<ul *ngIf="pivotChecked"
-	[ngClass]="{pivotHidden: pivotChecked}">
+
+<ul *ngIf="pivotChecked" [ngClass]="{pivotHidden: pivotChecked}">
+
 	<li>
+
 		<gui-chip>Close</gui-chip>
+
 		<label>
 			<input gui-input
 				   [(ngModel)]='close'
@@ -46,9 +64,13 @@
 				   placeholder="Enter Close"
 				   type="number">
 		</label>
+
 	</li>
+
 </ul>
+
 <ul>
+
 	<gui-select
 			*ngIf="fiboChecked"
 			(click)='formChanged()'
@@ -57,4 +79,5 @@
 			[selected]="selected"
 			(optionChanged)="getSelectedOption($event)">
 	</gui-select>
+
 </ul>
