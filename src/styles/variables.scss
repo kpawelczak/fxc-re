@@ -1,0 +1,34 @@
+/**
+	Colors
+ */
+$white: #fcfcfc;
+$black: #333;
+$gray-light: #f1f2f3;
+$blue: #2185d0;
+$green: #3cb371;
+$red:#a83a32;
+$gray: #999;
+
+$blue-dark:darken($blue,5);
+
+$green-light: lighten($green,10);
+
+$primary: $blue;
+$primary-lightest:lighten($primary,20);
+
+//$secondary: #fff6da;
+//$secondary-light:lighten($secondary,10);
+
+$tertiary: #fbc99d;
+$quaternary: #ed1250;
+
+/**
+	Net
+ */
+$grid: 8px;
+
+$border-radius: $grid / 2;
+$border-color:  lighten($gray, 20);
+$font-size: 14px;
+
+$container-padding:$grid*2 0;

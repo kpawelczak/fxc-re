@@ -1,0 +1,71 @@
+@import '../variables.scss';
+
+app-technicals {
+
+	.technicals {
+		height: 0;
+		opacity: 0;
+		margin-top: $grid*4;
+		transform: scaleY(0);
+		transform-origin: top;
+		transition: transform 0.2s ease-out;
+	}
+
+	.technicals-checked {
+		height: 100%;
+		opacity: 1;
+		transform: scaleY(1);
+	}
+
+	.technicals-form {
+
+		h4 {
+			margin-bottom: $grid*4;
+		}
+
+		.technicals-input-area {
+			display: inline-grid;
+
+			div:not(:last-child) {
+				display: inline-grid;
+			}
+
+			.technicals-submit {
+				margin-top: $grid*1.5;
+			}
+		}
+	}
+
+	.fibonacci-results {
+		display: inline-grid;
+		grid-gap: $grid*2;
+		padding: $grid*6 0;
+
+		.gui-chip:nth-child(1) {
+			margin-bottom: 24px;
+			color: $white;
+
+			&.uptrend {
+				background: $green;
+			}
+
+			&.downtrend {
+				background: $red;
+			}
+		}
+	}
+
+	.pivot-points-results {
+		display: inline-grid;
+		grid-gap: $grid;
+		padding-top: $grid*4;
+	}
+
+	.gui-input {
+		margin-top: $grid/2;
+	}
+
+	.gui-button {
+		margin-left: $grid;
+	}
+}

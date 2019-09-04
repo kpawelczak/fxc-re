@@ -1,0 +1,58 @@
+@import 'src/app/ui/variables.scss';
+@import 'src/app/ui/mixins.scss';
+
+$padding-vertical: $grid*2.5;
+$padding-horizontal: $grid*1.25;
+$margin: $grid / 2;
+
+.gui-button {
+	-webkit-writing-mode: horizontal-tb !important;
+	align-items: flex-start;
+	background: $basic-background;
+	box-sizing: border-box;
+	border: {
+		style: none;
+		radius: $border-radius;
+	}
+	color: $black-light;
+	cursor: pointer;
+	display: inline-block;
+	font-family: $font-family;
+	font-size: 13.3333px;
+	outline: none;
+	padding: $padding-horizontal $padding-vertical $padding-horizontal;
+	transition: background 0.2s;
+	text: {
+		align: center;
+		rendering: auto;
+		transform: none;
+		indent: 0;
+		shadow: none;
+	}
+	letter-spacing: normal;
+	margin: 0 $margin 0 0;
+	word-spacing: normal;
+
+	&:hover {
+		background: $basic-hover;
+		color: $black;
+	}
+
+	&:active {
+		background: $basic-active;
+		color: $black;
+	}
+
+	&:disabled {
+		color: $disabled;
+		cursor: default;
+		pointer-events: none;
+	}
+
+	@include focus();
+	@include primary();
+	@include secondary();
+	@include link();
+	@include outline();
+	@include disableTextSelect();
+}

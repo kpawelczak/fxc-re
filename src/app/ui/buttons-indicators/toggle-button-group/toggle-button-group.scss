@@ -1,0 +1,29 @@
+@import 'src/app/ui/variables.scss';
+@import 'src/app/ui/mixins.scss';
+
+$border-radius: $grid/2;
+
+.gui-toggle-button-group {
+
+	.gui-button-toggle {
+
+		.gui-button {
+			border-radius: 0;
+		}
+
+		&:not(:last-child) .gui-button {
+			border-right: none;
+			margin: 0;
+		}
+
+		&:last-child .gui-button {
+			border-radius: 0 $border-radius $border-radius 0;
+		}
+
+		&:first-child .gui-button {
+			border-radius: $border-radius 0 0 $border-radius;
+		}
+	}
+
+	@include disableTextSelect
+}

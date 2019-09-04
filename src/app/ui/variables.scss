@@ -1,0 +1,77 @@
+/**
+ * Colors
+ */
+$white: #fefdfc;
+$black: #333;
+$black-light: lighten($black, 15);
+
+//Gray
+$gray: #999;
+$gray-light: lighten($gray, 20);
+$gray-lightest: lighten($gray, 30);
+$gainsboro: #DCDCDC;
+
+//Basic
+$basic: $gray;
+$basic-light: $gray-light;
+$basic-lightest: $gray-lightest;
+$basic-background: $basic-lightest;
+$basic-hover: $basic-light;
+$basic-active: $basic;
+
+// Blue
+$blue: #2185d0;
+$blue-dark: darken($blue, 5);
+$blue-darker: darken($blue, 10);
+$blue-light: lighten($blue, 10);
+$blue-lightest: lighten($blue, 20);
+
+// Primary
+$primary: $blue;
+$primary-light: $blue-light;
+$primary-lightest: $blue-lightest;
+$primary-hover: $blue-dark;
+$primary-active: $blue-darker;
+$primary-border-color: $primary-light;
+$primary-disabled: $primary-lightest;
+
+// Green
+$green: #3cb371;
+$green-dark: darken($green, 5);
+$green-darker: darken($green, 8);
+$green-light: lighten($green, 10);
+$green-lightest: lighten($green, 20);
+
+// Secondary
+$secondary: $green;
+$secondary-light: $green-light;
+$secondary-lightest: $green-lightest;
+$secondary-hover: $green-dark;
+$secondary-active: $green-darker;
+$secondary-border-color: $secondary-light;
+$secondary-disabled: $secondary-lightest;
+
+/**
+ * Styles
+ */
+$grid: 8px;
+
+$focus: $blue-lightest;
+
+$font-family: Arial;
+$font-size: 14px;
+$font: $font-size $font-family;
+
+$badge-font-size: 12px;
+
+$border-radius: $grid / 2;
+$border-color: $basic-light;
+
+$disabled: $basic-light;
+
+$box-shadow-width: $grid*1.25;
+$box-shadow-spread: -$box-shadow-width/2;
+
+$box-shadow: inset 0 $box-shadow-width 0 $box-shadow-spread $basic-active;
+$box-shadow-primary: inset 0 $box-shadow-width 0 $box-shadow-spread darken($primary-active, 5);
+$box-shadow-secondary: inset 0 $box-shadow-width 0 $box-shadow-spread darken($secondary-active, 5);

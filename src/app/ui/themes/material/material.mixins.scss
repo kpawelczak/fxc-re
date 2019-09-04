@@ -1,0 +1,183 @@
+@import 'src/app/ui/themes/material/material.variables.scss';
+
+
+@mixin primary() {
+	&.gui-primary {
+		background: $primary;
+		color: $white;
+
+		&.gui-outline {
+			color: $primary;
+		}
+
+		&.gui-button {
+			&:hover {
+				background: $primary-hover;
+			}
+
+			&:active {
+				background: $primary-active;
+				color: $white;
+			}
+
+			&:disabled {
+				background: $primary-disabled;
+				color: $primary-light;
+			}
+		}
+
+		&.gui-badge {
+			background: $primary;
+		}
+	}
+}
+
+@mixin secondary() {
+	&.gui-secondary {
+		background: $secondary;
+		color: $white;
+
+		&.gui-outline {
+			color: $secondary;
+		}
+
+		&.gui-button {
+			&:hover {
+				background: $secondary-hover;
+			}
+
+			&:active {
+				background: $secondary-active;
+				color: $white;
+			}
+
+			&:disabled {
+				background: $secondary-disabled;
+				color: $secondary-light;
+			}
+		}
+
+		&.gui-badge {
+			background: $secondary;
+		}
+	}
+}
+
+@mixin link() {
+	&.gui-link {
+		background: transparent;
+		border: 0;
+		color: $blue;
+
+		&:hover {
+			color: $blue-dark;
+		}
+	}
+}
+
+@mixin outline() {
+	&.gui-outline {
+		color: $basic;
+		background: transparent;
+		border: {
+			color: $border-color;
+		}
+
+		&.gui-button {
+			&:hover {
+				background: $basic-outline-hover;
+				color: $basic;
+			}
+
+			&:active {
+				background: $basic-outline-active;
+			}
+
+			&:disabled {
+				border-color: $disabled;
+				color: $disabled;
+			}
+		}
+
+		&.gui-badge {
+			background: $white;
+		}
+
+		&.gui-primary {
+			border-color: $primary-border-color;
+
+			&.gui-button {
+				&:hover {
+					background: $primary-outline-hover;
+					border-color: $primary;
+					color: $primary;
+				}
+
+				&:active {
+					background: $primary-outline-active;
+				}
+
+				&:disabled {
+					background: transparent;
+					border-color: $primary-disabled;
+					color: $primary-disabled;
+				}
+			}
+
+			&.gui-badge {
+				background: $white;
+				border-color: $primary-border-color;
+				color: $primary-light;
+			}
+		}
+
+		&.gui-secondary {
+			border-color: $secondary-border-color;
+
+			&.gui-button {
+				&:hover {
+					background: $secondary-outline-hover;
+					border-color: $secondary;
+					color: $secondary;
+				}
+
+				&:active {
+					background: $secondary-outline-active;
+				}
+
+				&:disabled {
+					background: transparent;
+					border-color: $secondary-disabled;
+					color: $secondary-disabled;
+				}
+			}
+
+			&.gui-badge {
+				background: $white;
+				border-color: $secondary-border-color;
+				color: $secondary-border-color;
+			}
+		}
+	}
+}
+
+@mixin focus() {
+
+	&.gui-outline {
+		&:focus {
+			box-shadow: 0 0 0 1px $border-color;
+		}
+
+		&.gui-primary {
+			&:focus {
+				box-shadow: 0 0 0 1px $primary-border-color;
+			}
+		}
+
+		&.gui-secondary {
+			&:focus {
+				box-shadow: 0 0 0 1px $secondary-border-color;
+			}
+		}
+	}
+}

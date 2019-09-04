@@ -1,0 +1,62 @@
+@import 'src/app/ui/variables.scss';
+
+$box-shadow-width: $grid*1.25;
+$box-shadow-spread: -$box-shadow-width/2;
+
+.gui-checked .gui-button {
+	background: $basic-background;
+	//box-shadow: inset 0 $box-shadow-width 0 $box-shadow-spread $basic-active;
+	box-shadow: $box-shadow;
+	color: $black;
+
+	&:hover {
+		background: $basic-hover;
+	}
+
+	&:active {
+		background: $basic-active;
+	}
+
+	&.gui-outline {
+		background: transparent;
+		box-shadow: 0 0 0 2px $border-color;
+
+		&.gui-primary {
+			background: transparent;
+			box-shadow: 0 0 0 2px $primary-border-color;
+			color: $primary;
+
+			&:hover {
+				color: $white;
+			}
+		}
+
+		&.gui-secondary {
+			background: transparent;
+			box-shadow: 0 0 0 2px $secondary-border-color;
+			color: $secondary;
+
+			&:hover {
+				color: $white;
+			}
+		}
+	}
+
+	&.gui-primary {
+		background: $primary;
+		//box-shadow: inset 0 $box-shadow-width 0 $box-shadow-spread darken($primary-active, 5);
+		box-shadow: $box-shadow-primary;
+		color: $white;
+	}
+
+	&.gui-secondary {
+		background: $secondary;
+		//box-shadow: inset 0 $box-shadow-width 0 $box-shadow-spread darken($secondary-active, 5);
+		box-shadow: $box-shadow-secondary;
+		color: $white;
+	}
+}
+
+.gui-disabled {
+	pointer-events: none;
+}

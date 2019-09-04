@@ -1,0 +1,22 @@
+@import 'src/app/ui/themes/dark/dark.variables.scss';
+
+#{$dark-selector} {
+
+	.gui-input {
+		background: $basic-background;
+		border-color: $border-color;
+		color: $basic-text;
+
+		&:hover {
+			background: $basic-hover;
+		}
+
+		&:focus {
+			border-color: $focus;
+		}
+
+		&:disabled {
+			opacity: 0.36;
+		}
+	}
+}

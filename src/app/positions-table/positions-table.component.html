@@ -1,170 +1,161 @@
-<div class="positions-table-content">
+<div class="container">
+	<div class="row">
+		<div class="col-xl-4">
+			<form [formGroup]="positionForm"
+				  (ngSubmit)="addPosition(positionForm.value)">
 
-	<form [formGroup]="positionForm"
-		  (ngSubmit)="addPosition(positionForm.value)">
+				<ul>
+					<gui-chip [primary]="true">Positons</gui-chip>
 
-		<ul>
+					<li>
+						<gui-chip>Price</gui-chip>
 
-			<gui-chip [primary]="true">Positons</gui-chip>
+						<label>
+							<input gui-input
+								   formControlName="price"
+								   placeholder="Enter Price"
+								   type="number">
+						</label>
+					</li>
 
-			<li>
+					<li>
+						<gui-chip>Take Profit</gui-chip>
 
-				<gui-chip>Price</gui-chip>
+						<label>
+							<input gui-input
+								   formControlName="takeProfit"
+								   placeholder="Enter Take Profit"
+								   type="number">
+						</label>
+					</li>
 
-				<label>
-					<input gui-input
-						   formControlName="price"
-						   placeholder="Enter Price"
-						   type="number">
-				</label>
+					<li>
+						<gui-chip>Stop Loss</gui-chip>
 
-			</li>
+						<label>
+							<input gui-input
+								   formControlName="stopLoss"
+								   placeholder="Enter Stop Loss"
+								   type="number">
+						</label>
+					</li>
 
-			<li>
+					<li>
+						<gui-chip>Size</gui-chip>
 
-				<gui-chip>Take Profit</gui-chip>
+						<gui-badge [primary]="true" class="badge-tooltip">?
+							<span class="tooltip-text">Price per pip in desired currency</span>
+						</gui-badge>
 
-				<label>
-					<input gui-input
-						   formControlName="takeProfit"
-						   placeholder="Enter Take Profit"
-						   type="number">
-				</label>
+						<label>
+							<input gui-input
+								   formControlName="size"
+								   placeholder="Enter Size"
+								   type="number">
+						</label>
+					</li>
 
-			</li>
+					<li>
+						<button gui-button
+								[disabled]="!positionForm.valid"
+								type="submit">
+							Add
+						</button>
 
-			<li>
+						<button gui-button
+								(click)="clear()"
+								type="reset">
+							clear
+						</button>
+					</li>
+				</ul>
 
-				<gui-chip>Stop Loss</gui-chip>
+			</form>
+		</div>
+		<section [ngClass]="{'table-hidden': isTableHidden}" class="positions-table col-xl-8">
 
-				<label>
-					<input gui-input
-						   formControlName="stopLoss"
-						   placeholder="Enter Stop Loss"
-						   type="number">
-				</label>
+			<table>
 
-			</li>
+				<tr>
+					<th class="id">Id</th>
+					<th class="type">Type</th>
+					<th class="size">Size</th>
+					<th>Price</th>
+					<th>S / L</th>
+					<th>T / P</th>
+					<th>Pips (-)</th>
+					<th>Pips (+)</th>
+					<th>Loss($)</th>
+					<th>Profit($)</th>
+					<th>Delete</th>
+				</tr>
 
-			<li>
-
-				<gui-chip>Size</gui-chip>
-
-				<gui-badge [primary]="true" class="badge-tooltip">?
-					<span class="tooltip-text">Price per pip in desired currency</span>
-				</gui-badge>
-
-				<label>
-					<input gui-input
-						   formControlName="size"
-						   placeholder="Enter Size"
-						   type="number">
-				</label>
-
-			</li>
-
-			<li>
-
-				<button gui-button
-						[disabled]="!positionForm.valid"
-						type="submit">
-					Add
-				</button>
-
-				<button gui-button
-						(click)="clear()"
-						type="reset">
-					clear
-				</button>
-
-			</li>
-		</ul>
-
-	</form>
-
-	<section [ngClass]="{'table-hidden': isTableHidden}" class="positions-table">
-
-		<table>
-
-			<tr>
-				<th class="id">Id</th>
-				<th class="type">Type</th>
-				<th class="size">Size</th>
-				<th>Price</th>
-				<th>S / L</th>
-				<th>T / P</th>
-				<th>Pips (-)</th>
-				<th>Pips (+)</th>
-				<th>Loss($)</th>
-				<th>Profit($)</th>
-				<th>Delete</th>
-			</tr>
-
-			<tr *ngFor="let position of positions">
-				<td class="id">{{position.id}}</td>
-				<td class="type">{{position.type}}</td>
-				<td class="size"><input
+				<tr *ngFor="let position of positions">
+					<td class="id">{{position.id}}</td>
+					<td class="type">{{position.type}}</td>
+					<td class="size"><input
 						[(ngModel)]="position.size"
 						(keydown.enter)="update($event, position)"
 						type="number"
 						value="{{position.size}}"></td>
-				<td class="td-price">
-					<input
+					<td class="td-price">
+						<input
 							[(ngModel)]="position.price"
 							(keydown.enter)="update($event, position)"
 							type="number"
 							value="{{position.price}}">
-				</td>
-				<td class="td-stop-loss">
-					<input
+					</td>
+					<td class="td-stop-loss">
+						<input
 							[(ngModel)]="position.stopLoss"
 							(keydown.enter)="update($event, position)"
 							type="number"
 							value="{{position.stopLoss}}">
-				</td>
-				<td class="td-take-profit">
-					<input
+					</td>
+					<td class="td-take-profit">
+						<input
 							(keydown.enter)="update($event, position)"
 							[(ngModel)]="position.takeProfit"
 							type="number"
 							value="{{position.takeProfit}}">
-				</td>
-				<td>{{position.loss}}</td>
-				<td>{{position.profit}}</td>
-				<td>{{position.moneyLoss.toFixed(2)}}</td>
-				<td>{{position.moneyProfit.toFixed(2)}}</td>
-				<td>
-					<button gui-button
-							(click)="delete(position)"
-							[primary]="true"
-							class="delete">x
-					</button>
-				</td>
-			</tr>
+					</td>
+					<td>{{position.loss}}</td>
+					<td>{{position.profit}}</td>
+					<td>{{position.moneyLoss.toFixed(2)}}</td>
+					<td>{{position.moneyProfit.toFixed(2)}}</td>
+					<td>
+						<button gui-button
+								(click)="delete(position)"
+								[primary]="true"
+								class="delete">x
+						</button>
+					</td>
+				</tr>
 
-			<tr>
-				<td colspan="5" id="alignRight"></td>
-				<td>
-					Total:
-				</td>
-				<td>
-					{{totalLoss}}
-				</td>
-				<td>
-					{{totalProfit}}
-				</td>
-				<td>
-					{{totalMoneyLoss.toFixed(2)}}
-				</td>
-				<td>
-					{{totalMoneyProfit.toFixed(2)}}
-				</td>
-				<td>
-					-
-				</td>
+				<tr>
+					<td colspan="5" id="alignRight"></td>
+					<td>
+						Total:
+					</td>
+					<td>
+						{{totalLoss}}
+					</td>
+					<td>
+						{{totalProfit}}
+					</td>
+					<td>
+						{{totalMoneyLoss.toFixed(2)}}
+					</td>
+					<td>
+						{{totalMoneyProfit.toFixed(2)}}
+					</td>
+					<td>
+						-
+					</td>
 
-			</tr>
-		</table>
+				</tr>
+			</table>
 
-	</section>
+		</section>
+	</div>
 </div>

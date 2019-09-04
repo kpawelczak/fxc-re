@@ -1,0 +1,29 @@
+@import 'src/app/ui/themes/dark/dark.variables.scss';
+@import 'src/app/ui/themes/dark/dark.mixins.scss';
+
+#{$dark-selector} {
+
+	.gui-checkbox {
+		color: $basic-text;
+
+		.gui-checkmark {
+			border-color: $fill-color;
+		}
+
+		input:checked + .gui-checkmark {
+			border-color: $fill-color;
+		}
+
+		input:focus + .gui-checkmark {
+			border-color: $focus;
+		}
+
+		.gui-checkmark:after {
+			border-color: $fill-color;
+		}
+
+		&.gui-disabled.gui-checkbox {
+			opacity: 0.36;
+		}
+	}
+}

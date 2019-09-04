@@ -1,27 +1,26 @@
-@import 'util/fabric/ui/variables.scss';
+@import '../../styles/variables.scss';
 
 .app-header {
-  padding: $grid $grid $grid $grid+40px;
-  text-align: left;
-  background: $primary;
-  color: $white;
-  font-size: $grid;
-  font-family: $font-family;
-  box-shadow: 0 2px 4px lighten($primary, 40);
+	padding: $grid $grid $grid $grid+40px;
+	text-align: left;
+	background: $primary;
+	color: $white;
+	font-size: $grid;
+	box-shadow: 0 2px 4px lighten($primary, 40);
 
-  a {
-    color: $white;
-    font-size: 16px;
-    padding: 2px;
-    text-decoration: none;
-    text-transform: capitalize;
+	a {
+		color: $white;
+		font-size: 16px;
+		padding: 2px;
+		text-decoration: none;
+		text-transform: capitalize;
 
-    &:hover {
-      color: darken($white, 10);
-    }
-  }
+		&:hover {
+			color: darken($white, 10);
+		}
+	}
 
-  h1 {
-    margin: 0;
-  }
+	h1 {
+		margin: 0;
+	}
 }

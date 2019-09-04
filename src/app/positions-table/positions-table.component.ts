@@ -7,7 +7,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 @Component({
 	selector: 'positions-table',
 	templateUrl: './positions-table.component.html',
-	styleUrls: ['./positions-table.component.scss'],
 	providers: [PositionDataService]
 })
 export class PositionsTableComponent implements OnInit {

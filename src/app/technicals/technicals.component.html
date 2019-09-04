@@ -1,83 +1,76 @@
-<ul>
+<div class="container">
 
-	<li>
+	<div class="row">
+		<gui-button-toggle
+			[primary]="true"
+			[checked]="true"
+			(changed)="technicalsChecked()">
+			Technicals
+		</gui-button-toggle>
+	</div>
 
-		<gui-chip>High</gui-chip>
+	<div class="row technicals" [ngClass]="{'technicals-checked': showTechnicals}">
 
-		<label>
-			<input gui-input
-				   [(ngModel)]='high'
-				   (keyup)='formChanged()'
-				   placeholder="Enter High"
-				   type="number">
-		</label>
+		<div class="col-xl-4 technicals-form">
+			<form [formGroup]="techForm" (ngSubmit)="calculateTechnicals(techForm.value)">
 
-	</li>
+				<h4>Input values</h4>
 
-</ul>
+				<div class="technicals-input-area">
 
-<ul>
+					<div>
+						High:
+						<input gui-input formControlName="High" type="number">
 
-	<li>
+						Low:
+						<input gui-input formControlName="Low" type="number">
+					</div>
 
-		<gui-chip>Low</gui-chip>
+					<div>
 
-		<label>
-			<input gui-input
-				   [(ngModel)]='low'
-				   (keyup)='formChanged()'
-				   placeholder="Enter Low"
-				   type="number">
-		</label>
+						Open:
+						<input gui-input formControlName="Open" type="number">
 
-	</li>
+						Close:
+						<input gui-input formControlName="Close" type="number">
 
-</ul>
-<ul *ngIf="pivotChecked" [ngClass]="{pivotHidden: pivotChecked}">
+					</div>
 
-	<li>
+					<div class="technicals-submit">
+						<gui-select [options]="['Buy','Sell']"
+									[selected]="'Buy'"
+									(optionChanged)="getSelectedOption($event)"></gui-select>
 
-		<gui-chip>Open</gui-chip>
+						<button gui-button type="submit" [disabled]="!techForm.valid">Calculate</button>
+					</div>
+				</div>
 
-		<label>
-			<input gui-input
-				   [(ngModel)]='open'
-				   (keyup)='formChanged()'
-				   placeholder="Enter Open"
-				   type="number">
-		</label>
+			</form>
+		</div>
 
-	</li>
+		<div class="col-xl-4 text-center">
+			<h4>Retracement levels</h4>
+			<div class="fibonacci-results">
+				<gui-chip [ngClass]="{'uptrend': type === 'Buy', 'downtrend': type === 'Sell'}">{{isTrend()}}</gui-chip>
+				<gui-chip> 23.6 % = {{fibonacci236 | number:'1.5'}}</gui-chip>
+				<gui-chip> 38.2 % = {{fibonacci382 | number:'1.5'}}</gui-chip>
+				<gui-chip> 50 % = {{fibonacci50 | number:'1.5'}}</gui-chip>
+				<gui-chip> 61.8 % = {{fibonacci618 | number:'1.5'}}</gui-chip>
+			</div>
+		</div>
 
-</ul>
+		<div class="col-xl-4 text-center">
+			<h4>Pivot Points</h4>
+			<div class="pivot-points-results">
+				<gui-chip>R3 = {{pivotR3| number:'1.5'}}</gui-chip>
+				<gui-chip>R2 = {{pivotR2| number:'1.5'}}</gui-chip>
+				<gui-chip>R1 = {{pivotR1| number:'1.5'}}</gui-chip>
+				<gui-chip [primary]="true">Pivot = {{pivotPP| number:'1.5'}}</gui-chip>
+				<gui-chip>S1 = {{pivotS1| number:'1.5'}}</gui-chip>
+				<gui-chip>S2 = {{pivotS2| number:'1.5'}}</gui-chip>
+				<gui-chip>S3 = {{pivotS3| number:'1.5'}}</gui-chip>
+			</div>
+		</div>
+	</div>
 
-<ul *ngIf="pivotChecked" [ngClass]="{pivotHidden: pivotChecked}">
-
-	<li>
-
-		<gui-chip>Close</gui-chip>
-
-		<label>
-			<input gui-input
-				   [(ngModel)]='close'
-				   (keyup)='formChanged()'
-				   placeholder="Enter Close"
-				   type="number">
-		</label>
-
-	</li>
-
-</ul>
-
-<ul>
-
-	<gui-select
-			*ngIf="fiboChecked"
-			(click)='formChanged()'
-			[options]="options"
-			[ngClass]="{fiboHidden: fiboChecked}"
-			[selected]="selected"
-			(optionChanged)="getSelectedOption($event)">
-	</gui-select>
-
-</ul>
+</div>

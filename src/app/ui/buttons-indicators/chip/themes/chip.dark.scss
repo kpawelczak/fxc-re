@@ -1,0 +1,14 @@
+@import 'src/app/ui/themes/dark/dark.variables.scss';
+@import 'src/app/ui/themes/dark/dark.mixins.scss';
+
+#{$dark-selector} {
+
+	.gui-chip {
+		background: $basic-background;
+		color: $basic-text;
+
+		@include primary();
+		@include secondary();
+		@include outline();
+	}
+}

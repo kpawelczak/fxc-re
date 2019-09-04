@@ -1,0 +1,27 @@
+@import 'variables.scss';
+
+body {
+	margin-bottom: 100px;
+}
+
+.container {
+	padding-top: $grid*4
+}
+
+ul {
+	padding: 0
+}
+
+li {
+	list-style: none;
+	margin: $grid*2 0 $grid*2 0;
+}
+
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+}
+
+input[type=number] {
+	-moz-appearance: textfield;
+}

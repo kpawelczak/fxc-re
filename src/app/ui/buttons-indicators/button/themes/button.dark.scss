@@ -1,0 +1,28 @@
+@import 'src/app/ui/themes/dark/dark.variables.scss';
+@import 'src/app/ui/themes/dark/dark.mixins.scss';
+
+#{$dark-selector} {
+
+	.gui-button {
+		background: $basic-background;
+		color: $basic-text;
+
+		&:hover {
+			background: $basic-hover;
+		}
+
+		&:active {
+			background: $basic-active;
+		}
+
+		&:disabled {
+			opacity: 0.36;
+		}
+
+		@include focus();
+		@include primary();
+		@include secondary();
+		@include link();
+		@include outline();
+	}
+}

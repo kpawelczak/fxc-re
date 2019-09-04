@@ -1,0 +1,178 @@
+@import 'src/app/ui/themes/dark/dark.variables.scss';
+
+@mixin primary() {
+	&.gui-primary {
+		background: $primary;
+		color: $ps-text;
+
+		&.gui-outline {
+			color: $primary;
+		}
+
+		&.gui-button {
+			&:hover {
+				background: $primary-hover;
+			}
+
+			&:active {
+				background: $primary-active;
+				color: $ps-text;
+			}
+
+			&:disabled {
+				background: $primary;
+				opacity: 0.5;
+				color: $ps-text;
+			}
+		}
+
+		&.gui-badge {
+			background: $primary-light;
+		}
+	}
+}
+
+@mixin secondary() {
+	&.gui-secondary {
+		background: $secondary;
+		color: $ps-text;
+
+		&.gui-outline {
+			color: $secondary;
+		}
+
+		&.gui-button {
+			&:hover {
+				background: $secondary-hover;
+			}
+
+			&:active {
+				background: $secondary-active;
+				color: $ps-text;
+			}
+
+			&:disabled {
+				background: $secondary;
+				opacity: 0.5;
+				color: $ps-text;
+			}
+		}
+
+		&.gui-badge {
+			background: $secondary-light;
+		}
+	}
+}
+
+@mixin link() {
+	&.gui-link {
+		background: transparent;
+		border: 0;
+		color: $blue;
+
+		&:hover {
+			background: none;
+			color: $blue-dark;
+			text-decoration: underline;
+		}
+
+		&:focus {
+			text-decoration: underline;
+		}
+	}
+}
+
+@mixin outline() {
+	&.gui-outline {
+		color: $basic-text;
+		background: transparent;
+		border: {
+			color: $border-color;
+			style: solid;
+			width: 1px;
+		}
+
+		&.gui-button {
+			&:hover {
+				color: $basic-text;
+				background: $basic-light;
+			}
+		}
+
+		&.gui-badge {
+			background: $background-dark;
+		}
+
+		&.gui-primary {
+			border-color: $primary-border-color;
+
+			&.gui-button {
+				&:hover {
+					background: $primary;
+					border-color: $primary;
+					color: $ps-text;
+				}
+
+				&:disabled {
+					background: transparent;
+					border-color: $primary-disabled;
+					color: $primary-disabled;
+				}
+			}
+
+			&.gui-badge {
+				background: $background-dark;
+				border-color: $primary-border-color;
+				color: $primary-light;
+			}
+		}
+
+		&.gui-secondary {
+			border-color: $secondary-border-color;
+
+			&.gui-button {
+				&:hover {
+					background: $secondary;
+					border-color: $secondary;
+					color: $ps-text;
+				}
+
+				&:disabled {
+					background: transparent;
+					border-color: $secondary-disabled;
+					color: $secondary-disabled;
+				}
+			}
+
+			&.gui-badge {
+				background: $background-dark;
+				border-color: $secondary-border-color;
+				color: $secondary-border-color;
+			}
+		}
+	}
+}
+
+@mixin focus() {
+	&.gui-outline {
+		&:focus {
+			box-shadow: 0 0 0 2px $border-color;
+		}
+
+		&.gui-primary {
+			&:focus {
+				box-shadow: 0 0 0 2px $primary-border-color;
+			}
+		}
+
+		&.gui-secondary {
+			&:focus {
+				box-shadow: 0 0 0 2px $secondary-border-color;
+			}
+		}
+	}
+}
+
+@mixin disableTextSelect() {
+	user-select: none;
+}

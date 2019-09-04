@@ -1,0 +1,94 @@
+$dark-selector: '.gui-dark';
+
+$dark-background: #121212;
+$background-dark: #202124;
+$white: #FFFFFF;
+$basic-text: #BDBDBD;
+$ps-text: #212121;
+
+//Black
+$black: #000000;
+
+// Blue
+$blue: #2185d0;
+$blue-dark: darken($blue, 5);
+
+//Gray
+$gray: #424242;
+$gray-dark: #212121;
+$gray-light: #616161;
+$gray-lighter: #595959;
+$gray-lightest: #757575;
+
+// Purple : Purple 50
+$purple: #CE93D8;
+$purple-dark: darken($purple, 5);
+$purple-darker: darken($purple, 15);
+$purple-light: lighten($purple, 10);
+$purple-lightest: lighten($purple, 20);
+
+// Green : Teal 50
+$green: #80CBC4;
+$green-dark: darken($green, 5);
+$green-darker: #26A69A;
+$green-light: lighten($green, 10);
+$green-lightest: #B2EBF2;
+
+//Basic
+$basic: $gray;
+$basic-light: $gray-light;
+$basic-lightest: $gray-lightest;
+$basic-dark: $gray-dark;
+$basic-background: $basic;
+$basic-hover: $basic-light;
+$basic-active: $basic-dark;
+$basic-outline-hover: #E8EAF6;
+$basic-outline-active: indigo-100;
+
+// Primary
+$primary: $purple;
+$primary-light: $purple-light;
+$primary-lightest: $purple-lightest;
+$primary-hover: $purple-dark;
+$primary-active: $purple-darker;
+$primary-border-color: $primary;
+$primary-disabled: $primary-lightest;
+$primary-outline-hover: #EDE7F6;
+$primary-outline-active: $primary-lightest;
+
+// Secondary
+$secondary: $green;
+$secondary-light: $green-light;
+$secondary-lightest: $green-lightest;
+$secondary-hover: $green-dark;
+$secondary-active: $green-darker;
+$secondary-border-color: $secondary;
+$secondary-disabled: $secondary-lightest;
+$secondary-outline-hover: #E0F7FA;
+$secondary-outline-active: $secondary-lightest;
+
+/**
+ * Styles
+ */
+$grid: 8px;
+
+$focus: $primary;
+
+$font-family: Arial;
+$font-size: 14px;
+$font-weight: 500;
+$font: $font-size $font-family;
+
+$badge-font-size: 12px;
+
+$border-radius: $grid / 2;
+$border-color: $basic-light;
+$fill-color: lighten($basic-light, 15);
+
+$disabled: #C5CAE9;
+
+$box-shadow-width: $grid*1.25;
+$box-shadow-spread: -$box-shadow-width/2;
+
+$box-shadow-primary: inset 0 $box-shadow-width 0 $box-shadow-spread $primary-active;
+$box-shadow-secondary: inset 0 $box-shadow-width 0 $box-shadow-spread $secondary-active;

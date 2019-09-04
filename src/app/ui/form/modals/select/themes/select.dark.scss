@@ -1,0 +1,64 @@
+@import 'src/app/ui/themes/dark/dark.variables.scss';
+
+$arrow-color: $primary;
+$border-select-color: $focus;
+$selected-background: $gray-lightest;
+
+#{$dark-selector} {
+
+	.gui-select {
+
+		.gui-select-container {
+			background: $basic-background;
+			border-color: $border-color;
+			color: $basic-text;
+
+			&:hover {
+				border-color: $primary;
+			}
+
+			.gui-select-arrow {
+				border-color: $arrow-color transparent transparent transparent;
+			}
+
+			.gui-options {
+				border-color: $border-select-color;
+
+				.gui-option {
+					border: {
+						color: $gray-lightest;
+					}
+
+					&:hover {
+						background: $gray-light;
+					}
+				}
+			}
+		}
+
+		&.gui-options-opened {
+
+			.gui-select-container {
+				border-color: $border-select-color;
+			}
+		}
+
+		&.gui-upward {
+
+			.gui-select-container {
+
+				.gui-select-arrow {
+					border-color: transparent transparent $arrow-color transparent;
+				}
+			}
+		}
+
+		.gui-selected-option {
+			background: $selected-background;
+		}
+
+		.gui-disabled {
+			opacity: 0.36;
+		}
+	}
+}

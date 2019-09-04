@@ -1,0 +1,10 @@
+@import 'src/app/ui/themes/material/material.variables.scss';
+
+#{$material-selector} {
+
+	.gui-select {
+		.gui-select-container {
+			font-family: $font-family;
+		}
+	}
+}

@@ -23,7 +23,9 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles/styles.scss",
+				"src/styles/technicals/technicals.scss",
+				"src/styles/positions/positions.scss"
             ],
             "scripts": []
           },

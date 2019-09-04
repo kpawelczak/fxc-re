@@ -1,0 +1,91 @@
+$material-selector: '.gui-material';
+
+/**
+ * Colors
+ */
+
+$white: #FFFFFF;
+
+// Gray
+$gray: #999;
+$gray-light: lighten($gray, 20);
+$gray-lightest: lighten($gray, 30);
+$gainsboro: #DCDCDC;
+
+// Blue : Indigo 50
+$blue: #3949AB;
+$blue-light: lighten($blue, 10);
+$blue-lightest: lighten($blue, 20);
+$blue-dark: #4051bf;
+$indigo-100: #C5CAE9;
+
+// Purple : Deep purple 50
+$purple: #6200ee;
+$purple-hover: #974dff;
+$purple-active: #791aff;
+$purple-light: lighten($purple, 10);
+$purple-lightest: lighten($purple, 20);
+
+// Green : Cyan 50
+$green: #0097A7;
+$green-hover: #00a1b3;
+$green-active: darken($green, 5);
+$green-light: lighten($green, 10);
+$green-lightest: #B2EBF2;
+
+//Basic
+$basic: $blue;
+$basic-light: $blue-light;
+$basic-lightest: $blue-lightest;
+$basic-dark: $blue-dark;
+$basic-background: $basic;
+$basic-hover: $basic-light;
+$basic-active: $basic-dark;
+$basic-outline-hover: #E8EAF6;
+$basic-outline-active: $indigo-100;
+
+// Primary
+$primary: $purple;
+$primary-light: $purple-light;
+$primary-lightest: #D1C4E9;
+$primary-hover: $purple-hover;
+$primary-active: $purple-active;
+$primary-border-color: $primary;
+$primary-disabled: $primary-lightest;
+$primary-outline-hover: #EDE7F6;
+$primary-outline-active: $primary-lightest;
+
+// Secondary
+$secondary: $green;
+$secondary-light: $green-light;
+$secondary-lightest: $green-lightest;
+$secondary-hover: $green-hover;
+$secondary-active: $green-active;
+$secondary-border-color: $secondary;
+$secondary-disabled: $secondary-lightest;
+$secondary-outline-hover: #E0F7FA;
+$secondary-outline-active: $secondary-lightest;
+
+/**
+ * Styles
+ */
+$grid: 8px;
+
+$font-family: Roboto, "Helvetica Neue", sans-serif;
+$font-size: 14px;
+$font-weight: 500;
+$font: $font-size $font-family;
+
+$badge-font-size: 12px;
+
+$border-radius: $grid / 2;
+$border-color: $basic-light;
+
+$disabled: #C5CAE9;
+
+$box-shadow-width: $grid*1.25;
+$box-shadow-spread: -$box-shadow-width/2;
+
+$box-shadow: inset 0 $box-shadow-width 0 $box-shadow-spread $basic-lightest;
+$box-shadow-primary: inset 0 $box-shadow-width 0 $box-shadow-spread $primary-lightest;
+$box-shadow-secondary: inset 0 $box-shadow-width 0 $box-shadow-spread $secondary-lightest;

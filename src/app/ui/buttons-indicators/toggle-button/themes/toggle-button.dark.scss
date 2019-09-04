@@ -1,0 +1,51 @@
+@import 'src/app/ui/themes/dark/dark.variables.scss';
+
+#{$dark-selector} {
+
+	.gui-button {
+		background: $basic-background;
+		color: $basic-text;
+	}
+
+	.gui-checked .gui-button {
+		color: $basic-text;
+
+		&:hover {
+			background: $basic-hover;
+		}
+
+		&:active {
+			background: $basic-active;
+		}
+
+		&.gui-outline {
+			background: lighten($basic-active, 5);
+			box-shadow: 0 0 0 1px $border-color;
+			color: $basic-text;
+
+			&.gui-primary {
+				background: $primary-active;
+				box-shadow: 0 0 0 1px $primary-border-color;
+				color: $ps-text;
+			}
+
+			&.gui-secondary {
+				background: $secondary-active;
+				box-shadow: 0 0 0 1px $secondary-border-color;
+				color: $ps-text;
+			}
+		}
+
+		&.gui-primary {
+			background: $primary;
+			box-shadow: $box-shadow-primary;
+			color: $ps-text;
+		}
+
+		&.gui-secondary {
+			background: $secondary;
+			box-shadow: $box-shadow-secondary;
+			color: $ps-text;
+		}
+	}
+}

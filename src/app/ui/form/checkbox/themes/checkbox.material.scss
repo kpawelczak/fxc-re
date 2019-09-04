@@ -1,0 +1,8 @@
+@import 'src/app/ui/themes/material/material.variables.scss';
+
+#{$material-selector} {
+
+	.gui-checkbox {
+		font-family: $font-family;
+	}
+}
