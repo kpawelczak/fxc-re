@@ -8,13 +8,13 @@ body {
 	padding-top: $grid*4
 }
 
-ul {
-	padding: 0
-}
+app-positions,
+app-technicals {
 
-li {
-	list-style: none;
-	margin: $grid*2 0 $grid*2 0;
+	.gui-input {
+		margin: $grid/2 0;
+		width: 250px;
+	}
 }
 
 input::-webkit-inner-spin-button,

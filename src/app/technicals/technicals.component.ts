@@ -100,6 +100,18 @@ export class TechnicalsComponent implements OnInit, OnDestroy {
 		this.type = type;
 	}
 
+	technicalsChecked(): void {
+		this.showTechnicals = !this.showTechnicals;
+	}
+
+	isTrend(): string {
+		if (this.type === 'Buy') {
+			return 'Uptrend';
+		} else {
+			return 'Downtrend';
+		}
+	}
+
 	private observeFibonacci(): void {
 		this.fibonacciSubscription =
 			this.technicalsService.watchFibonacci()
@@ -118,18 +130,6 @@ export class TechnicalsComponent implements OnInit, OnDestroy {
 						this.pivotPoints = pivotPoints.calculatePivotPoints();
 					}
 				);
-	}
-
-	private technicalsChecked(): void {
-		this.showTechnicals = !this.showTechnicals;
-	}
-
-	private isTrend(): string {
-		if (this.type === 'Buy') {
-			return 'Uptrend';
-		} else {
-			return 'Downtrend';
-		}
 	}
 
 }

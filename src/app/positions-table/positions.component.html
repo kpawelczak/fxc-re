@@ -1,78 +1,45 @@
 <div class="container">
+
 	<div class="row">
-		<div class="col-xl-4">
-			<form [formGroup]="positionForm"
-				  (ngSubmit)="addPosition(positionForm.value)">
+		<gui-button-toggle [primary]="true"
+						   [checked]="showPositions"
+						   (changed)="positionsChecked()">
+			Positions
+		</gui-button-toggle>
+	</div>
 
-				<ul>
-					<gui-chip [primary]="true">Positons</gui-chip>
+	<div class="row positions" [ngClass]="{'positions-checked': showPositions}">
 
-					<li>
-						<gui-chip>Price</gui-chip>
+		<div class="col-xl-4 positions-form">
+			<form [formGroup]="positionForm" (ngSubmit)="addPosition(positionForm.value)">
 
-						<label>
-							<input gui-input
-								   formControlName="price"
-								   placeholder="Enter Price"
-								   type="number">
-						</label>
-					</li>
+				<div class="positions-input-area">
+					Price:
+					<input gui-input formControlName="price" type="number">
 
-					<li>
-						<gui-chip>Take Profit</gui-chip>
+					Take Profit:
+					<input gui-input formControlName="takeProfit" type="number">
 
-						<label>
-							<input gui-input
-								   formControlName="takeProfit"
-								   placeholder="Enter Take Profit"
-								   type="number">
-						</label>
-					</li>
+					Stop Loss:
+					<input gui-input formControlName="stopLoss" type="number">
 
-					<li>
-						<gui-chip>Stop Loss</gui-chip>
+					Size:
+					<input gui-input formControlName="size" type="number">
 
-						<label>
-							<input gui-input
-								   formControlName="stopLoss"
-								   placeholder="Enter Stop Loss"
-								   type="number">
-						</label>
-					</li>
-
-					<li>
-						<gui-chip>Size</gui-chip>
-
-						<gui-badge [primary]="true" class="badge-tooltip">?
-							<span class="tooltip-text">Price per pip in desired currency</span>
-						</gui-badge>
-
-						<label>
-							<input gui-input
-								   formControlName="size"
-								   placeholder="Enter Size"
-								   type="number">
-						</label>
-					</li>
-
-					<li>
-						<button gui-button
-								[disabled]="!positionForm.valid"
-								type="submit">
+					<div class="positions-buttons">
+						<button gui-button [disabled]="!positionForm.valid" type="submit">
 							Add
 						</button>
 
-						<button gui-button
-								(click)="clear()"
-								type="reset">
-							clear
+						<button gui-button (click)="clear()" type="reset">
+							Clear table
 						</button>
-					</li>
-				</ul>
-
+					</div>
+				</div>
 			</form>
 		</div>
-		<section [ngClass]="{'table-hidden': isTableHidden}" class="positions-table col-xl-8">
+
+		<div [ngClass]="{'table-hidden': isTableHidden}" class="positions-table col-xl-8">
 
 			<table>
 
@@ -156,6 +123,6 @@
 				</tr>
 			</table>
 
-		</section>
+		</div>
 	</div>
 </div>

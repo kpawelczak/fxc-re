@@ -5,15 +5,17 @@ import { PositionDataService } from './position-data/position-data.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-	selector: 'positions-table',
-	templateUrl: './positions-table.component.html',
+	selector: 'app-positions',
+	templateUrl: './positions.component.html',
 	providers: [PositionDataService]
 })
-export class PositionsTableComponent implements OnInit {
+export class PositionsComponent implements OnInit {
 
 	positions: Position[];
 
 	positionForm: FormGroup;
+
+	showPositions: boolean = true;
 
 	id: number = 1;
 	type: string;
@@ -35,18 +37,10 @@ export class PositionsTableComponent implements OnInit {
 				private formBuilder: FormBuilder) {
 
 		this.positionForm = this.formBuilder.group({
-			'size': ['', [
-				Validators.required,
-				Validators.min(0.000001)]],
-			'price': ['', [
-				Validators.required,
-				Validators.min(0.000001)]],
-			'takeProfit': ['', [
-				Validators.required,
-				Validators.min(0.000001)]],
-			'stopLoss': ['', [
-				Validators.required,
-				Validators.min(0.000001)]]
+			'size': ['', [Validators.required, Validators.min(0.000001)]],
+			'price': ['', [Validators.required, Validators.min(0.000001)]],
+			'takeProfit': ['', [Validators.required, Validators.min(0.000001)]],
+			'stopLoss': ['', [Validators.required, Validators.min(0.000001)]]
 		});
 	}
 
@@ -166,6 +160,10 @@ export class PositionsTableComponent implements OnInit {
 		for (let i = 0; i < this.positions.length; i++) {
 			this.totalMoneyLoss += +this.positions[i].moneyLoss.toFixed(2);
 		}
+	}
+
+	positionsChecked() {
+		this.showPositions = !this.showPositions;
 	}
 
 	private getPositions(): void {

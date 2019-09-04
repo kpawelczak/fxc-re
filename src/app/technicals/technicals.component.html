@@ -3,7 +3,7 @@
 	<div class="row">
 		<gui-button-toggle
 			[primary]="true"
-			[checked]="true"
+			[checked]="showTechnicals"
 			(changed)="technicalsChecked()">
 			Technicals
 		</gui-button-toggle>
@@ -39,7 +39,8 @@
 					<div class="technicals-submit">
 						<gui-select [options]="['Buy','Sell']"
 									[selected]="'Buy'"
-									(optionChanged)="getSelectedOption($event)"></gui-select>
+									(optionChanged)="getSelectedOption($event)">
+						</gui-select>
 
 						<button gui-button type="submit" [disabled]="!techForm.valid">Calculate</button>
 					</div>

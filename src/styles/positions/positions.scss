@@ -1,13 +1,30 @@
 @import '../variables.scss';
 
-.positions-table-content {
-	//display: inline-flex;
+.positions {
+	margin-top: $grid*4;
+	transform: scaleY(0);
+	transform-origin: top;
+	transition: transform 0.2s ease-out;
+}
+
+.positions-checked {
+	transform: scaleY(1);
+}
+
+.positions-form {
+
+	.positions-input-area {
+		display: inline-grid;
+	}
+
+	.positions-buttons {
+		margin-top: $grid*1.5;
+	}
 }
 
 .positions-table {
 	background: $white;
-	position: relative;
-	padding-top: $grid*6.25;
+	padding-top: $grid*3;
 
 
 	table {
@@ -132,26 +149,3 @@
 		display: none;
 	}
 }
-
-.badge-tooltip:hover {
-	.tooltip-text {
-		display: inline-block;
-	}
-}
-
-.tooltip-text {
-	position: absolute;
-	display: none;
-	background-color: $blue-dark;
-	border-radius: $border-radius;
-	color: $white;
-	font-size: 12px;
-	padding: $grid/4;
-	text-align: center;
-	width: 100px;
-	top: 0;
-	left: 101%;
-	z-index: 1;
-}
-
-

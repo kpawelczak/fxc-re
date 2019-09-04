@@ -1,31 +1,20 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
-import { SimpleUIModule } from './ui/simple-ui.module';
-
 import { AppComponent } from './app.component';
-
-import { PositionsTableComponent } from './positions-table/positions-table.component';
 
 import { HeaderComponent } from './header/header.component';
 
 import { TechnicalsModule } from './technicals/technicals.module';
+import { PositionsModule } from './positions-table/positions.module';
 
 
 @NgModule({
 	imports: [
-		BrowserModule,
-		FormsModule,
-		ReactiveFormsModule,
-		SimpleUIModule,
-		TechnicalsModule
+		TechnicalsModule,
+		PositionsModule
 	],
-
 	declarations: [
 		AppComponent,
-		PositionsTableComponent,
 		HeaderComponent
 	],
 	bootstrap: [AppComponent]
