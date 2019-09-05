@@ -43,7 +43,7 @@ export class PositionsComponent implements OnInit {
 	addPosition(post) {
 		this.id++;
 
-		let position = this.createPosition(post.size, post.price, post.stopLoss, post.takeProfit);
+		let position = this.createPosition(this.id, post.size, post.price, post.stopLoss, post.takeProfit);
 
 		this.sendPositionToTable(position);
 	}
@@ -54,14 +54,12 @@ export class PositionsComponent implements OnInit {
 		this.calculateTotals();
 	}
 
-	createPosition(size: number, price: number, stopLoss: number, takeProfit: number): Position {
+	createPosition(id: number, size: number, price: number, stopLoss: number, takeProfit: number): Position {
 		const decimal = 10000;
 
 		let type,
 			loss,
-			profit,
-			moneyLoss,
-			moneyProfit;
+			profit;
 
 		if (takeProfit > price) {
 			type = 'buy';
@@ -77,11 +75,8 @@ export class PositionsComponent implements OnInit {
 			loss = 0;
 		}
 
-		moneyLoss = +(loss * size).toFixed(2);
-		moneyProfit = +(profit * size).toFixed(2);
-
 		return {
-			id: this.id,
+			id: id,
 			type: type,
 			size: size,
 			price: price,
@@ -89,23 +84,18 @@ export class PositionsComponent implements OnInit {
 			profit: profit,
 			stopLoss: stopLoss,
 			takeProfit: takeProfit,
-			moneyLoss: moneyLoss,
-			moneyProfit: moneyProfit
+			moneyLoss: +(loss * size).toFixed(2),
+			moneyProfit: +(profit * size).toFixed(2)
 		};
 	}
 
 	update(event: Event, position: Position): void {
 		event.preventDefault();
 
-		let updatedPosition = this.createPosition(position.size, position.price, position.stopLoss, position.takeProfit);
+		let updatedPosition =
+			this.createPosition(position.id, position.size, position.price, position.stopLoss, position.takeProfit);
 
-		position.profit = updatedPosition.profit;
-		position.loss = updatedPosition.loss;
-		position.type = updatedPosition.type;
-		position.moneyLoss = updatedPosition.moneyLoss;
-		position.moneyProfit = updatedPosition.moneyProfit;
-
-		this.positionDataService.updatePosition(position);
+		this.positionDataService.updatePosition(updatedPosition);
 		this.calculateTotals();
 	}
 
