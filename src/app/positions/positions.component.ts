@@ -11,8 +11,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class PositionsComponent implements OnInit {
 
-	position: Position;
-
 	positions: Position[];
 
 	positionForm: FormGroup;
@@ -69,15 +67,11 @@ export class PositionsComponent implements OnInit {
 			type = 'buy';
 			profit = Math.round((takeProfit - price) * decimal);
 			loss = Math.round((price - stopLoss) * decimal);
-		}
-
-		if (takeProfit < price) {
+		} else if (takeProfit < price) {
 			type = 'sell';
 			profit = Math.round((price - takeProfit) * decimal);
 			loss = Math.round((stopLoss - price) * decimal);
-		}
-
-		if (takeProfit === price) {
+		} else {
 			type = '-';
 			profit = 0;
 			loss = 0;
@@ -86,7 +80,7 @@ export class PositionsComponent implements OnInit {
 		moneyLoss = +(loss * size).toFixed(2);
 		moneyProfit = +(profit * size).toFixed(2);
 
-		return this.position = {
+		return {
 			id: this.id,
 			type: type,
 			size: size,
