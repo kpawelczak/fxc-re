@@ -18,23 +18,17 @@
 
 				<div class="technicals-input-area">
 
-					<div>
 						High:
 						<input gui-input formControlName="High" type="number">
 
 						Low:
 						<input gui-input formControlName="Low" type="number">
-					</div>
-
-					<div>
 
 						Open:
 						<input gui-input formControlName="Open" type="number">
 
 						Close:
 						<input gui-input formControlName="Close" type="number">
-
-					</div>
 
 					<div class="technicals-submit">
 						<gui-select [options]="['Buy','Sell']"
@@ -53,7 +47,7 @@
 			<h4>Retracement levels</h4>
 			<div class="fibonacci-results">
 				<gui-chip [ngClass]="{'uptrend': type === 'Buy', 'downtrend': type === 'Sell'}">{{isTrend()}}</gui-chip>
-				<gui-chip> 23.6 % = {{fibonacci236 | number:'1.5'}}</gui-chip>
+				<gui-chip> 23.6 % = {{fibonacci236| number:'1.5'}}</gui-chip>
 				<gui-chip> 38.2 % = {{fibonacci382 | number:'1.5'}}</gui-chip>
 				<gui-chip> 50 % = {{fibonacci50 | number:'1.5'}}</gui-chip>
 				<gui-chip> 61.8 % = {{fibonacci618 | number:'1.5'}}</gui-chip>

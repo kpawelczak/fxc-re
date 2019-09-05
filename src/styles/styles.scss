@@ -1,5 +1,9 @@
 @import 'variables.scss';
 
+html {
+	overflow-y: scroll;
+}
+
 body {
 	margin-bottom: 100px;
 }

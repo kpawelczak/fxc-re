@@ -11,22 +11,16 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class PositionsComponent implements OnInit {
 
+	position: Position;
+
 	positions: Position[];
 
 	positionForm: FormGroup;
 
 	showPositions: boolean = true;
 
-	id: number = 1;
-	type: string;
-	size: number;
-	price: number;
-	loss: number;
-	profit: number;
-	takeProfit: number;
-	stopLoss: number;
-	moneyLoss: number;
-	moneyProfit: number;
+	id: number = 0;
+
 	totalLoss: number;
 	totalProfit: number;
 	totalMoneyProfit: number = 0;
@@ -49,81 +43,73 @@ export class PositionsComponent implements OnInit {
 	}
 
 	addPosition(post) {
-		this.size = post.size;
-		this.price = post.price;
-		this.takeProfit = post.takeProfit;
-		this.stopLoss = post.stopLoss;
+		this.id++;
 
-		this.calculate(this.price, this.stopLoss, this.takeProfit, this.size);
-		this.sendPositionToTable(this.size, this.price, this.stopLoss, this.takeProfit);
+		let position = this.createPosition(post.size, post.price, post.stopLoss, post.takeProfit);
+
+		this.sendPositionToTable(position);
 	}
 
-	sendPositionToTable(
-		size: number,
-		price: number,
-		stopLoss: number,
-		takeProfit: number
-	): void {
-
-		const id = this.id++,
-			type = this.type,
-			loss = this.loss,
-			profit = this.profit,
-			moneyLoss = this.moneyLoss,
-			moneyProfit = this.moneyProfit;
-
+	sendPositionToTable(position: Position): void {
 		this.isTableHidden = false;
-		this.positionDataService
-			.insertPosition({
-				id,
-				type,
-				size,
-				price,
-				loss,
-				profit,
-				stopLoss,
-				takeProfit,
-				moneyLoss,
-				moneyProfit
-			} as Position);
+		this.positionDataService.insertPosition(position);
 		this.calculateTotals();
 	}
 
-	calculate(price: number, stopLoss: number, takeProfit: number, size: number): void {
-
+	createPosition(size: number, price: number, stopLoss: number, takeProfit: number): Position {
 		const decimal = 10000;
 
+		let type,
+			loss,
+			profit,
+			moneyLoss,
+			moneyProfit;
+
 		if (takeProfit > price) {
-			this.type = 'buy';
-			this.profit = Math.round((takeProfit - price) * decimal);
-			this.loss = Math.round((price - stopLoss) * decimal);
+			type = 'buy';
+			profit = Math.round((takeProfit - price) * decimal);
+			loss = Math.round((price - stopLoss) * decimal);
 		}
 
 		if (takeProfit < price) {
-			this.type = 'sell';
-			this.profit = Math.round((price - takeProfit) * decimal);
-			this.loss = Math.round((stopLoss - price) * decimal);
+			type = 'sell';
+			profit = Math.round((price - takeProfit) * decimal);
+			loss = Math.round((stopLoss - price) * decimal);
 		}
 
 		if (takeProfit === price) {
-			this.type = '-';
-			this.profit = 0;
-			this.loss = 0;
+			type = '-';
+			profit = 0;
+			loss = 0;
 		}
 
-		this.moneyLoss = +(this.loss * size).toFixed(2);
-		this.moneyProfit = +(this.profit * size).toFixed(2);
+		moneyLoss = +(loss * size).toFixed(2);
+		moneyProfit = +(profit * size).toFixed(2);
+
+		return this.position = {
+			id: this.id,
+			type: type,
+			size: size,
+			price: price,
+			loss: loss,
+			profit: profit,
+			stopLoss: stopLoss,
+			takeProfit: takeProfit,
+			moneyLoss: moneyLoss,
+			moneyProfit: moneyProfit
+		};
 	}
 
 	update(event: Event, position: Position): void {
 		event.preventDefault();
 
-		this.calculate(position.price, position.stopLoss, position.takeProfit, position.size);
-		position.profit = this.profit;
-		position.loss = this.loss;
-		position.type = this.type;
-		position.moneyLoss = this.moneyLoss;
-		position.moneyProfit = this.moneyProfit;
+		let updatedPosition = this.createPosition(position.size, position.price, position.stopLoss, position.takeProfit);
+
+		position.profit = updatedPosition.profit;
+		position.loss = updatedPosition.loss;
+		position.type = updatedPosition.type;
+		position.moneyLoss = updatedPosition.moneyLoss;
+		position.moneyProfit = updatedPosition.moneyProfit;
 
 		this.positionDataService.updatePosition(position);
 		this.calculateTotals();
@@ -135,7 +121,7 @@ export class PositionsComponent implements OnInit {
 	}
 
 	clear(): void {
-		this.id = 1;
+		this.id = 0;
 		this.isTableHidden = true;
 		this.positionDataService.clearPositions();
 		this.calculateTotals();
