@@ -20,8 +20,6 @@ export class TechnicalsComponent implements OnInit, OnDestroy {
 
 	techForm: FormGroup;
 
-	showTechnicals: boolean = true;
-
 	fibonacci: Fibonacci;
 	pivotPoints: PivotPoints;
 
@@ -98,10 +96,6 @@ export class TechnicalsComponent implements OnInit, OnDestroy {
 
 	getSelectedOption(type): void {
 		this.type = type;
-	}
-
-	technicalsChecked(): void {
-		this.showTechnicals = !this.showTechnicals;
 	}
 
 	isTrend(): string {

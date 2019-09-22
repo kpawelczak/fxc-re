@@ -13,19 +13,15 @@ import { Subscription } from 'rxjs';
 export class PositionsComponent implements OnInit, OnDestroy {
 
 	positions: Array<Position>;
-
 	positionsSubscription: Subscription;
-
 	positionForm: FormGroup;
 
-	showPositions: boolean = true;
-
 	id: number = 0;
-
 	totalLoss: number;
 	totalProfit: number;
 	totalMoneyProfit: number = 0;
 	totalMoneyLoss: number = 0;
+
 	isTableHidden: boolean = true;
 
 	constructor(private positionDataService: PositionDataService,
@@ -44,7 +40,7 @@ export class PositionsComponent implements OnInit, OnDestroy {
 	}
 
 	ngOnDestroy() {
-		this.positionsSubscription.unsubscribe()
+		this.positionsSubscription.unsubscribe();
 	}
 
 	addPosition(post) {
@@ -137,10 +133,6 @@ export class PositionsComponent implements OnInit, OnDestroy {
 		for (let i = 0; i < this.positions.length; i++) {
 			this.totalMoneyLoss += +this.positions[i].moneyLoss.toFixed(2);
 		}
-	}
-
-	positionsChecked() {
-		this.showPositions = !this.showPositions;
 	}
 
 	private getPositions(): void {

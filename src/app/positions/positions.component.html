@@ -1,14 +1,12 @@
 <div class="container app-positions">
 
 	<div class="row">
-		<gui-button-toggle [primary]="true"
-						   [checked]="showPositions"
-						   (changed)="positionsChecked()">
+		<gui-chip [primary]="true">
 			Positions
-		</gui-button-toggle>
+		</gui-chip>
 	</div>
 
-	<div class="row positions" [ngClass]="{'positions-checked': showPositions}">
+	<div class="row positions">
 
 		<div class="col-xl-4 positions-form">
 			<form [formGroup]="positionForm" (ngSubmit)="addPosition(positionForm.value)">

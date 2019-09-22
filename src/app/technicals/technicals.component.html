@@ -1,15 +1,12 @@
 <div class="container app-technicals">
 
 	<div class="row">
-		<gui-button-toggle
-			[primary]="true"
-			[checked]="showTechnicals"
-			(changed)="technicalsChecked()">
+		<gui-chip [primary]="true">
 			Technicals
-		</gui-button-toggle>
+		</gui-chip>
 	</div>
 
-	<div class="row technicals" [ngClass]="{'technicals-checked': showTechnicals}">
+	<div class="row technicals">
 
 		<div class="col-xl-4 technicals-form">
 			<form [formGroup]="techForm" (ngSubmit)="calculateTechnicals(techForm.value)">
@@ -18,17 +15,17 @@
 
 				<div class="technicals-input-area">
 
-						High:
-						<input gui-input formControlName="High" type="number">
+					High:
+					<input gui-input formControlName="High" type="number">
 
-						Low:
-						<input gui-input formControlName="Low" type="number">
+					Low:
+					<input gui-input formControlName="Low" type="number">
 
-						Open:
-						<input gui-input formControlName="Open" type="number">
+					Open:
+					<input gui-input formControlName="Open" type="number">
 
-						Close:
-						<input gui-input formControlName="Close" type="number">
+					Close:
+					<input gui-input formControlName="Close" type="number">
 
 					<div class="technicals-submit">
 						<gui-select [options]="['Buy','Sell']"

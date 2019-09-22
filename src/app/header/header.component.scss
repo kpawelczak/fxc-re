@@ -5,25 +5,47 @@
 	justify-content: space-between;
 	width: 100%;
 	padding: $grid $grid $grid $grid+20px;
-	font-size: 21px;
+	font-size: 18px;
 	background: $blue-dark;
 	color: $white;
 	box-shadow: 0 2px 4px lighten($blue-dark, 40);
 
-	a {
-		color: $white;
-		align-items: center;
-		font-size: 16px;
-		padding: 2px 20px 2px 2px;
-		text-decoration: none;
-		text-transform: capitalize;
-
-		&:hover {
-			color: darken($white, 10);
-		}
-	}
-
-	h1 {
+	ul {
 		margin: 0;
+
+		li {
+			position: relative;
+			display: inline-block;
+			padding: 0 2 * $grid;
+
+			a {
+				color: $white;
+				text-decoration: none;
+				text-transform: capitalize;
+
+				&:hover {
+					color: darken($white, 10);
+				}
+
+				.toolbar-active-indicator {
+					background: $white;
+					position: absolute;
+					height: 4px;
+					right: 12px;
+					left: 12px;
+					bottom: -8px;
+					transform: scaleY(0);
+					transform-origin: bottom;
+					transition: transform 0.2s cubic-bezier(.4, 0, .2, 1);
+				}
+
+				&.selected-toolbar-item {
+
+					.toolbar-active-indicator {
+						transform: scaleY(1);
+					}
+				}
+			}
+		}
 	}
 }

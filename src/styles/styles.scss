@@ -1,16 +1,16 @@
 @import 'variables.scss';
 
 html {
-	overflow-y: scroll;
+	//overflow-y: scroll;
 }
 
 body {
-	background: $gray-light;
+	//background: $gray-light;
 }
 
 .container {
-	background: $white;
-	padding: 0 $grid*4;
+	//background: $white;
+	padding-top: $grid*8;
 }
 
 app-positions,
