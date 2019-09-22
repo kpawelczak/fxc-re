@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 import { Position } from './position';
-import { POSITIONS } from './mock-positions-data.service';
+import { POSITIONS } from './positions';
 
 @Injectable()
 export class PositionDataService {

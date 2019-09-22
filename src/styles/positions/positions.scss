@@ -1,13 +1,21 @@
 @import '../variables.scss';
 
+.app-positions {
+	padding-bottom: $grid*4;
+}
+
 .positions {
 	margin-top: $grid*4;
+	height: 0;
+	opacity: 0;
 	transform: scaleY(0);
 	transform-origin: top;
 	transition: transform 0.2s ease-out;
 }
 
 .positions-checked {
+	height: 100%;
+	opacity: 1;
 	transform: scaleY(1);
 }
 
@@ -24,7 +32,7 @@
 
 .positions-table {
 	padding-top: $grid*3;
-
+	margin-bottom: 100px;
 
 	table {
 		border-collapse: separate;

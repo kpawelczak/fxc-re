@@ -1,17 +1,20 @@
 @import '../../styles/variables.scss';
 
 .app-header {
-	padding: $grid $grid $grid $grid+40px;
-	text-align: left;
-	background: $primary;
+	display: inline-flex;
+	justify-content: space-between;
+	width: 100%;
+	padding: $grid $grid $grid $grid+20px;
+	font-size: 21px;
+	background: $blue-dark;
 	color: $white;
-	font-size: $grid;
-	box-shadow: 0 2px 4px lighten($primary, 40);
+	box-shadow: 0 2px 4px lighten($blue-dark, 40);
 
 	a {
 		color: $white;
+		align-items: center;
 		font-size: 16px;
-		padding: 2px;
+		padding: 2px 20px 2px 2px;
 		text-decoration: none;
 		text-transform: capitalize;
 

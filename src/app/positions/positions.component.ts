@@ -1,17 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
 import { Position } from './position-data/position';
 import { PositionDataService } from './position-data/position-data.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Subscription } from 'rxjs';
 
 @Component({
 	selector: 'app-positions',
 	templateUrl: './positions.component.html',
 	providers: [PositionDataService]
 })
-export class PositionsComponent implements OnInit {
+export class PositionsComponent implements OnInit, OnDestroy {
 
-	positions: Position[];
+	positions: Array<Position>;
+
+	positionsSubscription: Subscription;
 
 	positionForm: FormGroup;
 
@@ -38,6 +41,10 @@ export class PositionsComponent implements OnInit {
 
 	ngOnInit() {
 		this.getPositions();
+	}
+
+	ngOnDestroy() {
+		this.positionsSubscription.unsubscribe()
 	}
 
 	addPosition(post) {
@@ -137,7 +144,8 @@ export class PositionsComponent implements OnInit {
 	}
 
 	private getPositions(): void {
-		this.positionDataService.getPositions()
-			.subscribe(positions => this.positions = positions);
+		this.positionsSubscription =
+			this.positionDataService.getPositions()
+				.subscribe(positions => this.positions = positions);
 	}
 }
