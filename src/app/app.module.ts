@@ -8,6 +8,8 @@ import { TechnicalsModule } from './technicals/technicals.module';
 import { PositionsModule } from './positions/positions.module';
 import { RouterModule } from '@angular/router';
 import { routes } from './app.routes';
+import { TimezoneComponent } from './util/timezone/timezone.component';
+import { CommonModule } from '@angular/common';
 
 
 @NgModule({
@@ -15,10 +17,12 @@ import { routes } from './app.routes';
 		TechnicalsModule,
 		PositionsModule,
 		HeaderModule,
-		RouterModule.forRoot(routes)
+		RouterModule.forRoot(routes),
+		CommonModule
 	],
 	declarations: [
-		AppComponent
+		AppComponent,
+		TimezoneComponent
 	],
 	bootstrap: [AppComponent]
 })

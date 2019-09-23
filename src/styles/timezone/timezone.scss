@@ -1,0 +1,132 @@
+@import '../variables';
+
+.timezone {
+
+	ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+
+		li {
+			display: inline-flex;
+			width: 100%;
+			margin-top: 4px;
+		}
+	}
+
+	.london-market-time,
+	.ny-market-time,
+	.sydney-market-time,
+	.sydney-market-time-end,
+	.tokyo-market-time,
+	.tokyo-market-time-end {
+		background: #f0f3f7;
+		color: $black;
+	}
+
+	.london-market-time {
+		margin-left: calc(4.17% * 2);
+		width: 37.5%;
+	}
+
+	.ny-market-time {
+		margin-left: calc(4.17% * 7);
+		width: 37.5%;
+	}
+
+	.sydney-market-time {
+		margin-left: calc(4.17% * 15);
+		width: calc(37.5% - 4.17%);
+	}
+
+	.sydney-market-time-end {
+		width: 4.17%;
+	}
+
+	.tokyo-market-time {
+		margin-left: calc(4.17% * 15);
+		width: calc(37.5% - 3 * 4.17%);
+	}
+
+	.tokyo-market-time-end {
+		width: calc(4.17% * 3);
+	}
+
+	.time-axis {
+
+		div {
+			position: relative;
+			text-align: center;
+			width: 0;
+			font-size: 12px;
+
+			div {
+				position: absolute;
+				left: -14px;
+			}
+
+			span {
+				position: absolute;
+				border-left: {
+					style: solid;
+					width: 1px;
+					color: gray;
+				};
+				opacity: 0.4; //////usunac
+				height: 148px;
+				left: -1px;
+				bottom: 0;
+			}
+		}
+
+		div:nth-child(1) {
+			margin-left: 4.17%;
+		}
+
+		div:nth-child(2) {
+			margin-left: 4.17%;
+		}
+
+		div:nth-child(3) {
+			margin-left: 4.17%;
+		}
+
+		div:nth-child(4) {
+			margin-left: calc(4.17% * 4);
+		}
+
+		div:nth-child(5) {
+			margin-left: calc(4.17% * 9);
+		}
+
+		div:nth-child(6) {
+			margin-left: calc(4.17% * 2);
+		}
+	}
+
+	.time-indicator {
+		position: relative;
+		font-size: 12px;
+		font-weight: bold;
+		width: 0;
+		color: $green;
+		margin-top: 12px;
+
+		div {
+			position: absolute;
+			left: -14px;
+		}
+
+		span {
+			position: absolute;
+			border-left: {
+				style: solid;
+				width: 1px;
+			};
+			height: 172px;
+			bottom: 0;
+		}
+
+	}
+
+}

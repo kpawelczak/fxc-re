@@ -1,0 +1,52 @@
+<div class="container">
+	<div class="timezone col-xl-12">
+		<ul>
+			<li>
+				<div class="london-market-time">London</div>
+			</li>
+			<li>
+				<div class="ny-market-time">New York</div>
+			</li>
+			<li>
+				<div class="sydney-market-time-end">S</div>
+				<div class="sydney-market-time">Sydney</div>
+			</li>
+			<li>
+				<div class="tokyo-market-time-end">T</div>
+				<div class="tokyo-market-time">Tokyo</div>
+			</li>
+			<li class="time-axis">
+				<div>
+					<div>8:00</div>
+					<span></span>
+				</div>
+				<div>
+					<div>9:00</div>
+					<span></span>
+				</div>
+				<div>
+					<div>10:00</div>
+					<span></span>
+				</div>
+				<div>
+					<div>14:00</div>
+					<span></span>
+				</div>
+				<div>
+					<div>23:00</div>
+					<span></span>
+				</div>
+				<div>
+					<div>1:00</div>
+					<span></span>
+				</div>
+			</li>
+			<li>
+				<div [style.margin-left.%]="timeIndicator" class="time-indicator">
+					<div>{{clock | date:'H:mm'}}</div>
+					<span></span>
+				</div>
+			</li>
+		</ul>
+	</div>
+</div>

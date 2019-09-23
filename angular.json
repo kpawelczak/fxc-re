@@ -25,7 +25,8 @@
             "styles": [
               "src/styles/styles.scss",
 				"src/styles/technicals/technicals.scss",
-				"src/styles/positions/positions.scss"
+				"src/styles/positions/positions.scss",
+				"src/styles/timezone/timezone.scss"
             ],
             "scripts": []
           },
