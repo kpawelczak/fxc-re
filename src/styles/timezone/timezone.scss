@@ -11,6 +11,7 @@
 			display: inline-flex;
 			width: 100%;
 			margin-top: 4px;
+			line-height: 24px;
 		}
 	}
 
@@ -96,10 +97,14 @@
 		}
 
 		div:nth-child(5) {
-			margin-left: calc(4.17% * 9);
+			margin-left: calc(4.17% * 4);
 		}
 
 		div:nth-child(6) {
+			margin-left: calc(4.17% * 5);
+		}
+
+		div:nth-child(7) {
 			margin-left: calc(4.17% * 2);
 		}
 	}
