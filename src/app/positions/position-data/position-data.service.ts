@@ -11,6 +11,8 @@ export class PositionDataService {
 	positions$ = new BehaviorSubject(POSITIONS);
 	positions = POSITIONS;
 
+	showInitialTable$ = new BehaviorSubject(true);
+
 	getPositions(): Observable<Position[]> {
 		return this.positions$.asObservable();
 	}

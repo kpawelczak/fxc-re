@@ -7,13 +7,11 @@ import { Subscription } from 'rxjs';
 
 @Component({
 	selector: 'app-positions',
-	templateUrl: './positions.component.html',
-	providers: [PositionDataService]
+	templateUrl: './positions.component.html'
 })
 export class PositionsComponent implements OnInit, OnDestroy {
 
 	positions: Array<Position>;
-	positionsSubscription: Subscription;
 	positionForm: FormGroup;
 
 	id: number = 0;
@@ -22,7 +20,8 @@ export class PositionsComponent implements OnInit, OnDestroy {
 	totalMoneyProfit: number = 0;
 	totalMoneyLoss: number = 0;
 
-	isTableHidden: boolean = true;
+	private initialTableState: Array<Position>;
+	private positionsSubscription: Subscription;
 
 	constructor(private positionDataService: PositionDataService,
 				private formBuilder: FormBuilder) {
@@ -37,22 +36,23 @@ export class PositionsComponent implements OnInit, OnDestroy {
 
 	ngOnInit() {
 		this.getPositions();
+		this.checkInitialTableStatus();
 	}
 
 	ngOnDestroy() {
 		this.positionsSubscription.unsubscribe();
+		this.isInitialTableRemoved();
 	}
 
 	addPosition(post) {
+		this.checkInitialTableStatus();
+
 		this.id++;
-
 		let position = this.createPosition(this.id, post.size, post.price, post.stopLoss, post.takeProfit);
-
 		this.sendPositionToTable(position);
 	}
 
 	sendPositionToTable(position: Position): void {
-		this.isTableHidden = false;
 		this.positionDataService.insertPosition(position);
 		this.calculateTotals();
 	}
@@ -109,7 +109,6 @@ export class PositionsComponent implements OnInit, OnDestroy {
 
 	clear(): void {
 		this.id = 0;
-		this.isTableHidden = true;
 		this.positionDataService.clearPositions();
 		this.calculateTotals();
 	}
@@ -140,4 +139,44 @@ export class PositionsComponent implements OnInit, OnDestroy {
 			this.positionDataService.getPositions()
 				.subscribe(positions => this.positions = positions);
 	}
+
+	private checkInitialTableStatus(): void {
+		const initialTableSubject = this.positionDataService.showInitialTable$,
+			isInitialTableNotCleared = this.initialTableState && this.initialTableState.length > 0;
+
+		if (initialTableSubject.value) {
+			this.createInitialTable();
+
+			this.sendPositionToTable(this.initialTableState[0]);
+			this.sendPositionToTable(this.initialTableState[1]);
+			this.sendPositionToTable(this.initialTableState[2]);
+			this.sendPositionToTable(this.initialTableState[3]);
+
+			this.calculateTotals();
+			initialTableSubject.next(false);
+		} else if (isInitialTableNotCleared) {
+			this.initialTableState = [];
+			this.clear();
+		}
+	}
+
+	private createInitialTable(): void {
+		this.initialTableState = [
+			this.createPosition(1, 1, 1.23200, 1.2325, 1.2000),
+			this.createPosition(2, 1, 1.23100, 1.2325, 1.2000),
+			this.createPosition(3, 1, 1.23000, 1.2325, 1.2000),
+			this.createPosition(4, 1, 1.22950, 1.2325, 1.2000)
+		];
+	}
+
+	private isInitialTableRemoved(): void {
+		const initialTableSubject = this.positionDataService.showInitialTable$,
+			isInitialTableNotCleared = this.initialTableState && this.initialTableState.length > 0;
+
+		if (isInitialTableNotCleared) {
+			initialTableSubject.next(true);
+			this.clear();
+		}
+	}
+
 }

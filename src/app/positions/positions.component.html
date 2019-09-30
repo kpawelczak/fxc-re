@@ -37,7 +37,7 @@
 			</form>
 		</div>
 
-		<div [ngClass]="{'table-hidden': isTableHidden}" class="positions-table col-xl-8">
+		<div class="positions-table col-xl-8">
 
 			<table>
 
@@ -86,8 +86,8 @@
 					</td>
 					<td>{{position.loss}}</td>
 					<td>{{position.profit}}</td>
-					<td>{{position.moneyLoss.toFixed(2)}}</td>
-					<td>{{position.moneyProfit.toFixed(2)}}</td>
+					<td>{{position.moneyLoss | number:'1.2'}}</td>
+					<td>{{position.moneyProfit| number:'1.2'}}</td>
 					<td>
 						<button gui-button
 								(click)="delete(position)"
@@ -109,10 +109,10 @@
 						{{totalProfit}}
 					</td>
 					<td>
-						{{totalMoneyLoss.toFixed(2)}}
+						{{totalMoneyLoss| number:'1.2'}}
 					</td>
 					<td>
-						{{totalMoneyProfit.toFixed(2)}}
+						{{totalMoneyProfit| number:'1.2'}}
 					</td>
 					<td>
 						-
