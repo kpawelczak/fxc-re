@@ -41,10 +41,10 @@ export class TimezoneComponent implements OnInit, OnDestroy {
 
 	marketSessionActive(): void {
 
-		let londonSession: boolean = this.hourSelection(9) <= this.clock && this.clock <= this.hourSelection(18),
-			nySession: boolean = this.hourSelection(14) <= this.clock && this.clock <= this.hourSelection(23),
-			sydneySession: boolean = this.hourSelection(23) <= this.clock && this.clock <= this.hourSelection(8),
-			tokyoSession: boolean = this.hourSelection(1) <= this.clock && this.clock <= this.hourSelection(10);
+		let londonSession: boolean = this.hourSelection(9) <= this.clock && this.clock < this.hourSelection(18),
+			nySession: boolean = this.hourSelection(14) <= this.clock && this.clock < this.hourSelection(23),
+			sydneySession: boolean = this.hourSelection(23) <= this.clock && this.clock < this.hourSelection(8),
+			tokyoSession: boolean = this.hourSelection(1) <= this.clock && this.clock < this.hourSelection(10);
 
 		const londonSessionEl = this.elementRef.nativeElement.querySelector('.' + 'london-market-time'),
 			nySessionEl = this.elementRef.nativeElement.querySelector('.' + 'ny-market-time'),

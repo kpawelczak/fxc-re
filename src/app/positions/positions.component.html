@@ -58,7 +58,8 @@
 				<tr *ngFor="let position of positions">
 					<td class="id">{{position.id}}</td>
 					<td class="type">{{position.type}}</td>
-					<td class="size"><input
+					<td class="size">
+						<input
 						[(ngModel)]="position.size"
 						(keydown.enter)="update($event, position)"
 						type="number"
