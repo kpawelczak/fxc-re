@@ -14,7 +14,6 @@ export class PositionsComponent implements OnInit, OnDestroy {
 	positions: Array<Position>;
 	positionForm: FormGroup;
 
-	id: number = 0;
 	totalLoss: number;
 	totalProfit: number;
 	totalMoneyProfit: number = 0;
@@ -41,14 +40,13 @@ export class PositionsComponent implements OnInit, OnDestroy {
 
 	ngOnDestroy() {
 		this.positionsSubscription.unsubscribe();
-		this.isInitialTableRemoved();
+		this.doNotRemoveInitTableBeforeNewData();
 	}
 
 	addPosition(post) {
 		this.checkInitialTableStatus();
 
-		this.id++;
-		let position = this.createPosition(this.id, post.size, post.price, post.stopLoss, post.takeProfit);
+		let position = this.createPosition(post.size, post.price, post.stopLoss, post.takeProfit);
 		this.sendPositionToTable(position);
 	}
 
@@ -57,12 +55,17 @@ export class PositionsComponent implements OnInit, OnDestroy {
 		this.calculateTotals();
 	}
 
-	createPosition(id: number, size: number, price: number, stopLoss: number, takeProfit: number): Position {
+	createPosition(size: number, price: number, stopLoss: number, takeProfit: number, id?: number): Position {
 		const decimal = 10000;
 
 		let type,
 			loss,
 			profit;
+
+		if (!id) {
+			id = Position.actualIndex;
+			Position.actualIndex += 1;
+		}
 
 		if (takeProfit > price) {
 			type = 'buy';
@@ -96,7 +99,7 @@ export class PositionsComponent implements OnInit, OnDestroy {
 		event.preventDefault();
 
 		let updatedPosition =
-			this.createPosition(position.id, position.size, position.price, position.stopLoss, position.takeProfit);
+			this.createPosition(position.size, position.price, position.stopLoss, position.takeProfit, position.id);
 
 		this.positionDataService.updatePosition(updatedPosition);
 		this.calculateTotals();
@@ -108,7 +111,7 @@ export class PositionsComponent implements OnInit, OnDestroy {
 	}
 
 	clear(): void {
-		this.id = 0;
+		Position.actualIndex = 1;
 		this.positionDataService.clearPositions();
 		this.calculateTotals();
 	}
@@ -162,14 +165,14 @@ export class PositionsComponent implements OnInit, OnDestroy {
 
 	private createInitialTable(): void {
 		this.initialTableState = [
-			this.createPosition(1, 1, 1.23200, 1.2325, 1.2000),
-			this.createPosition(2, 1, 1.23100, 1.2325, 1.2000),
-			this.createPosition(3, 1, 1.23000, 1.2325, 1.2000),
-			this.createPosition(4, 1, 1.22950, 1.2325, 1.2000)
+			this.createPosition(1, 1.23200, 1.2325, 1.2000),
+			this.createPosition(1, 1.23100, 1.2325, 1.2000),
+			this.createPosition(1, 1.23000, 1.2325, 1.2000),
+			this.createPosition(1, 1.22950, 1.2325, 1.2000)
 		];
 	}
 
-	private isInitialTableRemoved(): void {
+	private doNotRemoveInitTableBeforeNewData(): void {
 		const initialTableSubject = this.positionDataService.showInitialTable$,
 			isInitialTableNotCleared = this.initialTableState && this.initialTableState.length > 0;
 

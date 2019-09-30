@@ -1,4 +1,6 @@
 export class Position {
+	static actualIndex = 1;
+
 	id: number;
 	type: string;
 	size: number;
