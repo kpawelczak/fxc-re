@@ -1,6 +1,9 @@
 @import '../variables';
 
+$time-separator-color: #d9d9d9;
+
 .timezone {
+
 
 	ul {
 		margin: 0;
@@ -15,13 +18,9 @@
 		}
 	}
 
-	.london-market-time,
-	.ny-market-time,
-	.sydney-market-time,
-	.sydney-market-time-end,
-	.tokyo-market-time,
-	.tokyo-market-time-end {
+	.market-session {
 		background: #f0f3f7;
+		opacity: 0.3;
 		color: $black;
 	}
 
@@ -71,9 +70,8 @@
 				border-left: {
 					style: solid;
 					width: 1px;
-					color: gray;
+					color: $time-separator-color;
 				};
-				opacity: 0.4; //////usunac
 				height: 148px;
 				left: -1px;
 				bottom: 0;
@@ -131,7 +129,10 @@
 			height: 172px;
 			bottom: 0;
 		}
+	}
 
+	.session-active {
+		opacity: 1;
 	}
 
 }
