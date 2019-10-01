@@ -1,9 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 
-import { Position } from './position-data/position';
+import { Position } from './position/position';
 import { PositionDataService } from './position-data/position-data.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
+import { PositionCreator } from './position/position.creator';
+import { DemoTable } from './demo/demo.component';
 
 @Component({
 	selector: 'app-positions',
@@ -19,14 +21,12 @@ export class PositionsComponent implements OnInit, OnDestroy {
 	totalMoneyProfit: number = 0;
 	totalMoneyLoss: number = 0;
 
-	private initialTableState: Array<Position>;
-	private showInitialTable: boolean;
-
 	private positionsSubscription: Subscription;
-	private initTableSubscription: Subscription;
 
 	constructor(private positionDataService: PositionDataService,
-				private formBuilder: FormBuilder) {
+				private positionCreator: PositionCreator,
+				private formBuilder: FormBuilder,
+				private demoTable: DemoTable) {
 
 		this.positionForm = this.formBuilder.group({
 			'size': ['', [Validators.required, Validators.min(0.000001)]],
@@ -38,19 +38,19 @@ export class PositionsComponent implements OnInit, OnDestroy {
 
 	ngOnInit() {
 		this.getPositions();
-		this.checkInitialTableStatus();
+		this.demoTable.checkInitialTableStatus();
 		this.calculateTotals();
 	}
 
 	ngOnDestroy() {
 		this.positionsSubscription.unsubscribe();
-		this.initTableUnsubscribe();
+		this.demoTable.initTableUnsubscribe();
 	}
 
 	addPosition(post) {
-		this.checkInitialTableStatus();
+		this.demoTable.checkInitialTableStatus();
 
-		let position = this.createPosition(post.size, post.price, post.stopLoss, post.takeProfit);
+		let position = this.positionCreator.createPosition(post.size, post.price, post.stopLoss, post.takeProfit);
 		this.sendPositionToTable(position);
 	}
 
@@ -59,51 +59,11 @@ export class PositionsComponent implements OnInit, OnDestroy {
 		this.calculateTotals();
 	}
 
-	createPosition(size: number, price: number, stopLoss: number, takeProfit: number, id?: number): Position {
-		const decimal = 10000;
-
-		let type,
-			loss,
-			profit;
-
-		if (!id) {
-			id = Position.actualIndex;
-			Position.actualIndex += 1;
-		}
-
-		if (takeProfit > price) {
-			type = 'buy';
-			profit = Math.round((takeProfit - price) * decimal);
-			loss = Math.round((price - stopLoss) * decimal);
-		} else if (takeProfit < price) {
-			type = 'sell';
-			profit = Math.round((price - takeProfit) * decimal);
-			loss = Math.round((stopLoss - price) * decimal);
-		} else {
-			type = '-';
-			profit = 0;
-			loss = 0;
-		}
-
-		return {
-			id: id,
-			type: type,
-			size: size,
-			price: price,
-			loss: loss,
-			profit: profit,
-			stopLoss: stopLoss,
-			takeProfit: takeProfit,
-			moneyLoss: +(loss * size).toFixed(2),
-			moneyProfit: +(profit * size).toFixed(2)
-		};
-	}
-
 	update(event: Event, position: Position): void {
 		event.preventDefault();
 
 		let updatedPosition =
-			this.createPosition(position.size, position.price, position.stopLoss, position.takeProfit, position.id);
+			this.positionCreator.createPosition(position.size, position.price, position.stopLoss, position.takeProfit, position.id);
 
 		this.positionDataService.updatePosition(updatedPosition);
 		this.calculateTotals();
@@ -115,13 +75,13 @@ export class PositionsComponent implements OnInit, OnDestroy {
 	}
 
 	clear(showInitTable: boolean): void {
-		Position.actualIndex = 1;
-		this.positionDataService.clearPositions(showInitTable);
-		this.calculateTotals();
-
 		if (!showInitTable) {
-			this.initialTableState = [];
+			this.demoTable.clear(showInitTable);
+		} else {
+			Position.actualIndex = 1;
+			this.positionDataService.clearPositions();
 		}
+		this.calculateTotals();
 	}
 
 	calculateTotals(): void {
@@ -145,62 +105,14 @@ export class PositionsComponent implements OnInit, OnDestroy {
 		}
 	}
 
+	isTableEmpty(): boolean {
+		return this.positions.length === 0;
+	}
+
 	private getPositions(): void {
 		this.positionsSubscription =
 			this.positionDataService.getPositions()
 				.subscribe(positions => this.positions = positions);
-	}
-
-	private observeInitTableStatus() {
-		this.initTableSubscription =
-			this.positionDataService.showInitialTable()
-				.subscribe(
-					(show) => this.showInitialTable = show
-				);
-	}
-
-	private checkInitialTableStatus(): void {
-		this.observeInitTableStatus();
-
-		const isInitialTableNotCleared = this.initialTableState && this.initialTableState.length > 0;
-
-		if (this.showInitialTable) {
-			this.createInitialTable();
-
-			this.sendPositionToTable(this.initialTableState[0]);
-			this.sendPositionToTable(this.initialTableState[1]);
-			this.sendPositionToTable(this.initialTableState[2]);
-			this.sendPositionToTable(this.initialTableState[3]);
-
-		} else if (isInitialTableNotCleared) {
-			this.clear(false);
-		}
-	}
-
-	private createInitialTable(): void {
-		this.initialTableState = [
-			this.createPosition(1, 1.23200, 1.2325, 1.2000),
-			this.createPosition(1, 1.23100, 1.2325, 1.2000),
-			this.createPosition(1, 1.23000, 1.2325, 1.2000),
-			this.createPosition(1, 1.22950, 1.2325, 1.2000)
-		];
-	}
-
-	private initTableUnsubscribe(): void {
-		this.doNotRemoveInitTableBeforeNewData();
-		this.initTableSubscription.unsubscribe();
-	}
-
-	private doNotRemoveInitTableBeforeNewData(): void {
-		const isInitialTableNotCleared = this.initialTableState && this.initialTableState.length > 0;
-
-		if (isInitialTableNotCleared) {
-			this.clear(isInitialTableNotCleared);
-		}
-	}
-
-	private isTableEmpty(): boolean {
-		return this.positions.length === 0;
 	}
 
 }

@@ -6,6 +6,8 @@ import { PositionsComponent } from './positions.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { PositionsRoutingModule } from './positions-routing.module';
 import { PositionDataService } from './position-data/position-data.service';
+import { PositionCreator } from './position/position.creator';
+import { DemoTable } from './demo/demo.component';
 
 
 @NgModule({
@@ -23,7 +25,11 @@ import { PositionDataService } from './position-data/position-data.service';
 	exports: [
 		PositionsComponent
 	],
-	providers:[PositionDataService]
+	providers: [
+		PositionDataService,
+		PositionCreator,
+		DemoTable
+	]
 })
 export class PositionsModule {
 }

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { BehaviorSubject, Observable } from 'rxjs';
 
-import { Position } from './position';
+import { Position } from '../position/position';
 import { POSITIONS } from './positions';
 
 @Injectable()
@@ -47,7 +47,7 @@ export class PositionDataService {
 		}
 	}
 
-	clearPositions(showInitTable:boolean): void {
+	clearPositions(showInitTable?:boolean): void {
 		this.positions = [];
 		this.positions$.next(this.positions);
 		this.showInitialTable$.next(showInitTable)

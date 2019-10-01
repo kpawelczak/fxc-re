@@ -10,6 +10,7 @@ export class MarketSessionsComponent implements OnInit, OnDestroy {
 	clock = new Date();
 	initialTime: number = this.timerPosition();
 	timer: number = this.initialTime;
+
 	private timeSubscription: Subscription;
 
 	constructor(private renderer: Renderer2,
@@ -23,9 +24,7 @@ export class MarketSessionsComponent implements OnInit, OnDestroy {
 			interval(1000).subscribe(
 				() => {
 					this.clock = new Date();
-
 					this.timer = this.timerPosition();
-
 					if (this.marketOpeningClosingHours()) {
 						this.marketSessionActive();
 					}
