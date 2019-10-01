@@ -2,17 +2,23 @@ import { Injectable } from '@angular/core';
 import { PositionDataService } from '../position-data/position-data.service';
 import { Position } from '../position/position';
 import { PositionCreator } from '../position/position.creator';
-import { Subscription } from 'rxjs';
+import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 
 @Injectable()
 export class DemoTable {
 
 	private initialTableState: Array<Position>;
-	private showInitialTable: boolean;
+	private showDemoTable: boolean;
 	private initTableSubscription: Subscription;
+
+	private showInitialTable$ = new BehaviorSubject(true);
 
 	constructor(private positionDataService: PositionDataService,
 				private positionCreator: PositionCreator) {
+	}
+
+	showInitialTable(): Observable<boolean> {
+		return this.showInitialTable$.asObservable();
 	}
 
 	sendPositionToTable(position: Position): void {
@@ -21,18 +27,18 @@ export class DemoTable {
 
 	clear(showInitTable: boolean): void {
 		Position.actualIndex = 1;
-		this.positionDataService.clearPositions(showInitTable);
+		this.positionDataService.clearPositions();
 
 		if (!showInitTable) {
 			this.initialTableState = [];
+			this.showInitialTable$.next(false);
 		}
 	}
 
 	checkInitialTableStatus(): void {
-		this.observeInitTableStatus();
 		const isInitialTableNotCleared = this.initialTableState && this.initialTableState.length > 0;
 
-		if (this.showInitialTable) {
+		if (this.showDemoTable) {
 			this.createInitialTable();
 
 			this.sendPositionToTable(this.initialTableState[0]);
@@ -54,17 +60,22 @@ export class DemoTable {
 		];
 	}
 
-	observeInitTableStatus() {
+	observeInitTableStatus(): void {
 		this.initTableSubscription =
-			this.positionDataService.showInitialTable()
+			this.showInitialTable()
 				.subscribe(
-					(show) => this.showInitialTable = show
+					(show) => this.showDemoTable = show
 				);
 	}
 
 	initTableUnsubscribe(): void {
 		this.doNotRemoveInitTableBeforeNewData();
 		this.initTableSubscription.unsubscribe();
+	}
+
+	turnOff() {
+		this.showInitialTable$.next(false);
+		this.checkInitialTableStatus()
 	}
 
 	private doNotRemoveInitTableBeforeNewData(): void {

@@ -38,6 +38,7 @@ export class PositionsComponent implements OnInit, OnDestroy {
 
 	ngOnInit() {
 		this.getPositions();
+		this.demoTable.observeInitTableStatus();
 		this.demoTable.checkInitialTableStatus();
 		this.calculateTotals();
 	}
@@ -48,7 +49,7 @@ export class PositionsComponent implements OnInit, OnDestroy {
 	}
 
 	addPosition(post) {
-		this.demoTable.checkInitialTableStatus();
+		this.demoTable.turnOff();
 
 		let position = this.positionCreator.createPosition(post.size, post.price, post.stopLoss, post.takeProfit);
 		this.sendPositionToTable(position);

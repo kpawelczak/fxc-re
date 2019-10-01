@@ -11,20 +11,13 @@ export class PositionDataService {
 	positions$ = new BehaviorSubject(POSITIONS);
 	positions = POSITIONS;
 
-	showInitialTable$ = new BehaviorSubject(true);
-
 	getPositions(): Observable<Position[]> {
 		return this.positions$.asObservable();
-	}
-
-	showInitialTable(): Observable<boolean> {
-		return this.showInitialTable$.asObservable();
 	}
 
 	insertPosition(position: Position): void {
 		this.positions.push(position);
 		this.positions$.next(this.positions);
-		this.showInitialTable$.next(false);
 	}
 
 	deletePosition(position: Position): void {
@@ -42,17 +35,12 @@ export class PositionDataService {
 			if (this.positions[i].id === position.id) {
 				this.positions[i] = position;
 			}
-
 			this.positions$.next(this.positions);
 		}
 	}
 
-	clearPositions(showInitTable?: boolean): void {
+	clearPositions(): void {
 		this.positions = [];
 		this.positions$.next(this.positions);
-
-		if (showInitTable) {
-			this.showInitialTable$.next(showInitTable);
-		}
 	}
 }
