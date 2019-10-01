@@ -7,9 +7,9 @@ import { interval, Subscription } from 'rxjs';
 })
 export class TimezoneComponent implements OnInit, OnDestroy {
 
-	private clock = new Date();
-	private initialTime: number = ((this.clock.getHours() - 7) * 4.17 + this.clock.getMinutes() * 0.0695);
-	private timer: number = this.initialTime;
+	clock = new Date();
+	initialTime: number = this.timerPosition();
+	timer: number = this.initialTime;
 	private timeSubscription: Subscription;
 
 	constructor(private renderer: Renderer2,
@@ -23,10 +23,7 @@ export class TimezoneComponent implements OnInit, OnDestroy {
 			interval(1000).subscribe(
 				() => {
 					this.clock = new Date();
-					let hours = this.clock.getHours() - 7,
-						minutes = this.clock.getMinutes();
-
-					this.timer = (hours * 4.17 + minutes * 0.0695);
+					this.timer = this.timerPosition();
 
 					if (this.marketOpeningClosingHours()) {
 						this.marketSessionActive();
@@ -43,7 +40,7 @@ export class TimezoneComponent implements OnInit, OnDestroy {
 
 		let londonSession: boolean = this.hourSelection(9) <= this.clock && this.clock < this.hourSelection(18),
 			nySession: boolean = this.hourSelection(14) <= this.clock && this.clock < this.hourSelection(23),
-			sydneySession: boolean = this.hourSelection(23) <= this.clock && this.clock < this.hourSelection(8),
+			sydneySession: boolean = this.hourSelection(23) <= this.clock || this.clock < this.hourSelection(8),
 			tokyoSession: boolean = this.hourSelection(1) <= this.clock && this.clock < this.hourSelection(10);
 
 		const londonSessionEl = this.elementRef.nativeElement.querySelector('.' + 'london-market-time'),
@@ -81,6 +78,14 @@ export class TimezoneComponent implements OnInit, OnDestroy {
 			this.renderer.removeClass(tokyoSessionEndEl, 'session-active');
 		}
 
+	}
+
+	private timerPosition(): number {
+		if (this.hourSelection(0) <= this.clock && this.hourSelection(7) > this.clock) {
+			return ((this.clock.getHours() + 17) * 4.17 + this.clock.getMinutes() * 0.0695);
+		} else {
+			return ((this.clock.getHours() - 7) * 4.17 + this.clock.getMinutes() * 0.0695);
+		}
 	}
 
 	private hourSelection(hour: number): Date {
