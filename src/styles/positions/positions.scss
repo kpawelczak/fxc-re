@@ -122,6 +122,35 @@
 		.type {
 			width: 30px;
 		}
+
+		.empty-table {
+			td {
+				border-width: 0 0 1px 0;
+				height: 100px;
+			}
+
+			td:first-child {
+				border: {
+					color: $border-color;
+					style: solid;
+					width: 0 0 1px 1px;
+				};
+			}
+
+			td:last-child {
+				border: {
+					color: $border-color;
+					style: solid;
+					width: 0 1px 1px 0;
+				};
+			}
+
+			&:hover {
+				td {
+					background: $white;
+				}
+			}
+		}
 	}
 
 	#alignRight {

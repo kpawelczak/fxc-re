@@ -7,24 +7,26 @@ import { interval, Subscription } from 'rxjs';
 })
 export class MarketSessionsComponent implements OnInit, OnDestroy {
 
-	clock = new Date();
-	initialTime: number = this.timerPosition();
-	timer: number = this.initialTime;
+	currentTime: Date;
+	currentTimePosition: number;
 
 	private timeSubscription: Subscription;
+
+	private readonly hourPercent: number = 4.17;
+	private readonly minutePercent: number = 0.0695;
 
 	constructor(private renderer: Renderer2,
 				private elementRef: ElementRef) {
 	}
 
 	ngOnInit() {
-		this.marketSessionActive();
+		this.initialData();
 
 		this.timeSubscription =
 			interval(1000).subscribe(
 				() => {
-					this.clock = new Date();
-					this.timer = this.timerPosition();
+					this.currentTime = new Date();
+					this.currentTimePosition = this.calculateTimerPosition();
 					if (this.marketOpeningClosingHours()) {
 						this.marketSessionActive();
 					}
@@ -38,10 +40,10 @@ export class MarketSessionsComponent implements OnInit, OnDestroy {
 
 	marketSessionActive(): void {
 
-		let londonSession: boolean = this.hourSelection(9) <= this.clock && this.clock < this.hourSelection(18),
-			nySession: boolean = this.hourSelection(14) <= this.clock && this.clock < this.hourSelection(23),
-			sydneySession: boolean = this.hourSelection(23) <= this.clock || this.clock < this.hourSelection(8),
-			tokyoSession: boolean = this.hourSelection(1) <= this.clock && this.clock < this.hourSelection(10);
+		let londonSession: boolean = this.hourSelection(9) <= this.currentTime && this.currentTime < this.hourSelection(18),
+			nySession: boolean = this.hourSelection(14) <= this.currentTime && this.currentTime < this.hourSelection(23),
+			sydneySession: boolean = this.hourSelection(23) <= this.currentTime || this.currentTime < this.hourSelection(8),
+			tokyoSession: boolean = this.hourSelection(1) <= this.currentTime && this.currentTime < this.hourSelection(10);
 
 		const londonSessionEl = this.elementRef.nativeElement.querySelector('.' + 'london-market-time'),
 			nySessionEl = this.elementRef.nativeElement.querySelector('.' + 'ny-market-time'),
@@ -80,23 +82,22 @@ export class MarketSessionsComponent implements OnInit, OnDestroy {
 
 	}
 
-	private timerPosition(): number {
-		if (this.hourSelection(0) <= this.clock && this.hourSelection(7) > this.clock) {
-			return ((this.clock.getHours() + 17) * 4.17 + this.clock.getMinutes() * 0.0695);
+	private calculateTimerPosition(): number {
+		if (this.hourSelection(0) <= this.currentTime && this.hourSelection(7) > this.currentTime) {
+			return ((this.currentTime.getHours() + 17) * this.hourPercent + this.currentTime.getMinutes() * this.minutePercent);
 		} else {
-			return ((this.clock.getHours() - 7) * 4.17 + this.clock.getMinutes() * 0.0695);
+			return ((this.currentTime.getHours() - 7) * this.hourPercent + this.currentTime.getMinutes() * this.minutePercent);
 		}
 	}
 
 	private hourSelection(hour: number): Date {
-
 		return new Date(
-			this.clock.getFullYear(),
-			this.clock.getMonth(),
-			this.clock.getDate(),
+			this.currentTime.getFullYear(),
+			this.currentTime.getMonth(),
+			this.currentTime.getDate(),
 			hour,
-			this.clock.getMinutes(),
-			this.clock.getSeconds());
+			this.currentTime.getMinutes(),
+			this.currentTime.getSeconds());
 	}
 
 	private marketOpeningClosingHours(): boolean {
@@ -110,6 +111,12 @@ export class MarketSessionsComponent implements OnInit, OnDestroy {
 			this.hourSelection(1)) {
 			return true;
 		}
+	}
+
+	private initialData() {
+		this.currentTime = new Date();
+		this.currentTimePosition = this.calculateTimerPosition();
+		this.marketSessionActive();
 	}
 
 }

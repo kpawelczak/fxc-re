@@ -1,6 +1,8 @@
 @import '../variables';
 
 $time-separator-color: #d9d9d9;
+$hourPercent: 4.17%;
+$marketSessionWidth: $hourPercent*9;
 
 .market-sessions {
 
@@ -29,31 +31,31 @@ $time-separator-color: #d9d9d9;
 	}
 
 	.london-market-time {
-		margin-left: calc(4.17% * 2);
-		width: 37.5%;
+		margin-left: $hourPercent * 2;
+		width: $marketSessionWidth;
 	}
 
 	.ny-market-time {
-		margin-left: calc(4.17% * 7);
-		width: 37.5%;
+		margin-left: $hourPercent * 7;
+		width: $marketSessionWidth;
 	}
 
 	.sydney-market-time {
-		margin-left: calc(4.17% * 15);
-		width: calc(37.5% - 4.17%);
+		margin-left: $hourPercent * 15;
+		width: $marketSessionWidth - $hourPercent;
 	}
 
 	.sydney-market-time-end {
-		width: 4.17%;
+		width: $hourPercent;
 	}
 
 	.tokyo-market-time {
-		margin-left: calc(4.17% * 15);
-		width: calc(37.5% - 3 * 4.17%);
+		margin-left: $hourPercent * 15;
+		width: $marketSessionWidth - 3 * $hourPercent;
 	}
 
 	.tokyo-market-time-end {
-		width: calc(4.17% * 3);
+		width: $hourPercent * 3;
 	}
 
 	.time-axis {
@@ -83,31 +85,31 @@ $time-separator-color: #d9d9d9;
 		}
 
 		div:nth-child(1) {
-			margin-left: 4.17%;
+			margin-left: $hourPercent;
 		}
 
 		div:nth-child(2) {
-			margin-left: 4.17%;
+			margin-left: $hourPercent;
 		}
 
 		div:nth-child(3) {
-			margin-left: 4.17%;
+			margin-left: $hourPercent;
 		}
 
 		div:nth-child(4) {
-			margin-left: calc(4.17% * 4);
+			margin-left: $hourPercent * 4;
 		}
 
 		div:nth-child(5) {
-			margin-left: calc(4.17% * 4);
+			margin-left: $hourPercent * 4;
 		}
 
 		div:nth-child(6) {
-			margin-left: calc(4.17% * 5);
+			margin-left: $hourPercent * 5;
 		}
 
 		div:nth-child(7) {
-			margin-left: calc(4.17% * 2);
+			margin-left: $hourPercent * 2;
 		}
 	}
 

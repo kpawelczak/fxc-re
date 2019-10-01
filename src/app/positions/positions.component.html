@@ -98,7 +98,8 @@
 					</td>
 				</tr>
 
-				<tr>
+				<tr *ngIf="!isTableEmpty()">
+
 					<td colspan="5" id="alignRight"></td>
 					<td>
 						Total:
@@ -120,6 +121,21 @@
 					</td>
 
 				</tr>
+
+				<tr *ngIf="isTableEmpty()"  class="empty-table">
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+
 			</table>
 
 		</div>

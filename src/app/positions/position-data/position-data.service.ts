@@ -24,7 +24,7 @@ export class PositionDataService {
 	insertPosition(position: Position): void {
 		this.positions.push(position);
 		this.positions$.next(this.positions);
-		this.showInitialTable$.next(false)
+		this.showInitialTable$.next(false);
 	}
 
 	deletePosition(position: Position): void {
@@ -47,9 +47,12 @@ export class PositionDataService {
 		}
 	}
 
-	clearPositions(showInitTable?:boolean): void {
+	clearPositions(showInitTable?: boolean): void {
 		this.positions = [];
 		this.positions$.next(this.positions);
-		this.showInitialTable$.next(showInitTable)
+
+		if (showInitTable) {
+			this.showInitialTable$.next(showInitTable);
+		}
 	}
 }
