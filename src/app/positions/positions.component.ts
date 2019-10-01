@@ -20,7 +20,10 @@ export class PositionsComponent implements OnInit, OnDestroy {
 	totalMoneyLoss: number = 0;
 
 	private initialTableState: Array<Position>;
+	private showInitialTable: boolean;
+
 	private positionsSubscription: Subscription;
+	private initTableSubscription: Subscription;
 
 	constructor(private positionDataService: PositionDataService,
 				private formBuilder: FormBuilder) {
@@ -36,11 +39,12 @@ export class PositionsComponent implements OnInit, OnDestroy {
 	ngOnInit() {
 		this.getPositions();
 		this.checkInitialTableStatus();
+		this.calculateTotals();
 	}
 
 	ngOnDestroy() {
 		this.positionsSubscription.unsubscribe();
-		this.doNotRemoveInitTableBeforeNewData();
+		this.initTableUnsubscribe();
 	}
 
 	addPosition(post) {
@@ -110,10 +114,14 @@ export class PositionsComponent implements OnInit, OnDestroy {
 		this.calculateTotals();
 	}
 
-	clear(): void {
+	clear(showInitTable: boolean): void {
 		Position.actualIndex = 1;
-		this.positionDataService.clearPositions();
+		this.positionDataService.clearPositions(showInitTable);
 		this.calculateTotals();
+
+		if (!showInitTable) {
+			this.initialTableState = [];
+		}
 	}
 
 	calculateTotals(): void {
@@ -143,11 +151,20 @@ export class PositionsComponent implements OnInit, OnDestroy {
 				.subscribe(positions => this.positions = positions);
 	}
 
-	private checkInitialTableStatus(): void {
-		const initialTableSubject = this.positionDataService.showInitialTable$,
-			isInitialTableNotCleared = this.initialTableState && this.initialTableState.length > 0;
+	private observeInitTableStatus() {
+		this.initTableSubscription =
+			this.positionDataService.showInitialTable()
+				.subscribe(
+					(show) => this.showInitialTable = show
+				);
+	}
 
-		if (initialTableSubject.value) {
+	private checkInitialTableStatus(): void {
+		this.observeInitTableStatus();
+
+		const isInitialTableNotCleared = this.initialTableState && this.initialTableState.length > 0;
+
+		if (this.showInitialTable) {
 			this.createInitialTable();
 
 			this.sendPositionToTable(this.initialTableState[0]);
@@ -155,11 +172,8 @@ export class PositionsComponent implements OnInit, OnDestroy {
 			this.sendPositionToTable(this.initialTableState[2]);
 			this.sendPositionToTable(this.initialTableState[3]);
 
-			this.calculateTotals();
-			initialTableSubject.next(false);
 		} else if (isInitialTableNotCleared) {
-			this.initialTableState = [];
-			this.clear();
+			this.clear(false);
 		}
 	}
 
@@ -172,14 +186,21 @@ export class PositionsComponent implements OnInit, OnDestroy {
 		];
 	}
 
+	private initTableUnsubscribe(): void {
+		this.doNotRemoveInitTableBeforeNewData();
+		this.initTableSubscription.unsubscribe();
+	}
+
 	private doNotRemoveInitTableBeforeNewData(): void {
-		const initialTableSubject = this.positionDataService.showInitialTable$,
-			isInitialTableNotCleared = this.initialTableState && this.initialTableState.length > 0;
+		const isInitialTableNotCleared = this.initialTableState && this.initialTableState.length > 0;
 
 		if (isInitialTableNotCleared) {
-			initialTableSubject.next(true);
-			this.clear();
+			this.clear(isInitialTableNotCleared);
 		}
+	}
+
+	private isTableEmpty(): boolean {
+		return this.positions.length === 0;
 	}
 
 }

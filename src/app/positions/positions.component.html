@@ -29,7 +29,7 @@
 							Add
 						</button>
 
-						<button gui-button (click)="clear()" type="reset">
+						<button gui-button (click)="clear(false)" [disabled]="isTableEmpty()" type="reset">
 							Clear the table
 						</button>
 					</div>
@@ -60,10 +60,10 @@
 					<td class="type">{{position.type}}</td>
 					<td class="size">
 						<input
-						[(ngModel)]="position.size"
-						(keydown.enter)="update($event, position)"
-						type="number"
-						value="{{position.size}}"></td>
+							[(ngModel)]="position.size"
+							(keydown.enter)="update($event, position)"
+							type="number"
+							value="{{position.size}}"></td>
 					<td class="td-price">
 						<input
 							[(ngModel)]="position.price"
@@ -85,9 +85,9 @@
 							type="number"
 							value="{{position.takeProfit}}">
 					</td>
-					<td>{{position.loss}}</td>
+					<td>{{-position.loss}}</td>
 					<td>{{position.profit}}</td>
-					<td>{{position.moneyLoss | number:'1.2'}}</td>
+					<td>{{-position.moneyLoss | number:'1.2'}}</td>
 					<td>{{position.moneyProfit| number:'1.2'}}</td>
 					<td>
 						<button gui-button
@@ -104,13 +104,13 @@
 						Total:
 					</td>
 					<td>
-						{{totalLoss}}
+						{{-totalLoss}}
 					</td>
 					<td>
 						{{totalProfit}}
 					</td>
 					<td>
-						{{totalMoneyLoss| number:'1.2'}}
+						{{-totalMoneyLoss| number:'1.2'}}
 					</td>
 					<td>
 						{{totalMoneyProfit| number:'1.2'}}

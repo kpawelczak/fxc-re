@@ -23,6 +23,7 @@ export class MarketSessionsComponent implements OnInit, OnDestroy {
 			interval(1000).subscribe(
 				() => {
 					this.clock = new Date();
+
 					this.timer = this.timerPosition();
 
 					if (this.marketOpeningClosingHours()) {
@@ -89,6 +90,7 @@ export class MarketSessionsComponent implements OnInit, OnDestroy {
 	}
 
 	private hourSelection(hour: number): Date {
+
 		return new Date(
 			this.clock.getFullYear(),
 			this.clock.getMonth(),
@@ -100,16 +102,15 @@ export class MarketSessionsComponent implements OnInit, OnDestroy {
 
 	private marketOpeningClosingHours(): boolean {
 
-		if (this.hourSelection(8) === this.clock ||
-			this.hourSelection(9) === this.clock ||
-			this.hourSelection(10) === this.clock ||
-			this.hourSelection(14) === this.clock ||
-			this.hourSelection(18) === this.clock ||
-			this.hourSelection(23) === this.clock ||
-			this.hourSelection(1) === this.clock) {
+		if (this.hourSelection(8) ||
+			this.hourSelection(9) ||
+			this.hourSelection(10) ||
+			this.hourSelection(14) ||
+			this.hourSelection(18) ||
+			this.hourSelection(23) ||
+			this.hourSelection(1)) {
 			return true;
 		}
-
 	}
 
 }

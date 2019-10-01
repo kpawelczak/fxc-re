@@ -17,9 +17,14 @@ export class PositionDataService {
 		return this.positions$.asObservable();
 	}
 
+	showInitialTable(): Observable<boolean> {
+		return this.showInitialTable$.asObservable();
+	}
+
 	insertPosition(position: Position): void {
 		this.positions.push(position);
 		this.positions$.next(this.positions);
+		this.showInitialTable$.next(false)
 	}
 
 	deletePosition(position: Position): void {
@@ -42,8 +47,9 @@ export class PositionDataService {
 		}
 	}
 
-	clearPositions(): void {
+	clearPositions(showInitTable:boolean): void {
 		this.positions = [];
 		this.positions$.next(this.positions);
+		this.showInitialTable$.next(showInitTable)
 	}
 }
