@@ -26,7 +26,7 @@
               "src/styles/styles.scss",
 				"src/styles/technicals/technicals.scss",
 				"src/styles/positions/positions.scss",
-				"src/styles/timezone/timezone.scss"
+				"src/styles/timezone/market-sessions.scss"
             ],
             "scripts": []
           },

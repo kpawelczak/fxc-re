@@ -2,10 +2,10 @@ import { Component, ElementRef, OnDestroy, OnInit, Renderer2 } from '@angular/co
 import { interval, Subscription } from 'rxjs';
 
 @Component({
-	selector: 'app-timezone',
-	templateUrl: './timezone.component.html'
+	selector: 'app-market-sessions',
+	templateUrl: './market-sessions.component.html'
 })
-export class TimezoneComponent implements OnInit, OnDestroy {
+export class MarketSessionsComponent implements OnInit, OnDestroy {
 
 	clock = new Date();
 	initialTime: number = this.timerPosition();
@@ -94,8 +94,8 @@ export class TimezoneComponent implements OnInit, OnDestroy {
 			this.clock.getMonth(),
 			this.clock.getDate(),
 			hour,
-			0,
-			0);
+			this.clock.getMinutes(),
+			this.clock.getSeconds());
 	}
 
 	private marketOpeningClosingHours(): boolean {
