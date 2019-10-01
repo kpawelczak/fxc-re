@@ -74,8 +74,11 @@ export class DemoTable {
 	}
 
 	turnOff() {
-		this.showInitialTable$.next(false);
-		this.checkInitialTableStatus()
+		if (this.showDemoTable) {
+			this.showInitialTable$.next(false);
+			this.checkInitialTableStatus();
+			this.initTableSubscription.unsubscribe();
+		}
 	}
 
 	private doNotRemoveInitTableBeforeNewData(): void {

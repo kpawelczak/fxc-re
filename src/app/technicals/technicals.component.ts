@@ -2,6 +2,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+import { RangeValidator } from '../util/validators/range.validator';
+
 import { Fibonacci } from './calculations/fibonacci';
 import { FibonacciResults } from './calculations/fibonacci-results';
 import { PivotPoints } from './calculations/pivot-points';
@@ -9,6 +11,7 @@ import { PivotPointsResults } from './calculations/pivot-points-results';
 import { TechnicalsService } from './calculations/technicals.service';
 
 import { Subscription } from 'rxjs';
+import { ValidateMinNumber } from '../util/validators/min-number.validator';
 
 
 @Component({
@@ -45,11 +48,11 @@ export class TechnicalsComponent implements OnInit, OnDestroy {
 				private technicalsService: TechnicalsService) {
 
 		this.techForm = formBuilder.group({
-			'High': ['', [Validators.required, Validators.min(0.000001)]],
-			'Low': ['', [Validators.required, Validators.min(0.000001)]],
-			'Open': ['', [Validators.required, Validators.min(0.000001)]],
-			'Close': ['', [Validators.required, Validators.min(0.000001)]]
-		});
+			'High': ['', [Validators.required, ValidateMinNumber]],
+			'Low': ['', [Validators.required, ValidateMinNumber]],
+			'Open': ['', [Validators.required, ValidateMinNumber]],
+			'Close': ['', [Validators.required, ValidateMinNumber]]
+		}, { validator: RangeValidator });
 	}
 
 	ngOnInit() {

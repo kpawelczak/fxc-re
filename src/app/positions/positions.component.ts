@@ -6,6 +6,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { PositionCreator } from './position/position.creator';
 import { DemoTable } from './demo/demo.component';
+import { ValidateMinNumber } from '../util/validators/min-number.validator';
+
 
 @Component({
 	selector: 'app-positions',
@@ -29,17 +31,17 @@ export class PositionsComponent implements OnInit, OnDestroy {
 				private demoTable: DemoTable) {
 
 		this.positionForm = this.formBuilder.group({
-			'size': ['', [Validators.required, Validators.min(0.000001)]],
-			'price': ['', [Validators.required, Validators.min(0.000001)]],
-			'takeProfit': ['', [Validators.required, Validators.min(0.000001)]],
-			'stopLoss': ['', [Validators.required, Validators.min(0.000001)]]
+			'size': ['', [Validators.required, ValidateMinNumber]],
+			'price': ['', [Validators.required, ValidateMinNumber]],
+			'takeProfit': ['', [Validators.required, ValidateMinNumber]],
+			'stopLoss': ['', [Validators.required, ValidateMinNumber]]
 		});
 	}
 
 	ngOnInit() {
-		this.getPositions();
 		this.demoTable.observeInitTableStatus();
 		this.demoTable.checkInitialTableStatus();
+		this.getPositions();
 		this.calculateTotals();
 	}
 
@@ -75,13 +77,11 @@ export class PositionsComponent implements OnInit, OnDestroy {
 		this.calculateTotals();
 	}
 
-	clear(showInitTable: boolean): void {
-		if (!showInitTable) {
-			this.demoTable.clear(showInitTable);
-		} else {
-			Position.actualIndex = 1;
-			this.positionDataService.clearPositions();
-		}
+	clear(): void {
+		this.demoTable.turnOff();
+
+		Position.actualIndex = 1;
+		this.positionDataService.clearPositions();
 		this.calculateTotals();
 	}
 

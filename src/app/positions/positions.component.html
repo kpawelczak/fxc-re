@@ -29,7 +29,7 @@
 							Add
 						</button>
 
-						<button gui-button (click)="clear(false)" [disabled]="isTableEmpty()" type="reset">
+						<button gui-button (click)="clear()" [disabled]="isTableEmpty()" type="reset">
 							Clear the table
 						</button>
 					</div>
@@ -37,7 +37,7 @@
 			</form>
 		</div>
 
-		<div class="positions-table col-xl-8">
+		<div *ngIf="!isTableEmpty()" class="positions-table col-xl-8">
 
 			<table>
 
@@ -99,7 +99,6 @@
 				</tr>
 
 				<tr *ngIf="!isTableEmpty()">
-
 					<td colspan="5" id="alignRight"></td>
 					<td>
 						Total:
@@ -119,21 +118,6 @@
 					<td>
 						-
 					</td>
-
-				</tr>
-
-				<tr *ngIf="isTableEmpty()"  class="empty-table">
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
 				</tr>
 
 			</table>
