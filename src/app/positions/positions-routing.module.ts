@@ -6,7 +6,7 @@ import { PositionsComponent } from './positions.component';
 
 
 const routes = [{
-	path: '',
+	path: 'positions',
 	component: PositionsComponent
 }];
 
