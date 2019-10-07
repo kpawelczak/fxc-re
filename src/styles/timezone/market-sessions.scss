@@ -51,11 +51,11 @@ $marketSessionWidth: $hourPercent*9;
 
 	.tokyo-market-time {
 		margin-left: $hourPercent * 15;
-		width: $marketSessionWidth - 3 * $hourPercent;
+		width: $marketSessionWidth - 4 * $hourPercent;
 	}
 
 	.tokyo-market-time-end {
-		width: $hourPercent * 3;
+		width: $hourPercent * 4;
 	}
 
 	.time-axis {
@@ -93,11 +93,11 @@ $marketSessionWidth: $hourPercent*9;
 		}
 
 		div:nth-child(3) {
-			margin-left: $hourPercent;
+			margin-left: $hourPercent * 2;
 		}
 
 		div:nth-child(4) {
-			margin-left: $hourPercent * 4;
+			margin-left: $hourPercent * 3;
 		}
 
 		div:nth-child(5) {
@@ -109,7 +109,7 @@ $marketSessionWidth: $hourPercent*9;
 		}
 
 		div:nth-child(7) {
-			margin-left: $hourPercent * 2;
+			margin-left: $hourPercent * 3;
 		}
 	}
 

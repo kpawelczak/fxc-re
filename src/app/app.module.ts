@@ -6,15 +6,15 @@ import { routes } from './app.routes';
 import { AppComponent } from './app.component';
 
 import { HeaderModule } from './header/header.module';
-import { TechnicalsModule } from './technicals/technicals.module';
 import { PositionsModule } from './positions/positions.module';
 
 import { MarketSessionsComponent } from './util/market-sessions/market-sessions.component';
+import { BrowserModule } from '@angular/platform-browser';
 
 
 @NgModule({
 	imports: [
-		TechnicalsModule,
+		BrowserModule,
 		PositionsModule,
 		HeaderModule,
 		RouterModule.forRoot(routes),

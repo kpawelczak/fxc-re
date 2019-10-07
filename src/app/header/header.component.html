@@ -4,7 +4,8 @@
 	<ul>
 		<li>
 			<a [routerLink]="'/positions'"
-			   routerLinkActive="selected-toolbar-item">
+			   routerLinkActive="selected-toolbar-item"
+			   [ngClass]="{'selected-toolbar-item': positionsActive}">
 				Positions
 				<span class="toolbar-active-indicator"></span>
 			</a>

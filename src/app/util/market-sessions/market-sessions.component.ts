@@ -43,7 +43,7 @@ export class MarketSessionsComponent implements OnInit, OnDestroy {
 		let londonSession: boolean = this.hourSelection(9) <= this.currentTime && this.currentTime < this.hourSelection(18),
 			nySession: boolean = this.hourSelection(14) <= this.currentTime && this.currentTime < this.hourSelection(23),
 			sydneySession: boolean = this.hourSelection(23) <= this.currentTime || this.currentTime < this.hourSelection(8),
-			tokyoSession: boolean = this.hourSelection(1) <= this.currentTime && this.currentTime < this.hourSelection(10);
+			tokyoSession: boolean = this.hourSelection(2) <= this.currentTime && this.currentTime < this.hourSelection(11);
 
 		const londonSessionEl = this.elementRef.nativeElement.querySelector('.' + 'london-market-time'),
 			nySessionEl = this.elementRef.nativeElement.querySelector('.' + 'ny-market-time'),
@@ -104,11 +104,11 @@ export class MarketSessionsComponent implements OnInit, OnDestroy {
 
 		if (this.hourSelection(8) ||
 			this.hourSelection(9) ||
-			this.hourSelection(10) ||
+			this.hourSelection(11) ||
 			this.hourSelection(14) ||
 			this.hourSelection(18) ||
 			this.hourSelection(23) ||
-			this.hourSelection(1)) {
+			this.hourSelection(2)) {
 			return true;
 		}
 	}

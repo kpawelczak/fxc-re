@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
-import { SimpleUIModule } from '../ui/simple-ui.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+
+import { SimpleUIModule } from '../ui/simple-ui.module';
+
 import { PositionsComponent } from './positions.component';
-import { BrowserModule } from '@angular/platform-browser';
 import { PositionsRoutingModule } from './positions-routing.module';
 import { PositionDataService } from './position-data/position-data.service';
 import { PositionCreator } from './position/position.creator';
@@ -14,7 +15,6 @@ import { DemoTable } from './demo/demo.component';
 	imports: [
 		CommonModule,
 		PositionsRoutingModule,
-		BrowserModule,
 		FormsModule,
 		SimpleUIModule,
 		ReactiveFormsModule

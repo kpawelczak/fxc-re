@@ -1,17 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule } from '@angular/router';
+
 import { TechnicalsComponent } from './technicals.component';
 
-const routes =[{
-	path:'technicals',
-component:TechnicalsComponent}
-]
+
+const routes = [{
+	path: '',
+	component: TechnicalsComponent
+}];
 
 @NgModule({
-	imports:[
+	imports: [
 		CommonModule,
-		RouterModule.forRoot(routes)
+		RouterModule.forChild(routes)
+	],
+	exports: [
+		RouterModule
 	]
 })
 export class TechnicalsRoutingModule {
